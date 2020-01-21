@@ -1,0 +1,39 @@
+; Engine configuration file.
+; It's best edited using the editor UI and not directly,
+; since the parameters that go here are not all obvious.
+;
+; Format:
+;   [section] ; section goes between []
+;   param=value ; assign values to parameters
+
+config_version=4
+
+_global_script_classes=[ {
+"base": "Object",
+"class": "DoubleDictionary",
+"language": "GDScript",
+"path": "res://Scripts/Framework/Tools/DoubleDictionary.gd"
+} ]
+_global_script_class_icons={
+"DoubleDictionary": ""
+}
+
+[application]
+
+config/name="Game"
+run/main_scene="res://Scenes/Sample/SampleMainScene.tscn"
+config/icon="res://icon.png"
+
+[autoload]
+
+PanelMgr="*res://Scripts/Framework/Panel/PanelMgr.gd"
+
+[display]
+
+window/size/width=720
+window/size/height=1280
+window/handheld/orientation="portrait"
+
+[rendering]
+
+environment/default_environment="res://default_env.tres"
