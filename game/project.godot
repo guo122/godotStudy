@@ -20,7 +20,7 @@ _global_script_class_icons={
 
 [application]
 
-config/name="Game"
+config/name="GDWay"
 run/main_scene="res://Scenes/Sample/SampleMainScene.tscn"
 config/icon="res://icon.png"
 
