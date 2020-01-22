@@ -10,6 +10,9 @@ var layerArray: Array
 var layerDic: Dictionary
 var nodeDic: Dictionary
 
+var localTime: float
+var delayNodeDic: Dictionary
+
 var mainScene
 var topNode: Node
 
@@ -17,7 +20,22 @@ var mainPanelName: String
 
 func _ready():
 	print("panelMgr ready")
+	localTime = 0
+	
 
+func _process(delta):
+	localTime += delta
+	var nodeList: Array
+	for node in delayNodeDic.keys():
+		var t = delayNodeDic[node]
+		t -= delta
+		if t <= 0:
+			nodeList.append(node)
+			closePanel(node)
+		else:
+			delayNodeDic[node] = t
+	for node in nodeList:
+		delayNodeDic.erase(node)
 
 func setMainScene(scene):
 	mainScene = scene
@@ -41,7 +59,8 @@ func setMainScene(scene):
 		push_error("Panel Scene config error, no main panel.")
 
 
-func openPanel(name: String, layer:int, bNewInstance: bool = false):
+func openPanel(name: String, layer:int, destoryTime: float = 0, bNewInstance: bool = false):
+	var ret: Node = null
 	if !bNewInstance && !panelNameNodeDic.has(name):
 		if panelNameSceneDic.has(name):
 			var node = panelNameSceneDic[name].instance()
@@ -49,26 +68,26 @@ func openPanel(name: String, layer:int, bNewInstance: bool = false):
 			panelNodeNameDic[node] = name
 			
 			addNode(node, layer)
-			return node
+			ret = node
 		else:
 			var error_str = "Open Panel Scene not found: " + name;
 			push_error(error_str)
-			return null
 	elif bNewInstance:
 		var scene = panelNameSceneDic[name]
 		if !scene:
 			var error_str = "Open Panel Scene not found: " + name;
 			push_error(error_str)
-			return null
 		else:
 			var node = scene.instance()
 			panelNodeNameDic[node] = ""
 			addNode(node, layer)
-			return node
+			ret = node
 	else:
 		var warning_str = "Open Panel Scene already open: " + name;
 		push_warning(warning_str)
-		return null
+	if ret && destoryTime > 0:
+		delayNodeDic[ret] = destoryTime
+	return ret
 
 
 func closePanel_name(name: String):

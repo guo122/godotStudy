@@ -76,9 +76,9 @@ custom_constants/separation = 20
 alignment = 1
 
 [node name="BtnParticles" type="Button" parent="MarginContainer/HBoxContainer/VBoxContainer2"]
-margin_top = 353.0
+margin_top = 386.0
 margin_right = 300.0
-margin_bottom = 399.0
+margin_bottom = 432.0
 custom_fonts/font = ExtResource( 2 )
 text = "Particles"
 __meta__ = {
@@ -86,31 +86,21 @@ __meta__ = {
 }
 
 [node name="BtnOneBoom" type="Button" parent="MarginContainer/HBoxContainer/VBoxContainer2"]
-margin_top = 419.0
+margin_top = 452.0
 margin_right = 300.0
-margin_bottom = 465.0
+margin_bottom = 498.0
 custom_fonts/font = ExtResource( 2 )
-text = "One Boom"
+text = "Loop"
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="BtnBoom" type="Button" parent="MarginContainer/HBoxContainer/VBoxContainer2"]
-margin_top = 485.0
+margin_top = 518.0
 margin_right = 300.0
-margin_bottom = 531.0
+margin_bottom = 564.0
 custom_fonts/font = ExtResource( 2 )
 text = "BOOM!!!"
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="BtnClearBoom" type="Button" parent="MarginContainer/HBoxContainer/VBoxContainer2"]
-margin_top = 551.0
-margin_right = 300.0
-margin_bottom = 597.0
-custom_fonts/font = ExtResource( 2 )
-text = "ClearBoom"
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -120,4 +110,3 @@ __meta__ = {
 [connection signal="button_up" from="MarginContainer/HBoxContainer/VBoxContainer2/BtnParticles" to="." method="_on_BtnParticles_button_up"]
 [connection signal="button_up" from="MarginContainer/HBoxContainer/VBoxContainer2/BtnOneBoom" to="." method="_on_BtnOneBoom_button_up"]
 [connection signal="button_up" from="MarginContainer/HBoxContainer/VBoxContainer2/BtnBoom" to="." method="_on_BtnBoom_button_up"]
-[connection signal="button_up" from="MarginContainer/HBoxContainer/VBoxContainer2/BtnClearBoom" to="." method="_on_BtnClearBoom_button_up"]

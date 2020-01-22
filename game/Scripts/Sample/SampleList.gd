@@ -41,17 +41,11 @@ func _on_BtnOneBoom_button_up():
 
 
 func _on_BtnBoom_button_up():
-	boomArray.append(panelMgr.openPanel("SampleBoom", PANEL_PARTICLES_LAYER, true))
+	boomArray.append(panelMgr.openPanel("SampleBoom", PANEL_PARTICLES_LAYER, 10, true))
 	
 
 func _on_BtnLayerTest_button_up():
 	panelMgr.openPanel("SampleLayerTest", PANEL_NORMAL_LAYER)
-
-
-func _on_BtnClearBoom_button_up():
-	for node in boomArray:
-		panelMgr.closePanel(node)
-	boomArray.clear()
 
 
 
