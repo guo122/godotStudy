@@ -6,10 +6,6 @@ const PANEL_NORMAL_LAYER = 3
 
 var panelMgr
 
-var isParticles: bool = false
-var isParticlesBoom: bool = false
-var boomArray: Array
-
 func _ready():
 	panelMgr = get_node("/root/PanelMgr")
 	panelMgr.openPanel("SampleHUD", PANEL_HUD_LAYER)
@@ -23,29 +19,23 @@ func _on_BtnLineEdit_button_up():
 
 
 func _on_BtnParticles_button_up():
-	if isParticles:
+	if !panelMgr.openPanel("SampleParticles", PANEL_PARTICLES_LAYER):
 		panelMgr.closePanel_name("SampleParticles")
-		isParticles = false
-	else:
-		panelMgr.openPanel("SampleParticles", PANEL_PARTICLES_LAYER)
-		isParticles = true
 
 
 func _on_BtnOneBoom_button_up():
-	if isParticles:
+	if !panelMgr.openPanel("SampleBoom", PANEL_PARTICLES_LAYER):
 		panelMgr.closePanel_name("SampleBoom")
-		isParticles = false
-	else:
-		panelMgr.openPanel("SampleBoom", PANEL_PARTICLES_LAYER)
-		isParticles = true
 
 
 func _on_BtnBoom_button_up():
-	boomArray.append(panelMgr.openPanel("SampleBoom", PANEL_PARTICLES_LAYER, 10, true))
+	panelMgr.openPanel("SampleBoom", PANEL_PARTICLES_LAYER, 10, true)
 	
 
 func _on_BtnLayerTest_button_up():
 	panelMgr.openPanel("SampleLayerTest", PANEL_NORMAL_LAYER)
 
 
-
+func _on_BtnBack_button_up():
+	panelMgr.closePanel_name("SampleHUD")
+	panelMgr.closePanel(self)

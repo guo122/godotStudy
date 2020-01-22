@@ -21,7 +21,7 @@ _global_script_class_icons={
 [application]
 
 config/name="GDWay"
-run/main_scene="res://Scenes/Sample/SampleMainScene.tscn"
+run/main_scene="res://Scenes/MainScene.tscn"
 config/icon="res://icon.png"
 
 [autoload]
