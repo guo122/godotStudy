@@ -1,11 +1,12 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://Scripts/Framework/MainScene.gd" type="Script" id=1]
 [ext_resource path="res://Scenes/Sample/SampleList.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Scenes/Sample/SampleTextEdit.tscn" type="PackedScene" id=3]
 [ext_resource path="res://Scenes/Sample/SampleLineEdit.tscn" type="PackedScene" id=4]
 [ext_resource path="res://Scenes/Sample/SampleParticles.tscn" type="PackedScene" id=5]
+[ext_resource path="res://Scenes/Sample/SampleBoom.tscn" type="PackedScene" id=6]
 
 [node name="Node" type="Node"]
 script = ExtResource( 1 )
-PanelSceneList = [ ExtResource( 2 ), ExtResource( 3 ), ExtResource( 4 ), ExtResource( 5 ) ]
+PanelSceneList = [ ExtResource( 2 ), ExtResource( 3 ), ExtResource( 4 ), ExtResource( 5 ), ExtResource( 6 ) ]

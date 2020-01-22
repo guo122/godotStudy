@@ -3,6 +3,7 @@ extends Node2D
 var panelMgr
 
 var isParticles: bool = false
+var isParticlesBoom: bool = false
 
 func _ready():
 	panelMgr = get_node("/root/PanelMgr")
@@ -23,3 +24,19 @@ func _on_BtnParticles_button_up():
 	else:
 		panelMgr.openPanel("SampleParticles")
 		isParticles = true
+
+
+func _on_BtnBoom_button_up():
+	if isParticles:
+		panelMgr.closePanel_name("SampleBoom")
+		isParticles = false
+	else:
+		panelMgr.openPanel("SampleBoom")
+		isParticles = true
+
+
+
+
+
+
+

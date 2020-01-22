@@ -64,15 +64,16 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Button2" type="Button" parent="MarginContainer/HBoxContainer/VBoxContainer2"]
+[node name="BtnBoom" type="Button" parent="MarginContainer/HBoxContainer/VBoxContainer2"]
 margin_top = 485.0
 margin_right = 300.0
 margin_bottom = 531.0
 custom_fonts/font = ExtResource( 2 )
-text = "Click me"
+text = "BOOM!!!"
 __meta__ = {
 "_edit_use_anchors_": false
 }
 [connection signal="button_up" from="MarginContainer/HBoxContainer/VBoxContainer/BtnTextEdit" to="." method="_on_BtnTextEdit_button_up"]
 [connection signal="button_up" from="MarginContainer/HBoxContainer/VBoxContainer/BtnLineEdit" to="." method="_on_BtnLineEdit_button_up"]
 [connection signal="button_up" from="MarginContainer/HBoxContainer/VBoxContainer2/BtnParticles" to="." method="_on_BtnParticles_button_up"]
+[connection signal="button_up" from="MarginContainer/HBoxContainer/VBoxContainer2/BtnBoom" to="." method="_on_BtnBoom_button_up"]
