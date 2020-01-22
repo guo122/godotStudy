@@ -17,3 +17,7 @@ func _on_BtnSample_button_down():
 func _on_BtnStar_button_down():
 	if !panelMgr.openPanel("SampleParticles", PANEL_PARTICLES_LAYER):
 		panelMgr.closePanel_name("SampleParticles")
+
+
+func _on_BtnMath_button_down():
+	panelMgr.openPanel("MathMul", PANEL_NORMAL_LAYER)

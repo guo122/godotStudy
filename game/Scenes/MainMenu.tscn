@@ -55,5 +55,6 @@ text = "Star"
 __meta__ = {
 "_edit_use_anchors_": false
 }
+[connection signal="button_down" from="BtnMath" to="." method="_on_BtnMath_button_down"]
 [connection signal="button_down" from="BtnSample" to="." method="_on_BtnSample_button_down"]
 [connection signal="button_down" from="BtnStar" to="." method="_on_BtnStar_button_down"]
