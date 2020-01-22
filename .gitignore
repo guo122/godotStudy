@@ -1,6 +1,7 @@
 
 *.DS_Store
 *.swp
+xcode/
 
 # Godot-specific ignores
 .import/
@@ -12,4 +13,5 @@ export_presets.cfg
 data_*/
 
 # Font data
-game/Fonts/SourceHanSans.ttc
+game/Fonts/Resources/SourceHanSans.ttc
+game/Fonts/Resources/Arial Unicode.ttf

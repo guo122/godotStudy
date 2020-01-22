@@ -1,18 +1,8 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=4 format=2]
 
 [ext_resource path="res://Scripts/Sample/SampleLineEdit.gd" type="Script" id=1]
-[ext_resource path="res://Fonts/Xolonium-Regular.ttf" type="DynamicFontData" id=2]
-
-[sub_resource type="DynamicFont" id=1]
-size = 34
-font_data = ExtResource( 2 )
-
-[sub_resource type="DynamicFontData" id=2]
-font_path = "res://Fonts/SourceHanSans.ttc"
-
-[sub_resource type="DynamicFont" id=3]
-size = 32
-font_data = SubResource( 2 )
+[ext_resource path="res://Fonts/Text33.tres" type="DynamicFont" id=2]
+[ext_resource path="res://Fonts/Text30.tres" type="DynamicFont" id=3]
 
 [node name="Node2D" type="Node2D"]
 script = ExtResource( 1 )
@@ -25,7 +15,7 @@ color = Color( 0.462745, 0.462745, 0.462745, 1 )
 [node name="Button" type="Button" parent="."]
 margin_right = 176.0
 margin_bottom = 92.0
-custom_fonts/font = SubResource( 1 )
+custom_fonts/font = ExtResource( 2 )
 text = "Back"
 
 [node name="LineEdit" type="LineEdit" parent="."]
@@ -33,7 +23,7 @@ margin_left = 93.0
 margin_top = 124.0
 margin_right = 645.0
 margin_bottom = 242.0
-custom_fonts/font = SubResource( 3 )
+custom_fonts/font = ExtResource( 3 )
 text = "写点什么试试"
 __meta__ = {
 "_edit_use_anchors_": false
