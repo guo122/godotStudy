@@ -2,6 +2,9 @@ extends Node2D
 
 signal pad_pressed
 
+enum LayoutStyle {POSITIVE, NEGATIVE}
+var layoutStyle = LayoutStyle.POSITIVE
+
 var inputStr: String
 var inputDot: bool
 
@@ -10,44 +13,49 @@ func _ready():
 	inputStr = "0"
 	inputDot = false
 # warning-ignore:return_value_discarded
-	$VBoxContainer/HBoxContainer/Btn1.connect("button_down", self, "pad_num_pressed", ["1"])
+	$VBoxContainer/HBoxContainer/Btn11.connect("button_down", self, "pad_num_pressed", ["11"])
 # warning-ignore:return_value_discarded
-	$VBoxContainer/HBoxContainer/Btn2.connect("button_down", self, "pad_num_pressed", ["2"])
+	$VBoxContainer/HBoxContainer/Btn12.connect("button_down", self, "pad_num_pressed", ["12"])
 # warning-ignore:return_value_discarded
-	$VBoxContainer/HBoxContainer/Btn3.connect("button_down", self, "pad_num_pressed", ["3"])
+	$VBoxContainer/HBoxContainer/Btn13.connect("button_down", self, "pad_num_pressed", ["13"])
 # warning-ignore:return_value_discarded
-	$VBoxContainer/HBoxContainer2/Btn4.connect("button_down", self, "pad_num_pressed", ["4"])
+	$VBoxContainer/HBoxContainer2/Btn21.connect("button_down", self, "pad_num_pressed", ["21"])
 # warning-ignore:return_value_discarded
-	$VBoxContainer/HBoxContainer2/Btn5.connect("button_down", self, "pad_num_pressed", ["5"])
+	$VBoxContainer/HBoxContainer2/Btn22.connect("button_down", self, "pad_num_pressed", ["22"])
 # warning-ignore:return_value_discarded
-	$VBoxContainer/HBoxContainer2/Btn6.connect("button_down", self, "pad_num_pressed", ["6"])
+	$VBoxContainer/HBoxContainer2/Btn23.connect("button_down", self, "pad_num_pressed", ["23"])
 # warning-ignore:return_value_discarded
-	$VBoxContainer/HBoxContainer3/Btn7.connect("button_down", self, "pad_num_pressed", ["7"])
+	$VBoxContainer/HBoxContainer3/Btn31.connect("button_down", self, "pad_num_pressed", ["31"])
 # warning-ignore:return_value_discarded
-	$VBoxContainer/HBoxContainer3/Btn8.connect("button_down", self, "pad_num_pressed", ["8"])
+	$VBoxContainer/HBoxContainer3/Btn32.connect("button_down", self, "pad_num_pressed", ["32"])
 # warning-ignore:return_value_discarded
-	$VBoxContainer/HBoxContainer3/Btn9.connect("button_down", self, "pad_num_pressed", ["9"])
+	$VBoxContainer/HBoxContainer3/Btn33.connect("button_down", self, "pad_num_pressed", ["33"])
 # warning-ignore:return_value_discarded
-	$VBoxContainer/HBoxContainer4/Btn0.connect("button_down", self, "pad_num_pressed", ["0"])
+	$VBoxContainer/HBoxContainer4/Btn41.connect("button_down", self, "pad_num_pressed", ["41"])
 # warning-ignore:return_value_discarded
-	$VBoxContainer/HBoxContainer4/BtnDot.connect("button_down", self, "pad_num_pressed", ["."])
+	$VBoxContainer/HBoxContainer4/Btn42.connect("button_down", self, "pad_num_pressed", ["42"])
 # warning-ignore:return_value_discarded
-	$VBoxContainer/HBoxContainer4/BtnC.connect("button_down", self, "pad_clear_pressed")
+	$VBoxContainer/HBoxContainer4/Btn43.connect("button_down", self, "pad_clear_pressed")
+	
+	layoutStyle = LayoutStyle.NEGATIVE
+	set_style()
 
 
 func pad_num_pressed(ss):
+	var clicked_num: String
+	clicked_num = get_style_num(ss)
 	if inputStr == "0":
-		if ss != "0" && ss != ".":
-			inputStr = ss
-		elif ss == ".":
+		if clicked_num != "0" && clicked_num != ".":
+			inputStr = clicked_num
+		elif clicked_num == ".":
 			inputStr = "0."
 			inputDot = true
 	elif inputStr != "0" && inputStr.length() < 8:
-		if ss == "." && !inputDot:
+		if clicked_num == "." && !inputDot:
 			inputDot = true
-			inputStr += ss
-		elif ss != ".":
-			inputStr += ss
+			inputStr += clicked_num
+		elif clicked_num != ".":
+			inputStr += clicked_num
 		
 	emit_signal("pad_pressed", inputStr, float(inputStr))
 
@@ -56,6 +64,106 @@ func num_clear():
 	inputStr = "0"
 	inputDot = false
 
+
 func pad_clear_pressed():
 	num_clear()
 	emit_signal("pad_pressed", inputStr, float(0))
+
+
+func set_style():
+	if layoutStyle == LayoutStyle.POSITIVE:
+		$VBoxContainer/HBoxContainer/Btn11.text = "1"
+		$VBoxContainer/HBoxContainer/Btn12.text = "2"
+		$VBoxContainer/HBoxContainer/Btn13.text = "3"
+		$VBoxContainer/HBoxContainer2/Btn21.text = "4"
+		$VBoxContainer/HBoxContainer2/Btn22.text = "5"
+		$VBoxContainer/HBoxContainer2/Btn23.text = "6"
+		$VBoxContainer/HBoxContainer3/Btn31.text = "7"
+		$VBoxContainer/HBoxContainer3/Btn32.text = "8"
+		$VBoxContainer/HBoxContainer3/Btn33.text = "9"
+		$VBoxContainer/HBoxContainer4/Btn41.text = "."
+		$VBoxContainer/HBoxContainer4/Btn42.text = "0"
+	elif layoutStyle == LayoutStyle.NEGATIVE:
+		$VBoxContainer/HBoxContainer/Btn11.text = "7"
+		$VBoxContainer/HBoxContainer/Btn12.text = "8"
+		$VBoxContainer/HBoxContainer/Btn13.text = "9"
+		$VBoxContainer/HBoxContainer2/Btn21.text = "4"
+		$VBoxContainer/HBoxContainer2/Btn22.text = "5"
+		$VBoxContainer/HBoxContainer2/Btn23.text = "6"
+		$VBoxContainer/HBoxContainer3/Btn31.text = "1"
+		$VBoxContainer/HBoxContainer3/Btn32.text = "2"
+		$VBoxContainer/HBoxContainer3/Btn33.text = "3"
+		$VBoxContainer/HBoxContainer4/Btn41.text = "."
+		$VBoxContainer/HBoxContainer4/Btn42.text = "0"
+	else:
+		$VBoxContainer/HBoxContainer/Btn11.text = "7"
+		$VBoxContainer/HBoxContainer/Btn12.text = "8"
+		$VBoxContainer/HBoxContainer/Btn13.text = "9"
+		$VBoxContainer/HBoxContainer2/Btn21.text = "4"
+		$VBoxContainer/HBoxContainer2/Btn22.text = "5"
+		$VBoxContainer/HBoxContainer2/Btn23.text = "6"
+		$VBoxContainer/HBoxContainer3/Btn31.text = "1"
+		$VBoxContainer/HBoxContainer3/Btn32.text = "2"
+		$VBoxContainer/HBoxContainer3/Btn33.text = "3"
+		$VBoxContainer/HBoxContainer4/Btn41.text = "."
+		$VBoxContainer/HBoxContainer4/Btn42.text = "0"
+
+
+func get_style_num(num: String) -> String:
+	var ret: String = "0"
+	if layoutStyle == LayoutStyle.POSITIVE:
+		if num == "11":
+			ret = "1"
+		elif num == "12":
+			ret = "2"
+		elif num == "13":
+			ret = "3"
+		elif num == "21":
+			ret = "4"
+		elif num == "22":
+			ret = "5"
+		elif num == "23":
+			ret = "6"
+		elif num == "31":
+			ret = "7"
+		elif num == "32":
+			ret = "8"
+		elif num == "33":
+			ret = "9"
+		elif num == "41":
+			ret = "."
+		elif num == "42":
+			ret = "0"
+	elif layoutStyle == LayoutStyle.NEGATIVE:
+		if num == "11":
+			ret = "7"
+		elif num == "12":
+			ret = "8"
+		elif num == "13":
+			ret = "9"
+		elif num == "21":
+			ret = "4"
+		elif num == "22":
+			ret = "5"
+		elif num == "23":
+			ret = "6"
+		elif num == "31":
+			ret = "1"
+		elif num == "32":
+			ret = "2"
+		elif num == "33":
+			ret = "3"
+		elif num == "41":
+			ret = "."
+		elif num == "42":
+			ret = "0"
+	return ret
+
+
+
+
+
+
+
+
+

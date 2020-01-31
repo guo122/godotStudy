@@ -24,7 +24,7 @@ size_flags_horizontal = 3
 size_flags_vertical = 3
 custom_constants/separation = 30
 
-[node name="Btn1" type="Button" parent="VBoxContainer/HBoxContainer"]
+[node name="Btn11" type="Button" parent="VBoxContainer/HBoxContainer"]
 margin_right = 186.0
 margin_bottom = 162.0
 size_flags_horizontal = 3
@@ -32,7 +32,7 @@ size_flags_vertical = 3
 custom_fonts/font = ExtResource( 2 )
 text = "1"
 
-[node name="Btn2" type="Button" parent="VBoxContainer/HBoxContainer"]
+[node name="Btn12" type="Button" parent="VBoxContainer/HBoxContainer"]
 margin_left = 216.0
 margin_right = 402.0
 margin_bottom = 162.0
@@ -41,7 +41,7 @@ size_flags_vertical = 3
 custom_fonts/font = ExtResource( 2 )
 text = "2"
 
-[node name="Btn3" type="Button" parent="VBoxContainer/HBoxContainer"]
+[node name="Btn13" type="Button" parent="VBoxContainer/HBoxContainer"]
 margin_left = 432.0
 margin_right = 618.0
 margin_bottom = 162.0
@@ -58,7 +58,7 @@ size_flags_horizontal = 3
 size_flags_vertical = 3
 custom_constants/separation = 30
 
-[node name="Btn4" type="Button" parent="VBoxContainer/HBoxContainer2"]
+[node name="Btn21" type="Button" parent="VBoxContainer/HBoxContainer2"]
 margin_right = 186.0
 margin_bottom = 162.0
 size_flags_horizontal = 3
@@ -66,7 +66,7 @@ size_flags_vertical = 3
 custom_fonts/font = ExtResource( 2 )
 text = "4"
 
-[node name="Btn5" type="Button" parent="VBoxContainer/HBoxContainer2"]
+[node name="Btn22" type="Button" parent="VBoxContainer/HBoxContainer2"]
 margin_left = 216.0
 margin_right = 402.0
 margin_bottom = 162.0
@@ -75,7 +75,7 @@ size_flags_vertical = 3
 custom_fonts/font = ExtResource( 2 )
 text = "5"
 
-[node name="Btn6" type="Button" parent="VBoxContainer/HBoxContainer2"]
+[node name="Btn23" type="Button" parent="VBoxContainer/HBoxContainer2"]
 margin_left = 432.0
 margin_right = 618.0
 margin_bottom = 162.0
@@ -92,7 +92,7 @@ size_flags_horizontal = 3
 size_flags_vertical = 3
 custom_constants/separation = 30
 
-[node name="Btn7" type="Button" parent="VBoxContainer/HBoxContainer3"]
+[node name="Btn31" type="Button" parent="VBoxContainer/HBoxContainer3"]
 margin_right = 186.0
 margin_bottom = 162.0
 size_flags_horizontal = 3
@@ -100,7 +100,7 @@ size_flags_vertical = 3
 custom_fonts/font = ExtResource( 2 )
 text = "7"
 
-[node name="Btn8" type="Button" parent="VBoxContainer/HBoxContainer3"]
+[node name="Btn32" type="Button" parent="VBoxContainer/HBoxContainer3"]
 margin_left = 216.0
 margin_right = 402.0
 margin_bottom = 162.0
@@ -109,7 +109,7 @@ size_flags_vertical = 3
 custom_fonts/font = ExtResource( 2 )
 text = "8"
 
-[node name="Btn9" type="Button" parent="VBoxContainer/HBoxContainer3"]
+[node name="Btn33" type="Button" parent="VBoxContainer/HBoxContainer3"]
 margin_left = 432.0
 margin_right = 618.0
 margin_bottom = 162.0
@@ -126,7 +126,7 @@ size_flags_horizontal = 3
 size_flags_vertical = 3
 custom_constants/separation = 30
 
-[node name="BtnDot" type="Button" parent="VBoxContainer/HBoxContainer4"]
+[node name="Btn41" type="Button" parent="VBoxContainer/HBoxContainer4"]
 margin_right = 186.0
 margin_bottom = 164.0
 size_flags_horizontal = 3
@@ -134,7 +134,7 @@ size_flags_vertical = 3
 custom_fonts/font = ExtResource( 2 )
 text = "."
 
-[node name="Btn0" type="Button" parent="VBoxContainer/HBoxContainer4"]
+[node name="Btn42" type="Button" parent="VBoxContainer/HBoxContainer4"]
 margin_left = 216.0
 margin_right = 402.0
 margin_bottom = 164.0
@@ -143,7 +143,7 @@ size_flags_vertical = 3
 custom_fonts/font = ExtResource( 2 )
 text = "0"
 
-[node name="BtnC" type="Button" parent="VBoxContainer/HBoxContainer4"]
+[node name="Btn43" type="Button" parent="VBoxContainer/HBoxContainer4"]
 margin_left = 432.0
 margin_right = 618.0
 margin_bottom = 164.0
