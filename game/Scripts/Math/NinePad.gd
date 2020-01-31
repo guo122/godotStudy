@@ -52,7 +52,10 @@ func pad_num_pressed(ss):
 	emit_signal("pad_pressed", inputStr, float(inputStr))
 
 
-func pad_clear_pressed():
+func num_clear():
 	inputStr = "0"
 	inputDot = false
+
+func pad_clear_pressed():
+	num_clear()
 	emit_signal("pad_pressed", inputStr, float(0))

@@ -68,10 +68,10 @@ __meta__ = {
 }
 
 [node name="Num1" type="Label" parent="."]
-margin_left = 50.1789
-margin_top = 161.907
-margin_right = 284.179
-margin_bottom = 281.907
+margin_left = 42.0
+margin_top = 162.0
+margin_right = 284.0
+margin_bottom = 282.0
 custom_fonts/font = ExtResource( 4 )
 text = "0"
 align = 2
@@ -80,10 +80,10 @@ __meta__ = {
 }
 
 [node name="Num2" type="Label" parent="."]
-margin_left = 403.544
-margin_top = 162.192
-margin_right = 637.544
-margin_bottom = 282.192
+margin_left = 404.0
+margin_top = 162.0
+margin_right = 669.0
+margin_bottom = 282.0
 custom_fonts/font = ExtResource( 4 )
 text = "0"
 __meta__ = {
