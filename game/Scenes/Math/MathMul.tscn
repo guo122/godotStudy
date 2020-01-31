@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://Scripts/Math/MathMul.gd" type="Script" id=1]
 [ext_resource path="res://Fonts/Resources/Xolonium-Regular.ttf" type="DynamicFontData" id=2]
@@ -7,6 +7,11 @@
 
 [sub_resource type="DynamicFont" id=1]
 size = 43
+font_data = ExtResource( 2 )
+
+[sub_resource type="DynamicFont" id=2]
+size = 60
+outline_size = 1
 font_data = ExtResource( 2 )
 
 [node name="Node2D" type="Node2D"]
@@ -38,7 +43,7 @@ margin_top = 67.0292
 margin_right = 717.972
 margin_bottom = 130.029
 custom_fonts/font = SubResource( 1 )
-text = "Refresh"
+text = "PASS"
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -113,4 +118,17 @@ align = 1
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="Progress" type="Label" parent="."]
+margin_left = 45.8105
+margin_top = 1193.3
+margin_right = 335.811
+margin_bottom = 1273.3
+custom_fonts/font = SubResource( 2 )
+text = "1/5"
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
 [connection signal="button_down" from="BtnBack" to="." method="_on_BtnBack_button_down"]
+[connection signal="button_down" from="BtnRefresh" to="." method="_on_BtnRefresh_button_down"]

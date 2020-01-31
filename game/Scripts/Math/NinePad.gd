@@ -37,8 +37,7 @@ func _ready():
 # warning-ignore:return_value_discarded
 	$VBoxContainer/HBoxContainer4/Btn43.connect("button_down", self, "pad_clear_pressed")
 	
-	layoutStyle = LayoutStyle.NEGATIVE
-	set_style()
+	set_style(false)
 
 
 func pad_num_pressed(ss):
@@ -70,7 +69,12 @@ func pad_clear_pressed():
 	emit_signal("pad_pressed", inputStr, float(0))
 
 
-func set_style():
+func set_style(bStyle):
+	if bStyle:
+		layoutStyle = LayoutStyle.POSITIVE
+	else:
+		layoutStyle = LayoutStyle.NEGATIVE
+		
 	if layoutStyle == LayoutStyle.POSITIVE:
 		$VBoxContainer/HBoxContainer/Btn11.text = "1"
 		$VBoxContainer/HBoxContainer/Btn12.text = "2"

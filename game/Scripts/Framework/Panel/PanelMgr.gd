@@ -59,7 +59,7 @@ func setMainScene(scene):
 		push_error("Panel Scene config error, no main panel.")
 
 
-func openPanel(name: String, layer:int, destoryTime: float = 0, bNewInstance: bool = false):
+func openPanel(name: String, layer:int, dic: Dictionary = {}, destoryTime: float = 0, bNewInstance: bool = false):
 	var ret: Node = null
 	if !bNewInstance && !panelNameNodeDic.has(name):
 		if panelNameSceneDic.has(name):
@@ -87,6 +87,8 @@ func openPanel(name: String, layer:int, destoryTime: float = 0, bNewInstance: bo
 		push_warning(warning_str)
 	if ret && destoryTime > 0:
 		delayNodeDic[ret] = destoryTime
+	if ret && !dic.empty() && ret.has_method("_panel_set_dic"):
+		ret._panel_set_dic(dic)
 	return ret
 
 
