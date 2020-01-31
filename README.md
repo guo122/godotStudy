@@ -1,6 +1,6 @@
 # godotStudy
 
-0.02(5)
+0.02(7)
 
 ## Fonts
 

@@ -1,8 +1,9 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://Scripts/Math/MathMul.gd" type="Script" id=1]
 [ext_resource path="res://Fonts/Resources/Xolonium-Regular.ttf" type="DynamicFontData" id=2]
-[ext_resource path="res://Fonts/Text100.tres" type="DynamicFont" id=3]
+[ext_resource path="res://Scenes/Math/NinePad.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Fonts/Text100.tres" type="DynamicFont" id=4]
 
 [sub_resource type="DynamicFont" id=1]
 size = 43
@@ -42,153 +43,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Nine" type="Node2D" parent="."]
-position = Vector2( 242.939, 447.972 )
-
-[node name="VBoxContainer" type="VBoxContainer" parent="Nine"]
-margin_left = -196.057
-margin_top = -4.01947
-margin_right = 421.943
-margin_bottom = 735.981
-custom_constants/separation = 30
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="HBoxContainer" type="HBoxContainer" parent="Nine/VBoxContainer"]
-margin_right = 618.0
-margin_bottom = 162.0
-size_flags_horizontal = 3
-size_flags_vertical = 3
-custom_constants/separation = 30
-
-[node name="Btn1" type="Button" parent="Nine/VBoxContainer/HBoxContainer"]
-margin_right = 186.0
-margin_bottom = 162.0
-size_flags_horizontal = 3
-size_flags_vertical = 3
-custom_fonts/font = ExtResource( 3 )
-text = "1"
-
-[node name="Btn2" type="Button" parent="Nine/VBoxContainer/HBoxContainer"]
-margin_left = 216.0
-margin_right = 402.0
-margin_bottom = 162.0
-size_flags_horizontal = 3
-size_flags_vertical = 3
-custom_fonts/font = ExtResource( 3 )
-text = "2"
-
-[node name="Btn3" type="Button" parent="Nine/VBoxContainer/HBoxContainer"]
-margin_left = 432.0
-margin_right = 618.0
-margin_bottom = 162.0
-size_flags_horizontal = 3
-size_flags_vertical = 3
-custom_fonts/font = ExtResource( 3 )
-text = "3"
-
-[node name="HBoxContainer2" type="HBoxContainer" parent="Nine/VBoxContainer"]
-margin_top = 192.0
-margin_right = 618.0
-margin_bottom = 354.0
-size_flags_horizontal = 3
-size_flags_vertical = 3
-custom_constants/separation = 30
-
-[node name="Btn4" type="Button" parent="Nine/VBoxContainer/HBoxContainer2"]
-margin_right = 186.0
-margin_bottom = 162.0
-size_flags_horizontal = 3
-size_flags_vertical = 3
-custom_fonts/font = ExtResource( 3 )
-text = "4"
-
-[node name="Btn5" type="Button" parent="Nine/VBoxContainer/HBoxContainer2"]
-margin_left = 216.0
-margin_right = 402.0
-margin_bottom = 162.0
-size_flags_horizontal = 3
-size_flags_vertical = 3
-custom_fonts/font = ExtResource( 3 )
-text = "5"
-
-[node name="Btn6" type="Button" parent="Nine/VBoxContainer/HBoxContainer2"]
-margin_left = 432.0
-margin_right = 618.0
-margin_bottom = 162.0
-size_flags_horizontal = 3
-size_flags_vertical = 3
-custom_fonts/font = ExtResource( 3 )
-text = "6"
-
-[node name="HBoxContainer3" type="HBoxContainer" parent="Nine/VBoxContainer"]
-margin_top = 384.0
-margin_right = 618.0
-margin_bottom = 546.0
-size_flags_horizontal = 3
-size_flags_vertical = 3
-custom_constants/separation = 30
-
-[node name="Btn7" type="Button" parent="Nine/VBoxContainer/HBoxContainer3"]
-margin_right = 186.0
-margin_bottom = 162.0
-size_flags_horizontal = 3
-size_flags_vertical = 3
-custom_fonts/font = ExtResource( 3 )
-text = "7"
-
-[node name="Btn8" type="Button" parent="Nine/VBoxContainer/HBoxContainer3"]
-margin_left = 216.0
-margin_right = 402.0
-margin_bottom = 162.0
-size_flags_horizontal = 3
-size_flags_vertical = 3
-custom_fonts/font = ExtResource( 3 )
-text = "8"
-
-[node name="Btn9" type="Button" parent="Nine/VBoxContainer/HBoxContainer3"]
-margin_left = 432.0
-margin_right = 618.0
-margin_bottom = 162.0
-size_flags_horizontal = 3
-size_flags_vertical = 3
-custom_fonts/font = ExtResource( 3 )
-text = "9"
-
-[node name="HBoxContainer4" type="HBoxContainer" parent="Nine/VBoxContainer"]
-margin_top = 576.0
-margin_right = 618.0
-margin_bottom = 740.0
-size_flags_horizontal = 3
-size_flags_vertical = 3
-custom_constants/separation = 30
-
-[node name="BtnDot" type="Button" parent="Nine/VBoxContainer/HBoxContainer4"]
-margin_right = 186.0
-margin_bottom = 164.0
-size_flags_horizontal = 3
-size_flags_vertical = 3
-custom_fonts/font = ExtResource( 3 )
-text = "."
-
-[node name="Btn0" type="Button" parent="Nine/VBoxContainer/HBoxContainer4"]
-margin_left = 216.0
-margin_right = 402.0
-margin_bottom = 164.0
-size_flags_horizontal = 3
-size_flags_vertical = 3
-custom_fonts/font = ExtResource( 3 )
-text = "0"
-
-[node name="BtnC" type="Button" parent="Nine/VBoxContainer/HBoxContainer4"]
-margin_left = 432.0
-margin_right = 618.0
-margin_bottom = 164.0
-size_flags_horizontal = 3
-size_flags_vertical = 3
-custom_fonts/font = ExtResource( 3 )
-text = "c"
+[node name="Nine" parent="." instance=ExtResource( 3 )]
 
 [node name="ColorRect2" type="ColorRect" parent="."]
 margin_left = 48.0
@@ -201,11 +56,11 @@ __meta__ = {
 }
 
 [node name="SelfNum" type="Label" parent="ColorRect2"]
-margin_left = 11.4747
-margin_top = 2.49628
-margin_right = 614.475
-margin_bottom = 122.496
-custom_fonts/font = ExtResource( 3 )
+margin_left = 11.0
+margin_top = 2.0
+margin_right = 611.0
+margin_bottom = 122.0
+custom_fonts/font = ExtResource( 4 )
 text = "0"
 align = 2
 __meta__ = {
@@ -217,7 +72,7 @@ margin_left = 50.1789
 margin_top = 161.907
 margin_right = 284.179
 margin_bottom = 281.907
-custom_fonts/font = ExtResource( 3 )
+custom_fonts/font = ExtResource( 4 )
 text = "0"
 align = 2
 __meta__ = {
@@ -229,7 +84,7 @@ margin_left = 403.544
 margin_top = 162.192
 margin_right = 637.544
 margin_bottom = 282.192
-custom_fonts/font = ExtResource( 3 )
+custom_fonts/font = ExtResource( 4 )
 text = "0"
 __meta__ = {
 "_edit_use_anchors_": false
@@ -240,7 +95,7 @@ margin_left = 226.0
 margin_top = 160.0
 margin_right = 458.0
 margin_bottom = 280.0
-custom_fonts/font = ExtResource( 3 )
+custom_fonts/font = ExtResource( 4 )
 text = "x"
 align = 1
 __meta__ = {
@@ -252,7 +107,7 @@ margin_left = 224.391
 margin_top = 31.2899
 margin_right = 456.391
 margin_bottom = 151.29
-custom_fonts/font = ExtResource( 3 )
+custom_fonts/font = ExtResource( 4 )
 text = "0.0"
 align = 1
 __meta__ = {

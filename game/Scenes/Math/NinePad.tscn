@@ -1,0 +1,153 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://Scripts/Math/NinePad.gd" type="Script" id=1]
+[ext_resource path="res://Fonts/Text100.tres" type="DynamicFont" id=2]
+
+[node name="Nine" type="Node2D"]
+position = Vector2( 242.939, 447.972 )
+script = ExtResource( 1 )
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+margin_left = -196.057
+margin_top = -4.01947
+margin_right = 421.943
+margin_bottom = 735.981
+custom_constants/separation = 30
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer"]
+margin_right = 618.0
+margin_bottom = 162.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_constants/separation = 30
+
+[node name="Btn1" type="Button" parent="VBoxContainer/HBoxContainer"]
+margin_right = 186.0
+margin_bottom = 162.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_fonts/font = ExtResource( 2 )
+text = "1"
+
+[node name="Btn2" type="Button" parent="VBoxContainer/HBoxContainer"]
+margin_left = 216.0
+margin_right = 402.0
+margin_bottom = 162.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_fonts/font = ExtResource( 2 )
+text = "2"
+
+[node name="Btn3" type="Button" parent="VBoxContainer/HBoxContainer"]
+margin_left = 432.0
+margin_right = 618.0
+margin_bottom = 162.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_fonts/font = ExtResource( 2 )
+text = "3"
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="VBoxContainer"]
+margin_top = 192.0
+margin_right = 618.0
+margin_bottom = 354.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_constants/separation = 30
+
+[node name="Btn4" type="Button" parent="VBoxContainer/HBoxContainer2"]
+margin_right = 186.0
+margin_bottom = 162.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_fonts/font = ExtResource( 2 )
+text = "4"
+
+[node name="Btn5" type="Button" parent="VBoxContainer/HBoxContainer2"]
+margin_left = 216.0
+margin_right = 402.0
+margin_bottom = 162.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_fonts/font = ExtResource( 2 )
+text = "5"
+
+[node name="Btn6" type="Button" parent="VBoxContainer/HBoxContainer2"]
+margin_left = 432.0
+margin_right = 618.0
+margin_bottom = 162.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_fonts/font = ExtResource( 2 )
+text = "6"
+
+[node name="HBoxContainer3" type="HBoxContainer" parent="VBoxContainer"]
+margin_top = 384.0
+margin_right = 618.0
+margin_bottom = 546.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_constants/separation = 30
+
+[node name="Btn7" type="Button" parent="VBoxContainer/HBoxContainer3"]
+margin_right = 186.0
+margin_bottom = 162.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_fonts/font = ExtResource( 2 )
+text = "7"
+
+[node name="Btn8" type="Button" parent="VBoxContainer/HBoxContainer3"]
+margin_left = 216.0
+margin_right = 402.0
+margin_bottom = 162.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_fonts/font = ExtResource( 2 )
+text = "8"
+
+[node name="Btn9" type="Button" parent="VBoxContainer/HBoxContainer3"]
+margin_left = 432.0
+margin_right = 618.0
+margin_bottom = 162.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_fonts/font = ExtResource( 2 )
+text = "9"
+
+[node name="HBoxContainer4" type="HBoxContainer" parent="VBoxContainer"]
+margin_top = 576.0
+margin_right = 618.0
+margin_bottom = 740.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_constants/separation = 30
+
+[node name="BtnDot" type="Button" parent="VBoxContainer/HBoxContainer4"]
+margin_right = 186.0
+margin_bottom = 164.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_fonts/font = ExtResource( 2 )
+text = "."
+
+[node name="Btn0" type="Button" parent="VBoxContainer/HBoxContainer4"]
+margin_left = 216.0
+margin_right = 402.0
+margin_bottom = 164.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_fonts/font = ExtResource( 2 )
+text = "0"
+
+[node name="BtnC" type="Button" parent="VBoxContainer/HBoxContainer4"]
+margin_left = 432.0
+margin_right = 618.0
+margin_bottom = 164.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_fonts/font = ExtResource( 2 )
+text = "c"
