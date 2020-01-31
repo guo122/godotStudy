@@ -55,6 +55,18 @@ text = "Star"
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="BtnChangeLog" type="Button" parent="."]
+margin_left = 534.49
+margin_top = 81.8686
+margin_right = 715.49
+margin_bottom = 139.869
+custom_fonts/font = SubResource( 2 )
+text = "Change"
+__meta__ = {
+"_edit_use_anchors_": false
+}
 [connection signal="button_down" from="BtnMath" to="." method="_on_BtnMath_button_down"]
 [connection signal="button_down" from="BtnSample" to="." method="_on_BtnSample_button_down"]
 [connection signal="button_down" from="BtnStar" to="." method="_on_BtnStar_button_down"]
+[connection signal="button_down" from="BtnChangeLog" to="." method="_on_BtnChangeLog_button_down"]

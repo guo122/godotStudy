@@ -4,7 +4,7 @@ var panelMgr
 
 var arg_dic: Dictionary
 
-var tips_prefab = preload("res://Scenes/Math/MathScoreOneTips.tscn")
+export (PackedScene) var tips_prefab
 
 func _ready():
 	panelMgr = get_node("/root/PanelMgr")

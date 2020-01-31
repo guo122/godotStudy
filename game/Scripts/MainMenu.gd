@@ -21,3 +21,7 @@ func _on_BtnStar_button_down():
 
 func _on_BtnMath_button_down():
 	panelMgr.openPanel("MathMul", PANEL_NORMAL_LAYER)
+
+
+func _on_BtnChangeLog_button_down():
+	panelMgr.openPanel("MainChangeLog", PANEL_NORMAL_LAYER)

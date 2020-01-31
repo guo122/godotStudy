@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=2]
+[gd_scene load_steps=13 format=2]
 
 [ext_resource path="res://Scripts/Framework/MainScene.gd" type="Script" id=1]
 [ext_resource path="res://Scenes/MainMenu.tscn" type="PackedScene" id=2]
@@ -11,7 +11,8 @@
 [ext_resource path="res://Scenes/Sample/SampleTextEdit.tscn" type="PackedScene" id=9]
 [ext_resource path="res://Scenes/Math/MathMul.tscn" type="PackedScene" id=10]
 [ext_resource path="res://Scenes/Math/MathScore.tscn" type="PackedScene" id=11]
+[ext_resource path="res://Scenes/MainChangeLog.tscn" type="PackedScene" id=12]
 
 [node name="Node" type="Node"]
 script = ExtResource( 1 )
-PanelSceneList = [ ExtResource( 2 ), ExtResource( 7 ), ExtResource( 5 ), ExtResource( 6 ), ExtResource( 4 ), ExtResource( 3 ), ExtResource( 8 ), ExtResource( 9 ), ExtResource( 10 ), ExtResource( 11 ) ]
+PanelSceneList = [ ExtResource( 2 ), ExtResource( 7 ), ExtResource( 5 ), ExtResource( 6 ), ExtResource( 4 ), ExtResource( 3 ), ExtResource( 8 ), ExtResource( 9 ), ExtResource( 10 ), ExtResource( 11 ), ExtResource( 12 ) ]
