@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=2]
+[gd_scene load_steps=16 format=2]
 
 [ext_resource path="res://Scripts/Framework/MainScene.gd" type="Script" id=1]
 [ext_resource path="res://Scenes/MainMenu.tscn" type="PackedScene" id=2]
@@ -13,7 +13,9 @@
 [ext_resource path="res://Scenes/Math/MathScore.tscn" type="PackedScene" id=11]
 [ext_resource path="res://Scenes/Misc/MiscChangeLog.tscn" type="PackedScene" id=12]
 [ext_resource path="res://Scenes/Misc/MiscWillLog.tscn" type="PackedScene" id=13]
+[ext_resource path="res://Scenes/Misc/MiscSetting.tscn" type="PackedScene" id=14]
+[ext_resource path="res://Scenes/Misc/MiscTTLog.tscn" type="PackedScene" id=15]
 
 [node name="Node" type="Node"]
 script = ExtResource( 1 )
-PanelSceneList = [ ExtResource( 2 ), ExtResource( 7 ), ExtResource( 5 ), ExtResource( 6 ), ExtResource( 4 ), ExtResource( 3 ), ExtResource( 8 ), ExtResource( 9 ), ExtResource( 10 ), ExtResource( 11 ), ExtResource( 12 ), ExtResource( 13 ) ]
+PanelSceneList = [ ExtResource( 2 ), ExtResource( 7 ), ExtResource( 5 ), ExtResource( 6 ), ExtResource( 4 ), ExtResource( 3 ), ExtResource( 8 ), ExtResource( 9 ), ExtResource( 10 ), ExtResource( 11 ), ExtResource( 12 ), ExtResource( 13 ), ExtResource( 14 ), ExtResource( 15 ) ]

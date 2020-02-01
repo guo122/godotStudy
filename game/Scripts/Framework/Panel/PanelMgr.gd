@@ -16,6 +16,7 @@ var nodeDic: Dictionary
 var localTime: float
 var delayNodeDic: Dictionary
 
+var logMgr
 var mainScene
 var mainNode: CenterContainer
 var topNode: Control
@@ -23,7 +24,8 @@ var topNode: Control
 var mainPanelName: String
 
 func _ready():
-	print("panelMgr ready")
+	logMgr = get_node("/root/GLog")
+	logMgr._log("panelMgr ready")
 # warning-ignore:return_value_discarded
 	get_tree().get_root().connect("size_changed", self, "_size_changed")
 	localTime = 0
@@ -66,7 +68,7 @@ func setMainScene(scene):
 	if mainPanelName != "":
 		openPanel(mainPanelName, PANEL_MAIN_LAYER)
 	else:
-		push_error("Panel Scene config error, no main panel.")
+		logMgr._warning("Panel Scene config error, no main panel.")
 
 
 func openPanel(name: String, layer:int = PANEL_NORMAL_LAYER, dic: Dictionary = {}, destoryTime: float = 0, bNewInstance: bool = false):
@@ -81,12 +83,12 @@ func openPanel(name: String, layer:int = PANEL_NORMAL_LAYER, dic: Dictionary = {
 			ret = node
 		else:
 			var error_str = "Open Panel Scene not found: " + name;
-			push_error(error_str)
+			logMgr._warning(error_str)
 	elif bNewInstance:
 		var scene = panelNameSceneDic[name]
 		if !scene:
 			var error_str = "Open Panel Scene not found: " + name;
-			push_error(error_str)
+			logMgr._warning(error_str)
 		else:
 			var node = scene.instance()
 			panelNodeNameDic[node] = ""
@@ -94,12 +96,14 @@ func openPanel(name: String, layer:int = PANEL_NORMAL_LAYER, dic: Dictionary = {
 			ret = node
 	else:
 		var warning_str = "Open Panel Scene already open: " + name;
-		push_warning(warning_str)
+		logMgr._warning(warning_str)
 	if ret:
 		if destoryTime > 0:
 			delayNodeDic[ret] = destoryTime
 		
 		if !dic.empty() && ret.has_method("_panel_set_dic"):
+			logMgr._log("[PanelMgr]open panel set dic:")
+			logMgr._log(dic)
 			ret._panel_set_dic(dic)
 		
 		if ret.has_method("_setRectSize"):
@@ -120,7 +124,7 @@ func closePanel_name(name: String):
 		node.queue_free()
 	else:
 		var warning_str = "Close Panel Scene not found: " + name;
-		push_warning(warning_str)
+		logMgr._warning(warning_str)
 
 
 func closePanel(node: Node):
@@ -136,7 +140,7 @@ func closePanel(node: Node):
 		node.queue_free()
 	else:
 		var warning_str = "Close Panel Scene node not found: ";
-		push_warning(warning_str)
+		logMgr._warning(warning_str)
 
 
 func addNode(node: Node, layer: int):
@@ -165,7 +169,7 @@ func removeNode(node: Node):
 		layerDic[nodeDic[node]].remove_child(node)
 	else:
 		var warning_str = "Remove node not found: ";
-		push_warning(warning_str)
+		logMgr._warning(warning_str)
 
 
 func _size_changed():

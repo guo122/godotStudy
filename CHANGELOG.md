@@ -1,6 +1,11 @@
 
 # Change log
 
+## 0.02(11)
+
+- [Setting] ipml setting panel.
+- [Log] impl log system.
+
 ## 0.02(10)
 
 - [ChangeLog] opt display.

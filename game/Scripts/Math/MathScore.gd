@@ -1,5 +1,6 @@
 extends Control
 
+var logMgr
 var panelMgr
 
 var arg_dic: Dictionary
@@ -8,6 +9,7 @@ export (PackedScene) var tips_prefab
 
 func _ready():
 	panelMgr = get_node("/root/PanelMgr")
+	logMgr = get_node("/root/GLog")
 
 
 func _setRectSize(ssize: Vector2):
@@ -26,5 +28,5 @@ func _panel_set_dic(dic: Dictionary):
 	
 	for i in arg_dic:
 		var node = tips_prefab.instance()
-		node._set_data(arg_dic[i])
 		$VBoxContainer/ScoreList.add_child(node)
+		node._set_data(arg_dic[i])

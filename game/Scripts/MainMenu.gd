@@ -33,3 +33,7 @@ func _on_BtnMath_button_down():
 
 func _on_BtnChangeLog_button_down():
 	panelMgr.openPanel("MiscChangeLog")
+
+
+func _on_BtnSetting_button_down():
+	panelMgr.openPanel("MiscSetting")
