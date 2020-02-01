@@ -28,6 +28,7 @@ config/icon="res://icon.png"
 
 PanelMgr="*res://Scripts/Framework/Panel/PanelMgr.gd"
 Globals="*res://Scripts/System/Globals.gd"
+GLog="*res://Scripts/System/GLog.gd"
 
 [display]
 

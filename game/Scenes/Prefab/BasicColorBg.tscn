@@ -1,0 +1,11 @@
+[gd_scene format=2]
+
+[node name="BasicBg" type="ColorRect"]
+anchor_top = 0.00131807
+anchor_right = 1.0
+anchor_bottom = 1.00132
+rect_min_size = Vector2( 720, 1280 )
+color = Color( 0.917647, 0.952941, 0.921569, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}

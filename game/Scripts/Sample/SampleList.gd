@@ -11,11 +11,11 @@ func _ready():
 	panelMgr.openPanel("SampleHUD", PANEL_HUD_LAYER)
 
 func _on_BtnTextEdit_button_up():
-	panelMgr.openPanel("SampleTextEdit", PANEL_NORMAL_LAYER)
+	panelMgr.openPanel("SampleTextEdit")
 
 
 func _on_BtnLineEdit_button_up():
-	panelMgr.openPanel("SampleLineEdit", PANEL_NORMAL_LAYER)
+	panelMgr.openPanel("SampleLineEdit")
 
 
 func _on_BtnParticles_button_up():
@@ -29,11 +29,11 @@ func _on_BtnOneBoom_button_up():
 
 
 func _on_BtnBoom_button_up():
-	panelMgr.openPanel("SampleBoom", PANEL_PARTICLES_LAYER, 10, true)
+	panelMgr.openPanel("SampleBoom", PANEL_PARTICLES_LAYER, {}, 10, true)
 	
 
 func _on_BtnLayerTest_button_up():
-	panelMgr.openPanel("SampleLayerTest", PANEL_NORMAL_LAYER)
+	panelMgr.openPanel("SampleLayerTest")
 
 
 func _on_BtnBack_button_up():

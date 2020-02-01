@@ -1,4 +1,4 @@
-extends Node2D
+extends Control
 
 var panelMgr
 var globals
@@ -22,8 +22,8 @@ var score_dic: Dictionary
 func _ready():
 	panelMgr = get_node("/root/PanelMgr")
 	globals = get_node("/root/Globals")
-	$Nine.set_style(globals.NinePadPositiveLayoutStyle)
-	$Nine.connect("pad_pressed", self, "_on_Nine_click")
+	$VBoxContainer/MenuNinePad/Nine.set_style(globals.NinePadPositiveLayoutStyle)
+	$VBoxContainer/MenuNinePad/Nine.connect("pad_pressed", self, "_on_Nine_click")
 	randomize()
 	
 	score_max = 5
@@ -34,15 +34,22 @@ func _ready():
 	_num_init()
 
 
+func _setRectSize(ssize: Vector2):
+	rect_position = Vector2(0, 0)
+	rect_size = ssize
+	$BasicBg.rect_min_size = ssize
+	$VBoxContainer.rect_min_size = ssize
+
+
 func _process(delta):
 	if running:
 		local_time += delta
-		$NumCount.text = str(local_time).left(4)
+		$VBoxContainer/Menu0/NumCount.text = str(local_time).left(4)
 	
 
 func _on_Nine_click(ss:String, num: float):
 	inputNum = num
-	$ColorRect2/SelfNum.text = ss
+	$VBoxContainer/Menu2/SelfNum.text = ss
 	
 	if _num_check():
 		running = false
@@ -80,8 +87,8 @@ func _num_init():
 	data_array.append(numX)
 	score_dic[score_count] = data_array
 	
-	$Nine.num_clear()
-	$ColorRect2/SelfNum.text = "0"
+	$VBoxContainer/MenuNinePad/Nine.num_clear()
+	$VBoxContainer/Menu2/SelfNum.text = "0"
 	_num_setGUI()
 
 
@@ -96,19 +103,11 @@ func _num_check() -> bool:
 
 
 func _num_setGUI():
-	$Num1.text = str(num1)
-	$Num2.text = str(num2)
-	$Numx.text = numX
-	$Progress.text = str(score_count) + "/" + str(score_max)
+	$VBoxContainer/Menu1/Num1.text = str(num1)
+	$VBoxContainer/Menu1/Num2.text = str(num2)
+	$VBoxContainer/Menu1/Numx.text = numX
+	$VBoxContainer/Menu3/Progress.text = str(score_count) + "/" + str(score_max)
 
 
-func _on_BtnRefresh_button_down():
+func _on_BtnPass_button_down():
 	_num_init()
-
-
-
-
-
-
-
-

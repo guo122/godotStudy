@@ -1,4 +1,4 @@
-extends Node2D
+extends Control
 
 signal pad_pressed
 
@@ -13,29 +13,29 @@ func _ready():
 	inputStr = "0"
 	inputDot = false
 # warning-ignore:return_value_discarded
-	$VBoxContainer/HBoxContainer/Btn11.connect("button_down", self, "pad_num_pressed", ["11"])
+	$HBoxContainer/Btn11.connect("button_down", self, "pad_num_pressed", ["11"])
 # warning-ignore:return_value_discarded
-	$VBoxContainer/HBoxContainer/Btn12.connect("button_down", self, "pad_num_pressed", ["12"])
+	$HBoxContainer/Btn12.connect("button_down", self, "pad_num_pressed", ["12"])
 # warning-ignore:return_value_discarded
-	$VBoxContainer/HBoxContainer/Btn13.connect("button_down", self, "pad_num_pressed", ["13"])
+	$HBoxContainer/Btn13.connect("button_down", self, "pad_num_pressed", ["13"])
 # warning-ignore:return_value_discarded
-	$VBoxContainer/HBoxContainer2/Btn21.connect("button_down", self, "pad_num_pressed", ["21"])
+	$HBoxContainer2/Btn21.connect("button_down", self, "pad_num_pressed", ["21"])
 # warning-ignore:return_value_discarded
-	$VBoxContainer/HBoxContainer2/Btn22.connect("button_down", self, "pad_num_pressed", ["22"])
+	$HBoxContainer2/Btn22.connect("button_down", self, "pad_num_pressed", ["22"])
 # warning-ignore:return_value_discarded
-	$VBoxContainer/HBoxContainer2/Btn23.connect("button_down", self, "pad_num_pressed", ["23"])
+	$HBoxContainer2/Btn23.connect("button_down", self, "pad_num_pressed", ["23"])
 # warning-ignore:return_value_discarded
-	$VBoxContainer/HBoxContainer3/Btn31.connect("button_down", self, "pad_num_pressed", ["31"])
+	$HBoxContainer3/Btn31.connect("button_down", self, "pad_num_pressed", ["31"])
 # warning-ignore:return_value_discarded
-	$VBoxContainer/HBoxContainer3/Btn32.connect("button_down", self, "pad_num_pressed", ["32"])
+	$HBoxContainer3/Btn32.connect("button_down", self, "pad_num_pressed", ["32"])
 # warning-ignore:return_value_discarded
-	$VBoxContainer/HBoxContainer3/Btn33.connect("button_down", self, "pad_num_pressed", ["33"])
+	$HBoxContainer3/Btn33.connect("button_down", self, "pad_num_pressed", ["33"])
 # warning-ignore:return_value_discarded
-	$VBoxContainer/HBoxContainer4/Btn41.connect("button_down", self, "pad_num_pressed", ["41"])
+	$HBoxContainer4/Btn41.connect("button_down", self, "pad_num_pressed", ["41"])
 # warning-ignore:return_value_discarded
-	$VBoxContainer/HBoxContainer4/Btn42.connect("button_down", self, "pad_num_pressed", ["42"])
+	$HBoxContainer4/Btn42.connect("button_down", self, "pad_num_pressed", ["42"])
 # warning-ignore:return_value_discarded
-	$VBoxContainer/HBoxContainer4/Btn43.connect("button_down", self, "pad_clear_pressed")
+	$HBoxContainer4/Btn43.connect("button_down", self, "pad_clear_pressed")
 	
 	set_style(false)
 
@@ -76,41 +76,41 @@ func set_style(bStyle):
 		layoutStyle = LayoutStyle.NEGATIVE
 		
 	if layoutStyle == LayoutStyle.POSITIVE:
-		$VBoxContainer/HBoxContainer/Btn11.text = "1"
-		$VBoxContainer/HBoxContainer/Btn12.text = "2"
-		$VBoxContainer/HBoxContainer/Btn13.text = "3"
-		$VBoxContainer/HBoxContainer2/Btn21.text = "4"
-		$VBoxContainer/HBoxContainer2/Btn22.text = "5"
-		$VBoxContainer/HBoxContainer2/Btn23.text = "6"
-		$VBoxContainer/HBoxContainer3/Btn31.text = "7"
-		$VBoxContainer/HBoxContainer3/Btn32.text = "8"
-		$VBoxContainer/HBoxContainer3/Btn33.text = "9"
-		$VBoxContainer/HBoxContainer4/Btn41.text = "."
-		$VBoxContainer/HBoxContainer4/Btn42.text = "0"
+		$HBoxContainer/Btn11.text = "1"
+		$HBoxContainer/Btn12.text = "2"
+		$HBoxContainer/Btn13.text = "3"
+		$HBoxContainer2/Btn21.text = "4"
+		$HBoxContainer2/Btn22.text = "5"
+		$HBoxContainer2/Btn23.text = "6"
+		$HBoxContainer3/Btn31.text = "7"
+		$HBoxContainer3/Btn32.text = "8"
+		$HBoxContainer3/Btn33.text = "9"
+		$HBoxContainer4/Btn41.text = "."
+		$HBoxContainer4/Btn42.text = "0"
 	elif layoutStyle == LayoutStyle.NEGATIVE:
-		$VBoxContainer/HBoxContainer/Btn11.text = "7"
-		$VBoxContainer/HBoxContainer/Btn12.text = "8"
-		$VBoxContainer/HBoxContainer/Btn13.text = "9"
-		$VBoxContainer/HBoxContainer2/Btn21.text = "4"
-		$VBoxContainer/HBoxContainer2/Btn22.text = "5"
-		$VBoxContainer/HBoxContainer2/Btn23.text = "6"
-		$VBoxContainer/HBoxContainer3/Btn31.text = "1"
-		$VBoxContainer/HBoxContainer3/Btn32.text = "2"
-		$VBoxContainer/HBoxContainer3/Btn33.text = "3"
-		$VBoxContainer/HBoxContainer4/Btn41.text = "."
-		$VBoxContainer/HBoxContainer4/Btn42.text = "0"
+		$HBoxContainer/Btn11.text = "7"
+		$HBoxContainer/Btn12.text = "8"
+		$HBoxContainer/Btn13.text = "9"
+		$HBoxContainer2/Btn21.text = "4"
+		$HBoxContainer2/Btn22.text = "5"
+		$HBoxContainer2/Btn23.text = "6"
+		$HBoxContainer3/Btn31.text = "1"
+		$HBoxContainer3/Btn32.text = "2"
+		$HBoxContainer3/Btn33.text = "3"
+		$HBoxContainer4/Btn41.text = "."
+		$HBoxContainer4/Btn42.text = "0"
 	else:
-		$VBoxContainer/HBoxContainer/Btn11.text = "7"
-		$VBoxContainer/HBoxContainer/Btn12.text = "8"
-		$VBoxContainer/HBoxContainer/Btn13.text = "9"
-		$VBoxContainer/HBoxContainer2/Btn21.text = "4"
-		$VBoxContainer/HBoxContainer2/Btn22.text = "5"
-		$VBoxContainer/HBoxContainer2/Btn23.text = "6"
-		$VBoxContainer/HBoxContainer3/Btn31.text = "1"
-		$VBoxContainer/HBoxContainer3/Btn32.text = "2"
-		$VBoxContainer/HBoxContainer3/Btn33.text = "3"
-		$VBoxContainer/HBoxContainer4/Btn41.text = "."
-		$VBoxContainer/HBoxContainer4/Btn42.text = "0"
+		$HBoxContainer/Btn11.text = "7"
+		$HBoxContainer/Btn12.text = "8"
+		$HBoxContainer/Btn13.text = "9"
+		$HBoxContainer2/Btn21.text = "4"
+		$HBoxContainer2/Btn22.text = "5"
+		$HBoxContainer2/Btn23.text = "6"
+		$HBoxContainer3/Btn31.text = "1"
+		$HBoxContainer3/Btn32.text = "2"
+		$HBoxContainer3/Btn33.text = "3"
+		$HBoxContainer4/Btn41.text = "."
+		$HBoxContainer4/Btn42.text = "0"
 
 
 func get_style_num(num: String) -> String:

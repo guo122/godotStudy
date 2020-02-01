@@ -1,13 +1,16 @@
 
 # Change log
 
+## 0.02(10)
 
-### 0.02(9)
+- [ChangeLog] opt display.
+- [Panel] opt multiple resolutions.
+
+## 0.02(9)
 
 - [MathScore] fix display bug.
 - [Main] impl change log.
 
-
-### 0.02(8)
+## 0.02(8)
 
 - [MathMul] impl score.

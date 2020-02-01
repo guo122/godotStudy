@@ -1,4 +1,4 @@
-extends Node
+extends Control
 
 const PANEL_HUD_LAYER = -1
 const PANEL_PARTICLES_LAYER = 1
@@ -10,8 +10,16 @@ func _ready():
 	panelMgr = get_node("/root/PanelMgr")
 
 
+func _setRectSize(ssize: Vector2):
+	rect_position = Vector2(0, 0)
+	rect_size = ssize
+	$BasicBg.rect_min_size = ssize
+	$VBoxContainer.rect_min_size = ssize
+
+
+
 func _on_BtnSample_button_down():
-	panelMgr.openPanel("SampleList", PANEL_NORMAL_LAYER)
+	panelMgr.openPanel("SampleList")
 
 
 func _on_BtnStar_button_down():
@@ -20,8 +28,8 @@ func _on_BtnStar_button_down():
 
 
 func _on_BtnMath_button_down():
-	panelMgr.openPanel("MathMul", PANEL_NORMAL_LAYER)
+	panelMgr.openPanel("MathMul")
 
 
 func _on_BtnChangeLog_button_down():
-	panelMgr.openPanel("MainChangeLog", PANEL_NORMAL_LAYER)
+	panelMgr.openPanel("MiscChangeLog")
