@@ -26,6 +26,8 @@ func _ready():
 	$VBoxContainer/MenuNinePad/Nine.connect("pad_pressed", self, "_on_Nine_click")
 	randomize()
 	
+	score_dic = {}
+	
 	score_max = 5
 	score_count = 0
 	
@@ -81,7 +83,7 @@ func _num_init():
 	num2 = c * 10 + d
 	numX = "x"
 	
-	var data_array: Array
+	var data_array: Array = []
 	data_array.append(num1)
 	data_array.append(num2)
 	data_array.append(numX)
