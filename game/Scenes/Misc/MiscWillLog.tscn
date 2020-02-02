@@ -77,7 +77,8 @@ custom_fonts/normal_font = ExtResource( 3 )
 custom_colors/default_color = Color( 0, 0, 0, 1 )
 text = "# Will
 
-- [MathScore] fix display bug."
+- [score] average, score 1-100 ?
+- [Panel] panel animation."
 __meta__ = {
 "_edit_use_anchors_": false
 }

@@ -12,6 +12,8 @@ func _ready():
 	logMgr = get_node("/root/GLog")
 	logMgr.connect("glog_update", self, "_on_log_update")
 	ppLog.bbcode_text = logMgr.log_data
+	ppLog.visible = false
+	$BasicBg.visible = false
 
 func _setRectSize(ssize: Vector2):
 	rect_position = Vector2(0, 0)

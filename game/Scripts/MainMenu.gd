@@ -37,3 +37,7 @@ func _on_BtnChangeLog_button_down():
 
 func _on_BtnSetting_button_down():
 	panelMgr.openPanel("MiscSetting")
+
+
+func _on_BtnScore_button_down():
+	panelMgr.openPanel("MiscScoreData")

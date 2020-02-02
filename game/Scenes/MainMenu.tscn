@@ -6,13 +6,13 @@
 [ext_resource path="res://Scenes/Prefab/TopFixed.tscn" type="PackedScene" id=4]
 [ext_resource path="res://Scenes/Background_Animation.tscn" type="PackedScene" id=5]
 
-[sub_resource type="DynamicFont" id=4]
+[sub_resource type="DynamicFont" id=1]
 size = 20
 outline_size = 2
 outline_color = Color( 0, 0, 0, 1 )
 font_data = ExtResource( 2 )
 
-[sub_resource type="DynamicFont" id=6]
+[sub_resource type="DynamicFont" id=2]
 size = 43
 outline_size = 2
 outline_color = Color( 0, 0, 0, 1 )
@@ -24,7 +24,7 @@ outline_size = 2
 outline_color = Color( 0, 0, 0, 1 )
 font_data = ExtResource( 2 )
 
-[sub_resource type="DynamicFont" id=5]
+[sub_resource type="DynamicFont" id=4]
 size = 43
 outline_size = 2
 outline_color = Color( 0, 0, 0, 1 )
@@ -63,18 +63,18 @@ size_flags_vertical = 3
 [node name="TopFixed" parent="VBoxContainer" instance=ExtResource( 4 )]
 
 [node name="fixed" type="Control" parent="VBoxContainer/TopFixed"]
-margin_right = 15.0
+margin_right = 25.0
 margin_bottom = 60.0
-rect_min_size = Vector2( 15, 0 )
+rect_min_size = Vector2( 25, 0 )
 
 [node name="LabelVersion" type="Label" parent="VBoxContainer/TopFixed"]
-margin_left = 19.0
+margin_left = 29.0
 margin_top = 17.0
-margin_right = 124.0
+margin_right = 134.0
 margin_bottom = 42.0
-custom_fonts/font = SubResource( 4 )
+custom_fonts/font = SubResource( 1 )
 custom_colors/font_color = Color( 1, 1, 1, 1 )
-text = "v0.03(12)"
+text = "v0.03(13)"
 
 [node name="Menu0" type="HBoxContainer" parent="VBoxContainer"]
 margin_top = 64.0
@@ -90,7 +90,7 @@ size_flags_horizontal = 3
 margin_left = 525.0
 margin_right = 706.0
 margin_bottom = 58.0
-custom_fonts/font = SubResource( 6 )
+custom_fonts/font = SubResource( 2 )
 text = "Change"
 flat = true
 __meta__ = {
@@ -106,12 +106,12 @@ rect_min_size = Vector2( 10, 0 )
 [node name="space" type="HBoxContainer" parent="VBoxContainer"]
 margin_top = 126.0
 margin_right = 720.0
-margin_bottom = 727.0
+margin_bottom = 649.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
 [node name="Menu3" type="VBoxContainer" parent="VBoxContainer"]
-margin_top = 731.0
+margin_top = 653.0
 margin_right = 720.0
 margin_bottom = 1176.0
 custom_constants/separation = 20
@@ -121,13 +121,13 @@ margin_right = 720.0
 margin_bottom = 211.0
 
 [node name="fixed" type="Control" parent="VBoxContainer/Menu3/HBoxContainer"]
-margin_right = 50.0
+margin_right = 10.0
 margin_bottom = 211.0
-rect_min_size = Vector2( 50, 0 )
+rect_min_size = Vector2( 10, 0 )
 
 [node name="BtnMath" type="Button" parent="VBoxContainer/Menu3/HBoxContainer"]
-margin_left = 54.0
-margin_right = 529.0
+margin_left = 14.0
+margin_right = 489.0
 margin_bottom = 211.0
 custom_fonts/font = SubResource( 3 )
 text = "Math"
@@ -142,16 +142,16 @@ margin_right = 720.0
 margin_bottom = 289.0
 
 [node name="space" type="Control" parent="VBoxContainer/Menu3/HBoxContainer2"]
-margin_right = 554.0
+margin_right = 594.0
 margin_bottom = 58.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
 [node name="BtnStar" type="Button" parent="VBoxContainer/Menu3/HBoxContainer2"]
-margin_left = 558.0
-margin_right = 666.0
+margin_left = 598.0
+margin_right = 706.0
 margin_bottom = 58.0
-custom_fonts/font = SubResource( 5 )
+custom_fonts/font = SubResource( 4 )
 text = "Star"
 flat = true
 __meta__ = {
@@ -159,28 +159,57 @@ __meta__ = {
 }
 
 [node name="fixed2" type="Control" parent="VBoxContainer/Menu3/HBoxContainer2"]
-margin_left = 670.0
+margin_left = 710.0
 margin_right = 720.0
 margin_bottom = 58.0
-rect_min_size = Vector2( 50, 0 )
+rect_min_size = Vector2( 10, 0 )
 
-[node name="HBoxContainer3" type="HBoxContainer" parent="VBoxContainer/Menu3"]
+[node name="HBoxContainer5" type="HBoxContainer" parent="VBoxContainer/Menu3"]
 margin_top = 309.0
 margin_right = 720.0
 margin_bottom = 367.0
 
+[node name="space2" type="Control" parent="VBoxContainer/Menu3/HBoxContainer5"]
+margin_right = 522.0
+margin_bottom = 58.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="BtnScore" type="Button" parent="VBoxContainer/Menu3/HBoxContainer5"]
+margin_left = 526.0
+margin_right = 706.0
+margin_bottom = 58.0
+rect_min_size = Vector2( 180, 0 )
+custom_fonts/font = SubResource( 4 )
+text = "Score"
+flat = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="fixed3" type="Control" parent="VBoxContainer/Menu3/HBoxContainer5"]
+margin_left = 710.0
+margin_right = 720.0
+margin_bottom = 58.0
+rect_min_size = Vector2( 10, 0 )
+
+[node name="HBoxContainer3" type="HBoxContainer" parent="VBoxContainer/Menu3"]
+margin_top = 387.0
+margin_right = 720.0
+margin_bottom = 445.0
+
 [node name="space2" type="Control" parent="VBoxContainer/Menu3/HBoxContainer3"]
-margin_right = 482.0
+margin_right = 522.0
 margin_bottom = 58.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
 [node name="BtnSample" type="Button" parent="VBoxContainer/Menu3/HBoxContainer3"]
-margin_left = 486.0
-margin_right = 666.0
+margin_left = 526.0
+margin_right = 706.0
 margin_bottom = 58.0
 rect_min_size = Vector2( 180, 0 )
-custom_fonts/font = SubResource( 5 )
+custom_fonts/font = SubResource( 4 )
 text = "Sample"
 flat = true
 __meta__ = {
@@ -188,28 +217,28 @@ __meta__ = {
 }
 
 [node name="fixed3" type="Control" parent="VBoxContainer/Menu3/HBoxContainer3"]
-margin_left = 670.0
+margin_left = 710.0
 margin_right = 720.0
 margin_bottom = 58.0
-rect_min_size = Vector2( 50, 0 )
+rect_min_size = Vector2( 10, 0 )
 
 [node name="HBoxContainer4" type="HBoxContainer" parent="VBoxContainer/Menu3"]
-margin_top = 387.0
+margin_top = 465.0
 margin_right = 720.0
-margin_bottom = 445.0
+margin_bottom = 523.0
 
 [node name="space3" type="Control" parent="VBoxContainer/Menu3/HBoxContainer4"]
-margin_right = 482.0
+margin_right = 522.0
 margin_bottom = 58.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
 [node name="BtnSetting" type="Button" parent="VBoxContainer/Menu3/HBoxContainer4"]
-margin_left = 486.0
-margin_right = 666.0
+margin_left = 526.0
+margin_right = 706.0
 margin_bottom = 58.0
 rect_min_size = Vector2( 180, 0 )
-custom_fonts/font = SubResource( 5 )
+custom_fonts/font = SubResource( 4 )
 text = "Setting"
 flat = true
 __meta__ = {
@@ -217,10 +246,10 @@ __meta__ = {
 }
 
 [node name="fixed4" type="Control" parent="VBoxContainer/Menu3/HBoxContainer4"]
-margin_left = 670.0
+margin_left = 710.0
 margin_right = 720.0
 margin_bottom = 58.0
-rect_min_size = Vector2( 50, 0 )
+rect_min_size = Vector2( 10, 0 )
 
 [node name="fixed" type="HBoxContainer" parent="VBoxContainer"]
 margin_top = 1180.0
@@ -230,5 +259,6 @@ rect_min_size = Vector2( 0, 100 )
 [connection signal="button_down" from="VBoxContainer/Menu0/BtnChangeLog" to="." method="_on_BtnChangeLog_button_down"]
 [connection signal="button_down" from="VBoxContainer/Menu3/HBoxContainer/BtnMath" to="." method="_on_BtnMath_button_down"]
 [connection signal="button_down" from="VBoxContainer/Menu3/HBoxContainer2/BtnStar" to="." method="_on_BtnStar_button_down"]
+[connection signal="button_down" from="VBoxContainer/Menu3/HBoxContainer5/BtnScore" to="." method="_on_BtnScore_button_down"]
 [connection signal="button_down" from="VBoxContainer/Menu3/HBoxContainer3/BtnSample" to="." method="_on_BtnSample_button_down"]
 [connection signal="button_down" from="VBoxContainer/Menu3/HBoxContainer4/BtnSetting" to="." method="_on_BtnSetting_button_down"]

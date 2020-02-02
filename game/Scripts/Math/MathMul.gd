@@ -7,6 +7,8 @@ const PANEL_HUD_LAYER = -1
 const PANEL_PARTICLES_LAYER = 1
 const PANEL_NORMAL_LAYER = 3
 
+onready var ppNumCount = $VBoxContainer/Menu0/NumCount
+
 var num1: int
 var num2: int
 var numX: String
@@ -18,6 +20,7 @@ var local_time: float
 var score_max: int
 var score_count: int
 var score_dic: Dictionary
+var score_timeout: int
 
 func _ready():
 	panelMgr = get_node("/root/PanelMgr")
@@ -46,7 +49,13 @@ func _setRectSize(ssize: Vector2):
 func _process(delta):
 	if running:
 		local_time += delta
-		$VBoxContainer/Menu0/NumCount.text = str(local_time).left(4)
+		ppNumCount.text = "%.2f" % [local_time]
+		if local_time > 20 && score_timeout == 0:
+			ppNumCount.set("custom_colors/font_color", Color(1,0.79,0.25))
+			score_timeout = 1
+		elif local_time > 60 && score_timeout == 1:
+			ppNumCount.set("custom_colors/font_color", Color(1,0,0))
+			score_timeout = 2
 	
 
 func _on_Nine_click(ss:String, num: float):
@@ -55,6 +64,7 @@ func _on_Nine_click(ss:String, num: float):
 	
 	if _num_check():
 		running = false
+		ppNumCount.set("custom_colors/font_color", Color(0,1,0))
 		yield(get_tree().create_timer(1), "timeout")
 		if score_dic.has(score_count):
 			var dd_array: Array = score_dic[score_count]
@@ -71,6 +81,8 @@ func _num_init():
 		panelMgr.closePanel(self)
 		panelMgr.openPanel("MathScore", PANEL_NORMAL_LAYER, score_dic)
 	
+	score_timeout = 0
+	ppNumCount.set("custom_colors/font_color", Color(0,0,0))
 	local_time = 0
 	running = true
 	score_count += 1

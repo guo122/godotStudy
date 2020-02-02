@@ -1,10 +1,11 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://Scripts/Math/MathScore.gd" type="Script" id=1]
 [ext_resource path="res://Fonts/Resources/Xolonium-Regular.ttf" type="DynamicFontData" id=2]
 [ext_resource path="res://Scenes/Math/MathScoreOneTips.tscn" type="PackedScene" id=3]
 [ext_resource path="res://Scenes/Prefab/TopFixed.tscn" type="PackedScene" id=4]
 [ext_resource path="res://Scenes/Prefab/BasicColorBg.tscn" type="PackedScene" id=5]
+[ext_resource path="res://Fonts/Text48.tres" type="DynamicFont" id=6]
 
 [sub_resource type="DynamicFont" id=1]
 size = 43
@@ -53,6 +54,38 @@ text = "Back"
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="space" type="Control" parent="VBoxContainer/Menu0"]
+margin_left = 142.0
+margin_right = 285.0
+margin_bottom = 58.0
+rect_min_size = Vector2( 10, 0 )
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="LabelAverage" type="Label" parent="VBoxContainer/Menu0"]
+margin_left = 289.0
+margin_right = 434.0
+margin_bottom = 58.0
+custom_fonts/font = ExtResource( 6 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_colors/font_outline_modulate = Color( 0, 0, 0, 1 )
+custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
+text = "0.00s"
+
+[node name="space2" type="Control" parent="VBoxContainer/Menu0"]
+margin_left = 438.0
+margin_right = 581.0
+margin_bottom = 58.0
+rect_min_size = Vector2( 10, 0 )
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="fixed2" type="Control" parent="VBoxContainer/Menu0"]
+margin_left = 585.0
+margin_right = 719.0
+margin_bottom = 58.0
+rect_min_size = Vector2( 134, 0 )
 
 [node name="ScoreList" type="VBoxContainer" parent="VBoxContainer"]
 margin_top = 126.0

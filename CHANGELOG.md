@@ -1,6 +1,11 @@
 
 # Change log
 
+## 0.03(13)
+
+- [MathCount] opt display.
+- [ScoreSystem] impl score system.
+
 ## 0.03(12)
 
 - [Background] spatial background.

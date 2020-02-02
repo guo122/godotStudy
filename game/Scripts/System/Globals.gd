@@ -7,5 +7,4 @@ func _ready():
 	logMgr = get_node("/root/GLog")
 	logMgr._log("globals ready")
 	NinePadPositiveLayoutStyle = false
-	
 

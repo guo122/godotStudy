@@ -45,6 +45,7 @@ margin_right = 706.0
 margin_bottom = 60.0
 rect_min_size = Vector2( 124, 60 )
 text = "............................"
+flat = true
 
 [node name="fixed" type="Control" parent="VBoxContainer/TopFixed"]
 margin_left = 710.0
