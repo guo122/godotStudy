@@ -1,6 +1,14 @@
 
 # Change log
 
+## 0.03(15)
+
+- [ScoreSystem] fix bug.
+
+## 0.03(14)
+
+- [ScoreSystem] add debug log.
+
 ## 0.03(13)
 
 - [MathCount] opt display.

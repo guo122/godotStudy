@@ -10,6 +10,8 @@ func _ready():
 	logMgr = get_node("/root/GLog")
 	logMgr._log("data ready")
 	_load()
+	logMgr._log("[GData] load data:")
+	logMgr._log(dataJson)
 
 const FILE_NAME = "user://game-data.json"
 
@@ -35,7 +37,7 @@ func _load():
 
 func _addScore(data: Array):
 	var mathScore = dataJson["mathScore"]
-	var scoreData: Array
+	var scoreData: Array = []
 	if data.size() == 3:
 		scoreData.append(data[0])
 		scoreData.append(data[1])

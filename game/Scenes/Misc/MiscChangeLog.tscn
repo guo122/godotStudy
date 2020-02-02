@@ -101,6 +101,14 @@ custom_fonts/normal_font = ExtResource( 3 )
 custom_colors/default_color = Color( 0, 0, 0, 1 )
 text = "# Change log
 
+## 0.03(15)
+
+- [ScoreSystem] fix bug.
+
+## 0.03(14)
+
+- [ScoreSystem] add debug log.
+
 ## 0.03(13)
 
 - [MathCount] opt display.
