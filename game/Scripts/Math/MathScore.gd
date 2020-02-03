@@ -39,6 +39,9 @@ func _panel_set_dic(dic: Dictionary):
 			score_sum += arg_dic[i][3]
 			score_num += 1
 	
-	ppAverage.text = "%.2f" % [score_sum / score_num] + "s"
+	if score_num > 0:
+		ppAverage.text = "%.2f" % [score_sum / score_num] + "s"
+	else:
+		ppAverage.text = "0.00s"
 	dataMgr._save()
 	

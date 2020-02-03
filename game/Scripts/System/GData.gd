@@ -3,7 +3,7 @@ extends Node
 var logMgr
 
 var dataJson = {
-	"mathScore": []
+	"mathScoreX": {}
 }
 
 func _ready():
@@ -36,19 +36,30 @@ func _load():
 
 
 func _addScore(data: Array):
-	var mathScore = dataJson["mathScore"]
-	var scoreData: Array = []
-	if data.size() == 3:
-		scoreData.append(data[0])
-		scoreData.append(data[1])
-		scoreData.append(data[2])
-		scoreData.append("--")
-		mathScore.append(scoreData)
-	elif data.size() == 4:
-		scoreData.append(data[0])
-		scoreData.append(data[1])
-		scoreData.append(data[2])
+	if data.size() == 4 && data[2] == "x":
+		var num1: String = str(data[0])
+		var num2: String = str(data[1])
+		var mathScoreX = dataJson["mathScoreX"]
+		var num1Dic: Dictionary
+		var num2List: Array
+		var scoreData: Array = []
+		if !mathScoreX.has(num1):
+			num1Dic = {}
+			mathScoreX[num1] = num1Dic
+		else:
+			num1Dic = mathScoreX[num1]
+		if !num1Dic.has(num2):
+			num2List = []
+			num1Dic[num2] = num2List
+		else:
+			num2List = num1Dic[num2]
+		scoreData.append(OS.get_unix_time())
 		scoreData.append(data[3])
-		mathScore.append(scoreData)
+		num2List.append(scoreData)
 
+
+func _clearData():
+	dataJson = {}
+	dataJson["mathScoreX"] = {}
+	_save()
 

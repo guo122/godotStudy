@@ -36,16 +36,16 @@ func _on_BtnBack_button_down():
 
 
 func _set_data():
-	var mathScore = dataMgr.dataJson["mathScore"]
+	var mathScoreX = dataMgr.dataJson["mathScoreX"]
 	var sum_score: float = 0
 	var sum_count: int = 0
-	for i in mathScore:
-		if i.size() == 4:
-			ppLabel.bbcode_text += str(i[0]) + " " + i[2] + " " + str(i[1]) + ": " + ("%.2f" % [i[3]]) + "s\n"
-			sum_score += i[3]
-			sum_count += 1
-		else:
-			logMgr._error("[MiscScoreData]math score data error.")
+	for num1 in mathScoreX:
+		for num2 in mathScoreX[num1]:
+			var scoreDataList = mathScoreX[num1][num2]
+			for i in scoreDataList:
+				ppLabel.bbcode_text += num1 + " x " + num2 + " : " + ("%.2f" % [i[1]]) + "s\n"
+				sum_score += i[1]
+				sum_count += 1
 	if sum_count > 0:
 		ppAverage.text = "%.2f" % [sum_score / sum_count] + "s"
 	else:

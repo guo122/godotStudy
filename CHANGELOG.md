@@ -1,6 +1,10 @@
 
 # Change log
 
+## 0.03(16)
+
+- [ScoreSystem] clear data. update data structure.
+
 ## 0.03(15)
 
 - [ScoreSystem] fix bug.
