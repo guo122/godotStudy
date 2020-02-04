@@ -2,9 +2,7 @@ extends Node
 
 var logMgr
 
-var _data = {
-	"mathMatrixX": []
-}
+var _data = {}
 
 func _ready():
 	logMgr = get_node("/root/GLog")
