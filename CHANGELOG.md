@@ -1,6 +1,10 @@
 
 # Change log
 
+## 0.03(19)
+
+- [Log] add debug mode.
+
 ## 0.03(18)
 
 - [ScoreSystem] fix bug.

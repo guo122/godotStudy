@@ -7,5 +7,5 @@ var logMgr
 func _ready():
 	panelMgr = get_node("/root/PanelMgr")
 	logMgr = get_node("/root/GLog")
-	logMgr._log("mainScene ready")
+	logMgr._log("[MainScene] ready")
 	panelMgr.setMainScene(self)

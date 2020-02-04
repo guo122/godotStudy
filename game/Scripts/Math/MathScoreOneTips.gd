@@ -9,8 +9,8 @@ func _ready():
 func _set_data(data: Array):
 	logMgr = get_node("/root/GLog")
 	dataMgr = get_node("/root/GData")
-#	logMgr._log("[MathScoreOneTips] set data:")
-#	logMgr._log(data)
+#	logMgr._debug("[MathScoreOneTips] set data:")
+#	logMgr._debug(data)
 	if data.size() == 3:
 		text = str(data[0]) + " " + data[2] + " " + str(data[1]) + ": --"
 	elif data.size() == 4:

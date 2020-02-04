@@ -6,10 +6,8 @@ var _data = {}
 
 func _ready():
 	logMgr = get_node("/root/GLog")
-	logMgr._log("data ready")
 	_load()
-	logMgr._log("[GData] load data:")
-	logMgr._log(_data)
+	logMgr._log("[Data] ready")
 
 const FILE_NAME = "user://game-data.json"
 
@@ -44,7 +42,7 @@ func _addScore(data: Array):
 
 func _clearData():
 	_data = {}
-	_data["mathMatrixX"] = []
+	_initData()
 	_save()
 		
 
@@ -70,6 +68,10 @@ func _initData():
 					_data["mathMatrixX"][int(num1) - 11][int(num2) - 11].append(dataList)
 		_data.erase("mathScoreX")
 		_save()
+
+
+func _printMetaData():
+	logMgr._log(_data)
 
 
 

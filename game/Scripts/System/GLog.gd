@@ -5,12 +5,18 @@ signal glog_update
 var log_data: String
 
 func _ready():
-	_log("log ready")
+	_log("[Log] ready")
 	
 
 func _log(content):
 	print(content)
 	log_data = "[color=#ff0000]|[/color] " + str(content) + "\n" + log_data
+	emit_signal("glog_update", log_data)
+
+
+func _debug(content):
+	print(content)
+	log_data = "[color=#ffc600]|[/color] " + str(content) + "\n" + log_data
 	emit_signal("glog_update", log_data)
 
 

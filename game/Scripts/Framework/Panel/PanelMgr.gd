@@ -25,7 +25,7 @@ var mainPanelName: String
 
 func _ready():
 	logMgr = get_node("/root/GLog")
-	logMgr._log("panelMgr ready")
+	logMgr._log("[PanelMgr] ready")
 # warning-ignore:return_value_discarded
 	get_tree().get_root().connect("size_changed", self, "_size_changed")
 	localTime = 0
@@ -102,8 +102,8 @@ func openPanel(name: String, layer:int = PANEL_NORMAL_LAYER, dic: Dictionary = {
 			delayNodeDic[ret] = destoryTime
 		
 		if !dic.empty() && ret.has_method("_panel_set_dic"):
-			logMgr._log("[PanelMgr]open panel set dic:")
-			logMgr._log(dic)
+			logMgr._debug("[PanelMgr]open panel set dic:")
+			logMgr._debug(dic)
 			ret._panel_set_dic(dic)
 		
 		if ret.has_method("_setRectSize"):

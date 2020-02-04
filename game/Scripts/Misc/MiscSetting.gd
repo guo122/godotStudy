@@ -6,17 +6,19 @@ const PANEL_NORMAL_LAYER = 3
 
 var dataMgr
 var panelMgr
+var logMgr
 
 onready var ppClearData : Button = $VBoxContainer/Menu1/HBoxContainer2/BtnClearData
 const CLEAR_DEFAULT_BTN_NAME = "ClearData"
 const CLEAR_RESET_TIME = 1
-const CLEAR_DEFAULT_STATE = 4
+const CLEAR_DEFAULT_STATE = 8
 var local_time: float = CLEAR_RESET_TIME
 var clearStage: int = CLEAR_DEFAULT_STATE
 
 func _ready():
 	panelMgr = get_node("/root/PanelMgr")
 	dataMgr = get_node("/root/GData")
+	logMgr = get_node("/root/GLog")
 
 
 func _setRectSize(ssize: Vector2):
@@ -57,3 +59,7 @@ func _resetBtnClear():
 	local_time = CLEAR_RESET_TIME
 	clearStage = CLEAR_DEFAULT_STATE
 	ppClearData.text = CLEAR_DEFAULT_BTN_NAME
+
+
+func _on_BtnPrintData_button_down():
+	dataMgr._printMetaData()
