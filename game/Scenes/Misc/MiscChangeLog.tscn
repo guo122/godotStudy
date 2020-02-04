@@ -88,18 +88,22 @@ size_flags_vertical = 3
 custom_constants/margin_right = 10
 custom_constants/margin_top = 10
 custom_constants/margin_left = 10
-custom_constants/margin_bottom = 10
+custom_constants/margin_bottom = 50
 
 [node name="RichTextLabel" type="RichTextLabel" parent="VBoxContainer/MarginContainer"]
 margin_left = 10.0
 margin_top = 10.0
 margin_right = 710.0
-margin_bottom = 1144.0
+margin_bottom = 1104.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 custom_fonts/normal_font = ExtResource( 3 )
 custom_colors/default_color = Color( 0, 0, 0, 1 )
 text = "# Change log
+
+## 0.03(17)
+
+- [ScoreSystem] update data structure.
 
 ## 0.03(16)
 

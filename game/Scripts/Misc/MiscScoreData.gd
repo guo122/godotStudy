@@ -36,16 +36,25 @@ func _on_BtnBack_button_down():
 
 
 func _set_data():
-	var mathScoreX = dataMgr.dataJson["mathScoreX"]
 	var sum_score: float = 0
 	var sum_count: int = 0
-	for num1 in mathScoreX:
-		for num2 in mathScoreX[num1]:
-			var scoreDataList = mathScoreX[num1][num2]
-			for i in scoreDataList:
-				ppLabel.bbcode_text += num1 + " x " + num2 + " : " + ("%.2f" % [i[1]]) + "s\n"
-				sum_score += i[1]
-				sum_count += 1
+	var ii: int = 10
+	var jj: int = 10
+	var str_data = ""
+	for i in dataMgr._data["mathMatrixX"]:
+		ii += 1
+		jj = 10
+		for j in i:
+			jj += 1
+			if !j.empty():
+				str_data += str(ii) + " x " + str(jj) + " : "
+				for data in j:
+					str_data += ("%.2f" % [data[1]]) + "s "
+					sum_score += data[1]
+					sum_count += 1
+				str_data += "\n"
+	ppLabel.bbcode_text = str_data
+
 	if sum_count > 0:
 		ppAverage.text = "%.2f" % [sum_score / sum_count] + "s"
 	else:

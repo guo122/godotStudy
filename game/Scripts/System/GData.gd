@@ -2,8 +2,8 @@ extends Node
 
 var logMgr
 
-var dataJson = {
-	"mathScoreX": {}
+var _data = {
+	"mathMatrixX": []
 }
 
 func _ready():
@@ -11,14 +11,14 @@ func _ready():
 	logMgr._log("data ready")
 	_load()
 	logMgr._log("[GData] load data:")
-	logMgr._log(dataJson)
+	logMgr._log(_data)
 
 const FILE_NAME = "user://game-data.json"
 
 func _save():
 	var file = File.new()
 	file.open(FILE_NAME, File.WRITE)
-	file.store_string(to_json(dataJson))
+	file.store_string(to_json(_data))
 	file.close()
 
 func _load():
@@ -28,38 +28,61 @@ func _load():
 		var data = parse_json(file.get_as_text())
 		file.close()
 		if typeof(data) == TYPE_DICTIONARY:
-			dataJson = data
+			_data = data
 		else:
 			logMgr._error("Corrupted data!")
 	else:
 		logMgr._error("No saved data!")
+	_initData()
 
 
 func _addScore(data: Array):
 	if data.size() == 4 && data[2] == "x":
-		var num1: String = str(data[0])
-		var num2: String = str(data[1])
-		var mathScoreX = dataJson["mathScoreX"]
-		var num1Dic: Dictionary
-		var num2List: Array
-		var scoreData: Array = []
-		if !mathScoreX.has(num1):
-			num1Dic = {}
-			mathScoreX[num1] = num1Dic
-		else:
-			num1Dic = mathScoreX[num1]
-		if !num1Dic.has(num2):
-			num2List = []
-			num1Dic[num2] = num2List
-		else:
-			num2List = num1Dic[num2]
-		scoreData.append(OS.get_unix_time())
-		scoreData.append(data[3])
-		num2List.append(scoreData)
+		var dataList = []
+		dataList.append(OS.get_unix_time())
+		dataList.append(data[3])
+		_data["mathMatrixX"][data[0] - 11][data[1] - 11].append(dataList)	
 
 
 func _clearData():
-	dataJson = {}
-	dataJson["mathScoreX"] = {}
+	_data = {}
+	_data["mathMatrixX"] = []
 	_save()
+		
+
+func _initData():
+	if !_data.has("mathMatrixX"):
+		var mathMatrixX = []
+		_data["mathMatrixX"] = mathMatrixX
+		for i in range(11, 100):
+			var num1Array = []
+			mathMatrixX.append(num1Array)
+			for j in range(11, 100):
+				var num2Array = []
+				num1Array.append(num2Array)
+	if _data.has("mathScoreX") && _data["mathScoreX"].size() > 0:
+		var mathScoreX = _data["mathScoreX"]
+		for num1 in mathScoreX:
+			for num2 in mathScoreX[num1]:
+				var scoreDataList = mathScoreX[num1][num2]
+				for i in scoreDataList:
+					var dataList = []
+					dataList.append(i[0])
+					dataList.append(i[1])
+					_data["mathMatrixX"][int(num1) - 11][int(num2) - 11].append(dataList)
+		_data.erase("mathScoreX")
+		_save()
+
+
+
+
+
+
+
+
+
+
+
+
+
 
