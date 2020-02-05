@@ -4,7 +4,8 @@ var panelMgr
 var logMgr
 var dataMgr
 
-onready var ppLabel: RichTextLabel = $VBoxContainer/MarginContainer/RichTextLabel
+onready var ppLabel: RichTextLabel = $VBoxContainer/MarginContainer/ScrollContainer/VBoxContainer/RichTextLabel
+onready var ppColor: TextureRect = $VBoxContainer/MarginContainer/ScrollContainer/VBoxContainer/HBoxContainer/TextureRect
 onready var ppAverage: Label = $VBoxContainer/Menu0/LabelAverage
 onready var ppRefresh: Button = $VBoxContainer/Menu0/BtnRefresh
 
@@ -23,7 +24,8 @@ func _setRectSize(ssize: Vector2):
 	$BasicBg.rect_min_size = ssize
 	$VBoxContainer.rect_min_size = ssize
 	
-	_set_data()
+	_set_colorRect()
+	_set_text()
 	
 
 func _process(delta):
@@ -35,7 +37,14 @@ func _on_BtnBack_button_down():
 	panelMgr.closePanel(self)
 
 
-func _set_data():
+func _set_colorRect():
+	var color_texture: ImageTexture = ImageTexture.new()
+	color_texture.create_from_image(dataMgr._data_color_image)
+	ppColor.set_texture(color_texture)
+	pass
+
+
+func _set_text():
 	var sum_score: float = 0
 	var sum_count: int = 0
 	var ii: int = 10

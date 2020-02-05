@@ -1,6 +1,10 @@
 
 # Change log
 
+## 0.04(20)
+
+- [score] 81 x 81, date map
+
 ## 0.03(19)
 
 - [Log] add debug mode.

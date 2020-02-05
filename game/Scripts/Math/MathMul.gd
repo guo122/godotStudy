@@ -1,5 +1,6 @@
 extends Control
 
+var dataMgr
 var panelMgr
 var globals
 
@@ -20,10 +21,11 @@ var local_time: float
 var score_max: int
 var score_count: int
 var score_dic: Dictionary
-var score_timeout: int
+var lastColor: Color = Color(0, 0, 0)
 
 func _ready():
 	panelMgr = get_node("/root/PanelMgr")
+	dataMgr = get_node("/root/GData")
 	globals = get_node("/root/Globals")
 	$VBoxContainer/MenuNinePad/Nine.set_style(globals.NinePadPositiveLayoutStyle)
 	$VBoxContainer/MenuNinePad/Nine.connect("pad_pressed", self, "_on_Nine_click")
@@ -50,12 +52,10 @@ func _process(delta):
 	if running:
 		local_time += delta
 		ppNumCount.text = "%.2f" % [local_time]
-		if local_time > 20 && score_timeout == 0:
-			ppNumCount.set("custom_colors/font_color", Color(1,0.79,0.25))
-			score_timeout = 1
-		elif local_time > 60 && score_timeout == 1:
-			ppNumCount.set("custom_colors/font_color", Color(1,0,0))
-			score_timeout = 2
+		var cc = dataMgr._get_color(local_time)
+		if cc != lastColor:
+			lastColor = cc
+			ppNumCount.set("custom_colors/font_color", cc)
 	
 
 func _on_Nine_click(ss:String, num: float):
@@ -81,7 +81,6 @@ func _num_init():
 		panelMgr.closePanel(self)
 		panelMgr.openPanel("MathScore", PANEL_NORMAL_LAYER, score_dic)
 	
-	score_timeout = 0
 	ppNumCount.set("custom_colors/font_color", Color(0,0,0))
 	local_time = 0
 	running = true
