@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://Scripts/Math/MathScore.gd" type="Script" id=1]
 [ext_resource path="res://Fonts/Resources/Xolonium-Regular.ttf" type="DynamicFontData" id=2]
@@ -6,6 +6,7 @@
 [ext_resource path="res://Scenes/Prefab/TopFixed.tscn" type="PackedScene" id=4]
 [ext_resource path="res://Scenes/Prefab/BasicColorBg.tscn" type="PackedScene" id=5]
 [ext_resource path="res://Fonts/Text48.tres" type="DynamicFont" id=6]
+[ext_resource path="res://Scenes/Math/MathMulMap.tscn" type="PackedScene" id=7]
 
 [sub_resource type="DynamicFont" id=1]
 size = 43
@@ -87,11 +88,20 @@ margin_right = 719.0
 margin_bottom = 58.0
 rect_min_size = Vector2( 134, 0 )
 
-[node name="ScoreList" type="VBoxContainer" parent="VBoxContainer"]
+[node name="ScrollContainer" type="ScrollContainer" parent="VBoxContainer"]
 margin_top = 126.0
 margin_right = 720.0
 margin_bottom = 1280.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
-alignment = 1
+scroll_horizontal_enabled = false
+
+[node name="ScoreList" type="VBoxContainer" parent="VBoxContainer/ScrollContainer"]
+margin_right = 720.0
+margin_bottom = 1154.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="MathMulMap" parent="VBoxContainer/ScrollContainer/ScoreList" instance=ExtResource( 7 )]
+margin_right = 720.0
 [connection signal="button_down" from="VBoxContainer/Menu0/BtnBack" to="." method="_on_BtnBack_button_down"]

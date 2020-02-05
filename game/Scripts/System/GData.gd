@@ -27,6 +27,7 @@ var _data_color_map = {
 	"60": Color(1, 0, 0)
 }
 
+var _data_hightlight_map: Image = null
 var _data_color_image: Image = null
 var _data = {}
 
@@ -110,7 +111,7 @@ func _initData():
 		_data.erase("mathScoreX")
 	if !_data_color_image:
 		_data_color_image = Image.new()
-		_data_color_image.create(COLOR_IMAGE_X, COLOR_IMAGE_Y, false, Image.FORMAT_RGB8)
+		_data_color_image.create(COLOR_IMAGE_X, COLOR_IMAGE_Y, false, COLOR_IMAGE_FORMAT)
 		_data_color_image.lock()
 		for i in range(0, COLOR_IMAGE_X):
 			for j in range(0, COLOR_IMAGE_Y):
@@ -128,6 +129,7 @@ func _initData():
 				if !j.empty():
 					_set_map_color(ii, jj, j)
 		_data_color_image.unlock()
+	_clear_hightlight_color()
 	_save()
 
 
@@ -145,6 +147,25 @@ func _set_map_color(idxX, idxY, dataList: Array):
 	for i in range(ix * 8 + ii, ix * 8 + 8 + ii):
 		for j in range(iy * 8 + jj, iy * 8 + 8 + jj):
 			_data_color_image.set_pixel(i, j, cc)
+
+
+func _set_highlight_color(idxX, idxY, cc):
+	_data_hightlight_map.lock()
+	var ii = int((idxX + 11) / 10)
+	var jj = int((idxY + 11) / 10)
+	var ix = idxX - ii + 1
+	var iy = idxY - jj + 1
+	for i in range(ix * 8 + ii, ix * 8 + 8 + ii):
+		for j in range(iy * 8 + jj, iy * 8 + 8 + jj):
+			_data_hightlight_map.set_pixel(i, j, cc)
+#			logMgr._debug(str(i) + " x " + str(j))
+	_data_hightlight_map.unlock()
+
+
+func _clear_hightlight_color():
+	_data_hightlight_map = null
+	_data_hightlight_map = Image.new()
+	_data_hightlight_map.create(COLOR_IMAGE_X, COLOR_IMAGE_Y, false, COLOR_IMAGE_FORMAT)
 
 
 func _get_color(sec: float) -> Color:

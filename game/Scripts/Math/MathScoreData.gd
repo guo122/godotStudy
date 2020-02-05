@@ -5,7 +5,7 @@ var logMgr
 var dataMgr
 
 onready var ppLabel: RichTextLabel = $VBoxContainer/MarginContainer/ScrollContainer/VBoxContainer/RichTextLabel
-onready var ppColor: TextureRect = $VBoxContainer/MarginContainer/ScrollContainer/VBoxContainer/HBoxContainer/TextureRect
+onready var ppMap: TextureRect = $VBoxContainer/MarginContainer/ScrollContainer/VBoxContainer/MathMulMap
 onready var ppAverage: Label = $VBoxContainer/Menu0/LabelAverage
 onready var ppRefresh: Button = $VBoxContainer/Menu0/BtnRefresh
 
@@ -24,9 +24,10 @@ func _setRectSize(ssize: Vector2):
 	$BasicBg.rect_min_size = ssize
 	$VBoxContainer.rect_min_size = ssize
 	
-	_set_colorRect()
+	dataMgr._clear_hightlight_color()
+	ppMap._update_map()
 	_set_text()
-	
+
 
 func _process(delta):
 	local_time += delta
@@ -35,13 +36,6 @@ func _process(delta):
 
 func _on_BtnBack_button_down():
 	panelMgr.closePanel(self)
-
-
-func _set_colorRect():
-	var color_texture: ImageTexture = ImageTexture.new()
-	color_texture.create_from_image(dataMgr._data_color_image)
-	ppColor.set_texture(color_texture)
-	pass
 
 
 func _set_text():

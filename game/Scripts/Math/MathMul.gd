@@ -66,7 +66,7 @@ func _on_Nine_click(ss:String, num: float):
 		running = false
 		ppNumCount.set("custom_colors/font_color", Color(0,1,0))
 		yield(get_tree().create_timer(1), "timeout")
-		if score_dic.has(score_count):
+		if local_time < 60 && score_dic.has(score_count):
 			var dd_array: Array = score_dic[score_count]
 			dd_array.append(local_time)
 		_num_init()

@@ -40,4 +40,4 @@ func _on_BtnSetting_button_down():
 
 
 func _on_BtnScore_button_down():
-	panelMgr.openPanel("MiscScoreData")
+	panelMgr.openPanel("MathScoreData")

@@ -1,0 +1,149 @@
+[gd_scene load_steps=9 format=2]
+
+[ext_resource path="res://Fonts/Resources/Xolonium-Regular.ttf" type="DynamicFontData" id=1]
+[ext_resource path="res://Fonts/Text33.tres" type="DynamicFont" id=2]
+[ext_resource path="res://Scenes/Prefab/BasicColorBg.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Scenes/Prefab/TopFixed.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Scripts/Math/MathScoreData.gd" type="Script" id=5]
+[ext_resource path="res://Fonts/Text48.tres" type="DynamicFont" id=6]
+[ext_resource path="res://Scenes/Math/MathMulMap.tscn" type="PackedScene" id=7]
+
+[sub_resource type="DynamicFont" id=1]
+size = 43
+font_data = ExtResource( 1 )
+
+[node name="Panel" type="CenterContainer"]
+margin_right = 720.0
+margin_bottom = 1280.0
+rect_min_size = Vector2( 720, 1280 )
+script = ExtResource( 5 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="BasicBg" parent="." instance=ExtResource( 3 )]
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_right = 720.0
+margin_bottom = 1280.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+margin_right = 720.0
+margin_bottom = 1280.0
+rect_min_size = Vector2( 720, 1280 )
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="TopFixed" parent="VBoxContainer" instance=ExtResource( 4 )]
+
+[node name="Menu0" type="HBoxContainer" parent="VBoxContainer"]
+margin_top = 64.0
+margin_right = 720.0
+margin_bottom = 122.0
+
+[node name="fixed" type="Control" parent="VBoxContainer/Menu0"]
+margin_right = 10.0
+margin_bottom = 58.0
+rect_min_size = Vector2( 10, 0 )
+
+[node name="BtnBack" type="Button" parent="VBoxContainer/Menu0"]
+margin_left = 14.0
+margin_right = 138.0
+margin_bottom = 58.0
+custom_fonts/font = SubResource( 1 )
+text = "Back"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="space" type="Control" parent="VBoxContainer/Menu0"]
+margin_left = 142.0
+margin_right = 283.0
+margin_bottom = 58.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="LabelAverage" type="Label" parent="VBoxContainer/Menu0"]
+margin_left = 287.0
+margin_right = 432.0
+margin_bottom = 58.0
+custom_fonts/font = ExtResource( 6 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "50.0s"
+align = 1
+valign = 1
+
+[node name="space2" type="Control" parent="VBoxContainer/Menu0"]
+margin_left = 436.0
+margin_right = 577.0
+margin_bottom = 58.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="BtnRefresh" type="Button" parent="VBoxContainer/Menu0"]
+margin_left = 581.0
+margin_right = 705.0
+margin_bottom = 58.0
+rect_min_size = Vector2( 124, 0 )
+custom_fonts/font = SubResource( 1 )
+custom_colors/font_color_disabled = Color( 0, 0, 0, 1 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_colors/font_color_hover = Color( 0, 0, 0, 1 )
+custom_colors/font_color_pressed = Color( 0, 0, 0, 1 )
+text = "0.0"
+flat = true
+align = 2
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="fixed2" type="Control" parent="VBoxContainer/Menu0"]
+margin_left = 709.0
+margin_right = 719.0
+margin_bottom = 58.0
+rect_min_size = Vector2( 10, 0 )
+
+[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer"]
+margin_top = 126.0
+margin_right = 720.0
+margin_bottom = 1280.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_constants/margin_right = 10
+custom_constants/margin_top = 10
+custom_constants/margin_left = 10
+custom_constants/margin_bottom = 10
+
+[node name="ScrollContainer" type="ScrollContainer" parent="VBoxContainer/MarginContainer"]
+margin_left = 10.0
+margin_top = 10.0
+margin_right = 710.0
+margin_bottom = 1144.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+scroll_horizontal_enabled = false
+
+[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/MarginContainer/ScrollContainer"]
+margin_right = 700.0
+margin_bottom = 1134.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="MathMulMap" parent="VBoxContainer/MarginContainer/ScrollContainer/VBoxContainer" instance=ExtResource( 7 )]
+
+[node name="RichTextLabel" type="RichTextLabel" parent="VBoxContainer/MarginContainer/ScrollContainer/VBoxContainer"]
+margin_top = 703.0
+margin_right = 700.0
+margin_bottom = 1134.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_fonts/normal_font = ExtResource( 2 )
+custom_colors/default_color = Color( 0, 0, 0, 1 )
+bbcode_enabled = true
+text = "sss"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+[connection signal="button_down" from="VBoxContainer/Menu0/BtnBack" to="." method="_on_BtnBack_button_down"]
+[connection signal="button_down" from="VBoxContainer/Menu0/BtnRefresh" to="." method="_on_BtnRefresh_button_down"]

@@ -1,0 +1,265 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://Fonts/TextColor.tres" type="DynamicFont" id=1]
+[ext_resource path="res://Scripts/Math/MathMulMap.gd" type="Script" id=2]
+
+[sub_resource type="Shader" id=1]
+code = "shader_type canvas_item;
+//varying vec2 POSITION;
+
+uniform sampler2D hightlight_texture;
+
+//void vertex(){
+//	POSITION = VERTEX;
+//}
+
+void fragment(){
+	COLOR = texture(TEXTURE, UV);
+//	COLOR = texture(hightlight_texture, UV);
+	
+//	COLOR = vec4(0f, 0f, 0f, 1.0);
+	if (texture(hightlight_texture, UV).r > 0f) {
+		float ratio = abs(cos(TIME * 2f)) / 2f + 0.5f;
+		COLOR *= vec4(ratio * 1f, ratio * 1f, ratio * 1f, 1.0);
+//		COLOR *= vec4(0.4f, 0.6f, 0.9f, 1.0);
+	}
+}"
+
+[sub_resource type="ShaderMaterial" id=2]
+shader = SubResource( 1 )
+
+[node name="MathMulMap" type="VBoxContainer"]
+margin_right = 700.0
+margin_bottom = 699.0
+script = ExtResource( 2 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="."]
+margin_right = 700.0
+margin_bottom = 37.0
+custom_constants/separation = 55
+
+[node name="Label1" type="Label" parent="HBoxContainer2"]
+margin_right = 41.0
+margin_bottom = 37.0
+size_flags_horizontal = 0
+size_flags_vertical = 0
+custom_fonts/font = ExtResource( 1 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "  1"
+align = 1
+valign = 1
+
+[node name="Label2" type="Label" parent="HBoxContainer2"]
+margin_left = 96.0
+margin_right = 117.0
+margin_bottom = 37.0
+size_flags_horizontal = 0
+size_flags_vertical = 0
+custom_fonts/font = ExtResource( 1 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "2"
+align = 1
+valign = 1
+
+[node name="Label3" type="Label" parent="HBoxContainer2"]
+margin_left = 172.0
+margin_right = 193.0
+margin_bottom = 37.0
+size_flags_horizontal = 0
+size_flags_vertical = 0
+custom_fonts/font = ExtResource( 1 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "3"
+align = 1
+valign = 1
+
+[node name="Label4" type="Label" parent="HBoxContainer2"]
+margin_left = 248.0
+margin_right = 269.0
+margin_bottom = 37.0
+size_flags_horizontal = 0
+size_flags_vertical = 0
+custom_fonts/font = ExtResource( 1 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "4"
+align = 1
+valign = 1
+
+[node name="Label5" type="Label" parent="HBoxContainer2"]
+margin_left = 324.0
+margin_right = 345.0
+margin_bottom = 37.0
+size_flags_horizontal = 0
+size_flags_vertical = 0
+custom_fonts/font = ExtResource( 1 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "5"
+align = 1
+valign = 1
+
+[node name="Label6" type="Label" parent="HBoxContainer2"]
+margin_left = 400.0
+margin_right = 421.0
+margin_bottom = 37.0
+size_flags_horizontal = 0
+size_flags_vertical = 0
+custom_fonts/font = ExtResource( 1 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "6"
+align = 1
+valign = 1
+
+[node name="Label7" type="Label" parent="HBoxContainer2"]
+margin_left = 476.0
+margin_right = 497.0
+margin_bottom = 37.0
+size_flags_horizontal = 0
+size_flags_vertical = 0
+custom_fonts/font = ExtResource( 1 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "7"
+align = 1
+valign = 1
+
+[node name="Label8" type="Label" parent="HBoxContainer2"]
+margin_left = 552.0
+margin_right = 573.0
+margin_bottom = 37.0
+size_flags_horizontal = 0
+size_flags_vertical = 0
+custom_fonts/font = ExtResource( 1 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "8"
+align = 1
+valign = 1
+
+[node name="Label9" type="Label" parent="HBoxContainer2"]
+margin_left = 628.0
+margin_right = 649.0
+margin_bottom = 37.0
+size_flags_horizontal = 0
+size_flags_vertical = 0
+custom_fonts/font = ExtResource( 1 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "9"
+align = 1
+valign = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+margin_top = 41.0
+margin_right = 700.0
+margin_bottom = 699.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer"]
+margin_right = 21.0
+margin_bottom = 658.0
+custom_constants/separation = 35
+
+[node name="Label" type="Label" parent="HBoxContainer/VBoxContainer"]
+margin_right = 21.0
+margin_bottom = 37.0
+custom_fonts/font = ExtResource( 1 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "1"
+align = 1
+valign = 1
+
+[node name="Label2" type="Label" parent="HBoxContainer/VBoxContainer"]
+margin_top = 72.0
+margin_right = 21.0
+margin_bottom = 109.0
+custom_fonts/font = ExtResource( 1 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "2"
+align = 1
+valign = 1
+
+[node name="Label3" type="Label" parent="HBoxContainer/VBoxContainer"]
+margin_top = 144.0
+margin_right = 21.0
+margin_bottom = 181.0
+custom_fonts/font = ExtResource( 1 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "3"
+align = 1
+valign = 1
+
+[node name="Label4" type="Label" parent="HBoxContainer/VBoxContainer"]
+margin_top = 216.0
+margin_right = 21.0
+margin_bottom = 253.0
+custom_fonts/font = ExtResource( 1 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "4"
+align = 1
+valign = 1
+
+[node name="Label5" type="Label" parent="HBoxContainer/VBoxContainer"]
+margin_top = 288.0
+margin_right = 21.0
+margin_bottom = 325.0
+custom_fonts/font = ExtResource( 1 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "5"
+align = 1
+valign = 1
+
+[node name="Label6" type="Label" parent="HBoxContainer/VBoxContainer"]
+margin_top = 360.0
+margin_right = 21.0
+margin_bottom = 397.0
+custom_fonts/font = ExtResource( 1 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "6"
+align = 1
+valign = 1
+
+[node name="Label7" type="Label" parent="HBoxContainer/VBoxContainer"]
+margin_top = 432.0
+margin_right = 21.0
+margin_bottom = 469.0
+custom_fonts/font = ExtResource( 1 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "7"
+align = 1
+valign = 1
+
+[node name="Label8" type="Label" parent="HBoxContainer/VBoxContainer"]
+margin_top = 504.0
+margin_right = 21.0
+margin_bottom = 541.0
+custom_fonts/font = ExtResource( 1 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "8"
+align = 1
+valign = 1
+
+[node name="Label9" type="Label" parent="HBoxContainer/VBoxContainer"]
+margin_top = 576.0
+margin_right = 21.0
+margin_bottom = 613.0
+custom_fonts/font = ExtResource( 1 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "9"
+align = 1
+valign = 1
+
+[node name="TextureRect" type="TextureRect" parent="HBoxContainer"]
+material = SubResource( 2 )
+margin_left = 25.0
+margin_right = 683.0
+margin_bottom = 658.0
+rect_min_size = Vector2( 658, 658 )
+
+[node name="space2" type="Control" parent="HBoxContainer"]
+margin_left = 687.0
+margin_right = 700.0
+margin_bottom = 658.0
+size_flags_horizontal = 3
+size_flags_vertical = 3

@@ -15,7 +15,7 @@
 [ext_resource path="res://Scenes/Misc/MiscWillLog.tscn" type="PackedScene" id=13]
 [ext_resource path="res://Scenes/Misc/MiscSetting.tscn" type="PackedScene" id=14]
 [ext_resource path="res://Scenes/Misc/MiscTTLog.tscn" type="PackedScene" id=15]
-[ext_resource path="res://Scenes/Misc/MiscScoreData.tscn" type="PackedScene" id=16]
+[ext_resource path="res://Scenes/Math/MathScoreData.tscn" type="PackedScene" id=16]
 
 [node name="Node" type="Node"]
 script = ExtResource( 1 )

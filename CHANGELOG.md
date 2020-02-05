@@ -1,6 +1,10 @@
 
 # Change log
 
+## 0.04(21)
+
+- [score] add append score animation.
+
 ## 0.04(20)
 
 - [score] 81 x 81, date map

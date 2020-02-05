@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=2]
 
-[ext_resource path="res://Fonts/Text80.tres" type="DynamicFont" id=1]
+[ext_resource path="res://Fonts/Text33.tres" type="DynamicFont" id=1]
 [ext_resource path="res://Scripts/Math/MathScoreOneTips.gd" type="Script" id=2]
 
 [node name="Label" type="Label"]
@@ -10,8 +10,7 @@ margin_right = 695.0
 margin_bottom = 304.0
 custom_fonts/font = ExtResource( 1 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
-text = "-----------------"
-align = 1
+text = "--------------------------"
 valign = 1
 script = ExtResource( 2 )
 __meta__ = {
