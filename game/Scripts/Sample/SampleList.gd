@@ -38,4 +38,4 @@ func _on_BtnLayerTest_button_up():
 
 func _on_BtnBack_button_up():
 	panelMgr.closePanel_name("SampleHUD")
-	panelMgr.closePanel(self)
+	panelMgr.closePanel_animation(self)

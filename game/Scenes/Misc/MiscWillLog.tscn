@@ -77,8 +77,7 @@ custom_fonts/normal_font = ExtResource( 3 )
 custom_colors/default_color = Color( 0, 0, 0, 1 )
 text = "# Will
 
-- [score] average, score 1-100 ?
-- [Panel] panel animation."
+- [score] average, score 1-100 ?"
 __meta__ = {
 "_edit_use_anchors_": false
 }

@@ -21,6 +21,9 @@ var mainScene
 var mainNode: CenterContainer
 var topNode: Control
 
+var animation_open: Animation
+var animation_close: Animation
+
 var mainPanelName: String
 
 func _ready():
@@ -29,6 +32,7 @@ func _ready():
 # warning-ignore:return_value_discarded
 	get_tree().get_root().connect("size_changed", self, "_size_changed")
 	localTime = 0
+	_init_animation()
 	
 
 func _process(delta):
@@ -108,6 +112,12 @@ func openPanel(name: String, layer:int = PANEL_NORMAL_LAYER, dic: Dictionary = {
 		
 		if ret.has_method("_setRectSize"):
 			ret._setRectSize(_get_will_size())
+			
+		var animation_player = AnimationPlayer.new()
+		animation_player.name = "AnimationPlayer"
+		_set_animtion(animation_player)
+		ret.add_child(animation_player)
+		animation_player.play("open")
 		
 	return ret
 
@@ -141,6 +151,11 @@ func closePanel(node: Node):
 	else:
 		var warning_str = "Close Panel Scene node not found: ";
 		logMgr._warning(warning_str)
+
+
+func closePanel_animation(node: Node):
+	node.get_node("AnimationPlayer").play("close")
+	delayNodeDic[node] = 0.1
 
 
 func addNode(node: Node, layer: int):
@@ -193,6 +208,29 @@ func _get_will_size() -> Vector2:
 		var ratio = 720 / window_size.x
 		ret = window_size * ratio
 	return ret
+
+
+func _init_animation():
+	animation_open = Animation.new()
+	var track_index_open = animation_open.add_track(Animation.TYPE_VALUE)
+	animation_open.track_set_path(track_index_open, ".:rect_position")
+	animation_open.track_insert_key(track_index_open, 0, Vector2(720, 0))
+	animation_open.track_insert_key(track_index_open, 0.1, Vector2(0, 0))
+
+	animation_close = Animation.new()
+	var track_index_close = animation_close.add_track(Animation.TYPE_VALUE)
+	animation_close.track_set_path(track_index_close, ".:rect_position")
+	animation_close.track_insert_key(track_index_close, 0, Vector2(0, 0))
+	animation_close.track_insert_key(track_index_close, 0.1, Vector2(720, 0))
+
+
+func _set_animtion(animation_player):
+	animation_player.add_animation("open", animation_open)
+	animation_player.add_animation("close", animation_close)
+
+
+
+
 
 
 

@@ -73,7 +73,7 @@ func _on_Nine_click(ss:String, num: float):
 
 
 func _on_BtnBack_button_down():
-	panelMgr.closePanel(self)
+	panelMgr.closePanel_animation(self)
 
 
 func _num_init():

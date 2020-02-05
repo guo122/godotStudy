@@ -12,7 +12,7 @@
 size = 43
 font_data = ExtResource( 2 )
 
-[node name="Node2D" type="CenterContainer"]
+[node name="Panel" type="CenterContainer"]
 script = ExtResource( 1 )
 __meta__ = {
 "_edit_use_anchors_": false

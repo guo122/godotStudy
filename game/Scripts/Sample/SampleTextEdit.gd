@@ -7,4 +7,4 @@ func _ready():
 
 
 func _on_Button_button_up():
-	panelMgr.closePanel(self)
+	panelMgr.closePanel_animation(self)

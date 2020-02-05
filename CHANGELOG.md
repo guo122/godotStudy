@@ -1,6 +1,10 @@
 
 # Change log
 
+## 0.04(22)
+
+- [Panel] impl panel animation.
+
 ## 0.04(21)
 
 - [score] add append score animation.

@@ -35,7 +35,7 @@ func _process(delta):
 
 
 func _on_BtnBack_button_down():
-	panelMgr.closePanel(self)
+	panelMgr.closePanel_animation(self)
 
 
 func _set_text():

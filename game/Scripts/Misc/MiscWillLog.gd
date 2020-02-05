@@ -14,4 +14,4 @@ func _setRectSize(ssize: Vector2):
 
 
 func _on_BtnBack_button_down():
-	panelMgr.closePanel(self)
+	panelMgr.closePanel_animation(self)
