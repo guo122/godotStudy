@@ -77,7 +77,9 @@ custom_fonts/normal_font = ExtResource( 3 )
 custom_colors/default_color = Color( 0, 0, 0, 1 )
 text = "# Will
 
-- [score] average, score 1-100 ?"
+- [panel] animation curve.
+- [score] average, score 1-100 ?
+- [score] map color use texture scroll."
 __meta__ = {
 "_edit_use_anchors_": false
 }

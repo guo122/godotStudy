@@ -39,7 +39,7 @@ func _panel_set_dic(dic: Dictionary):
 		ppList.add_child(node)
 		node._set_data(arg_dic[i])
 		if arg_dic[i].size() == 4:
-			dataMgr._set_highlight_color(arg_dic[i][0] - 11, arg_dic[i][1] - 11, Color(1, 0, 0))
+			dataMgr._set_highlight_color(arg_dic[i][0] - 11, arg_dic[i][1] - 11)
 			score_sum += arg_dic[i][3]
 			score_num += 1
 	

@@ -23,7 +23,7 @@ func _setRectSize(ssize: Vector2):
 	rect_size = ssize
 	$BasicBg.rect_min_size = ssize
 	$VBoxContainer.rect_min_size = ssize
-	
+
 	dataMgr._clear_hightlight_color()
 	ppMap._update_map()
 	_set_text()
@@ -41,6 +41,8 @@ func _on_BtnBack_button_down():
 func _set_text():
 	var sum_score: float = 0
 	var sum_count: int = 0
+	var sum_meta: int = 0
+	var sum_repeat: int = 0
 	var ii: int = 10
 	var jj: int = 10
 	var str_data = ""
@@ -50,12 +52,17 @@ func _set_text():
 		for j in i:
 			jj += 1
 			if !j.empty():
+				sum_meta += 1
 				str_data += str(ii) + " x " + str(jj) + " : "
 				for data in j:
 					str_data += ("%.2f" % [data[1]]) + "s "
 					sum_score += data[1]
 					sum_count += 1
 				str_data += "\n"
+				if j.size() > 1:
+					sum_repeat += 1
+	str_data = "Repeat: " + str(sum_count - sum_meta) + " (" + str(sum_repeat) + "), "+"%.2f" % (float(sum_repeat) / 6561 * 10)+"%\n\n" + str_data
+	str_data = "Sum: " + str(sum_meta) + " / 6561, "+"%.2f" % (float(sum_meta) / 6561 * 10)+"%\n" + str_data
 	ppLabel.bbcode_text = str_data
 
 	if sum_count > 0:
@@ -66,3 +73,12 @@ func _set_text():
 
 func _on_BtnRefresh_button_down():
 	local_time = 0
+
+
+
+
+
+
+
+
+

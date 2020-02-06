@@ -5,6 +5,7 @@
 
 [sub_resource type="Shader" id=1]
 code = "shader_type canvas_item;
+//render_mode blend_disabled;
 //varying vec2 POSITION;
 
 uniform sampler2D hightlight_texture;
@@ -14,15 +15,15 @@ uniform sampler2D hightlight_texture;
 //}
 
 void fragment(){
-	COLOR = texture(TEXTURE, UV);
-//	COLOR = texture(hightlight_texture, UV);
+	vec4 color = texture(TEXTURE, UV);
+	vec4 highlight_color = vec4(1f, 0f, 1f, 1f);
+	float base_alpha = texture(hightlight_texture, UV).z;
 	
-//	COLOR = vec4(0f, 0f, 0f, 1.0);
-	if (texture(hightlight_texture, UV).r > 0f) {
-		float ratio = abs(cos(TIME * 2f)) / 2f + 0.5f;
-		COLOR *= vec4(ratio * 1f, ratio * 1f, ratio * 1f, 1.0);
-//		COLOR *= vec4(0.4f, 0.6f, 0.9f, 1.0);
-	}
+	float ratio = cos(TIME * 10f) / 2f + 0.5f;
+	
+	float alpha = base_alpha * ratio;
+	
+	COLOR = color * (1f - alpha) + highlight_color * alpha;
 }"
 
 [sub_resource type="ShaderMaterial" id=2]

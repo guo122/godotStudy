@@ -78,7 +78,7 @@ func _on_BtnBack_button_down():
 
 func _num_init():
 	if score_count >= score_max:
-		panelMgr.closePanel(self)
+		panelMgr.closePanel_animation(self, "close2")
 		panelMgr.openPanel("MathScore", PANEL_NORMAL_LAYER, score_dic)
 	
 	ppNumCount.set("custom_colors/font_color", Color(0,0,0))

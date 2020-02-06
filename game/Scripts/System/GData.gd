@@ -149,7 +149,8 @@ func _set_map_color(idxX, idxY, dataList: Array):
 			_data_color_image.set_pixel(i, j, cc)
 
 
-func _set_highlight_color(idxX, idxY, cc):
+func _set_highlight_color(idxX, idxY):
+	var cc = Color(1, 1, 1, 1)
 	_data_hightlight_map.lock()
 	var ii = int((idxX + 11) / 10)
 	var jj = int((idxY + 11) / 10)
@@ -158,14 +159,22 @@ func _set_highlight_color(idxX, idxY, cc):
 	for i in range(ix * 8 + ii, ix * 8 + 8 + ii):
 		for j in range(iy * 8 + jj, iy * 8 + 8 + jj):
 			_data_hightlight_map.set_pixel(i, j, cc)
-#			logMgr._debug(str(i) + " x " + str(j))
+			
+#	for i in range(ix * 8 + ii, ix * 8 + 8 + ii):
+#		_data_hightlight_map.set_pixel(i, iy * 8 + jj, cc)
+#		_data_hightlight_map.set_pixel(i, iy * 8 + 7 + jj, cc)
+#	for j in range(iy * 8 + jj, iy * 8 + 8 + jj):
+#		_data_hightlight_map.set_pixel(ix * 8 + ii, j, cc)
+#	for j in range(iy * 8 + jj, iy * 8 + 8 + jj):
+#		_data_hightlight_map.set_pixel(ix * 8 + 7 + ii, j, cc)
+	
 	_data_hightlight_map.unlock()
 
 
 func _clear_hightlight_color():
 	_data_hightlight_map = null
 	_data_hightlight_map = Image.new()
-	_data_hightlight_map.create(COLOR_IMAGE_X, COLOR_IMAGE_Y, false, COLOR_IMAGE_FORMAT)
+	_data_hightlight_map.create(COLOR_IMAGE_X, COLOR_IMAGE_Y, false, Image.FORMAT_RGBA8)
 
 
 func _get_color(sec: float) -> Color:

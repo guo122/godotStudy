@@ -21,8 +21,7 @@ var mainScene
 var mainNode: CenterContainer
 var topNode: Control
 
-var animation_open: Animation
-var animation_close: Animation
+var animationDic: Dictionary
 
 var mainPanelName: String
 
@@ -153,8 +152,8 @@ func closePanel(node: Node):
 		logMgr._warning(warning_str)
 
 
-func closePanel_animation(node: Node):
-	node.get_node("AnimationPlayer").play("close")
+func closePanel_animation(node: Node, anim: String = "close"):
+	node.get_node("AnimationPlayer").play(anim)
 	delayNodeDic[node] = 0.1
 
 
@@ -211,22 +210,32 @@ func _get_will_size() -> Vector2:
 
 
 func _init_animation():
-	animation_open = Animation.new()
-	var track_index_open = animation_open.add_track(Animation.TYPE_VALUE)
-	animation_open.track_set_path(track_index_open, ".:rect_position")
-	animation_open.track_insert_key(track_index_open, 0, Vector2(720, 0))
-	animation_open.track_insert_key(track_index_open, 0.1, Vector2(0, 0))
-
-	animation_close = Animation.new()
-	var track_index_close = animation_close.add_track(Animation.TYPE_VALUE)
-	animation_close.track_set_path(track_index_close, ".:rect_position")
-	animation_close.track_insert_key(track_index_close, 0, Vector2(0, 0))
-	animation_close.track_insert_key(track_index_close, 0.1, Vector2(720, 0))
+	var animation = Animation.new()
+	var track_index = animation.add_track(Animation.TYPE_VALUE)
+	animation.track_set_path(track_index, ".:rect_position")
+	animation.track_insert_key(track_index, 0, Vector2(720, 0))
+	animation.track_insert_key(track_index, 0.1, Vector2(0, 0))
+	animationDic["open"] = animation
+	
+	animation = Animation.new()
+	track_index = animation.add_track(Animation.TYPE_VALUE)
+	animation.track_set_path(track_index, ".:rect_position")
+	animation.track_insert_key(track_index, 0, Vector2(0, 0))
+	animation.track_insert_key(track_index, 0.1, Vector2(720, 0))
+	animationDic["close"] = animation
+	
+	animation = Animation.new()
+	track_index = animation.add_track(Animation.TYPE_VALUE)
+	animation.track_set_path(track_index, ".:rect_position")
+	animation.track_insert_key(track_index, 0, Vector2(0, 0))
+	animation.track_insert_key(track_index, 0.1, Vector2(-720, 0))
+	animationDic["close2"] = animation
 
 
 func _set_animtion(animation_player):
-	animation_player.add_animation("open", animation_open)
-	animation_player.add_animation("close", animation_close)
+	animation_player.add_animation("open", animationDic["open"])
+	animation_player.add_animation("close", animationDic["close"])
+	animation_player.add_animation("close2", animationDic["close2"])
 
 
 
