@@ -63,3 +63,11 @@ func _on_BtnClearData_pressed():
 		dataMgr._clearData()
 		yield(get_tree().create_timer(1), "timeout")
 		_resetBtnClear()
+
+
+func _on_BtnRefreshMathMap_pressed():
+	dataMgr._init_color_map()
+	dataMgr._save()
+
+
+

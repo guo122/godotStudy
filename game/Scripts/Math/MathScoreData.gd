@@ -63,12 +63,25 @@ func _set_text():
 					sum_3x += 1
 				if j.size() > 3:
 					sum_4x += 1
-	str_data = "4x: " + str(sum_4x) + ", "+"%.2f" % (float(sum_4x) / 6561 * 100)+"%\n\n" + str_data
+	var tmp_hour: int = sum_score / 3600
+	var tmp_minute: int = (sum_score - (tmp_hour * 3600)) / 60
+	var tmp_second: int = sum_score - (tmp_hour * 3600) - (tmp_minute * 60)
+	var str_h: String = ""
+	var str_m: String = ""
+	var str_s: String = ""
+	if tmp_hour > 0:
+		str_h = str(tmp_hour) + "h "
+	if tmp_hour > 0 || tmp_minute > 0:
+		str_m = str(tmp_minute) + "m "
+	if tmp_hour > 0 || tmp_minute > 0 || tmp_second > 0:
+		str_s = str(tmp_second) + "s "
+	str_data = "Total: " + str_h + str_m + str_s +"\n\n" + str_data
+	str_data = "4x: " + str(sum_4x) + ", "+"%.2f" % (float(sum_4x) / 6561 * 100)+"%\n" + str_data
 	str_data = "3x: " + str(sum_3x) + ", "+"%.2f" % (float(sum_3x) / 6561 * 100)+"%\n" + str_data
 	str_data = "2x: " + str(sum_2x) + ", "+"%.2f" % (float(sum_2x) / 6561 * 100)+"%\n" + str_data
 	str_data = "1x: " + str(sum_1x) + ", "+"%.2f" % (float(sum_1x) / 6561 * 100)+"%\n" + str_data
 	ppLabel.bbcode_text = str_data
-
+	
 	if sum_count > 0:
 		ppAverage.text = "%.2f" % [sum_score / sum_count] + "s"
 	else:

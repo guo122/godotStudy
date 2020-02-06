@@ -14,16 +14,16 @@ var logMgr
 
 var _data_color_map = {
 	"5": Color(0, 1, 1),
-	"10": Color(0, 1, 0),
-	"15": Color(0.5, 1, 0),
-	"20": Color(1, 1, 0),
-	"25": Color(1, 0.95, 0),
-	"30": Color(1, 0.9, 0),
-	"35": Color(1, 0.75, 0),
-	"40": Color(1, 0.6, 0),
-	"45": Color(1, 0.45, 0),
-	"50": Color(1, 0.3, 0),
-	"55": Color(1, 0.15, 0),
+	"10": Color(0, 1, 0.5),
+	"15": Color(0, 1, 0),
+	"20": Color(0.5, 1, 0),
+	"25": Color(0.8, 0.8, 0),
+	"30": Color(1, 0.8, 0),
+	"35": Color(1, 0.65, 0),
+	"40": Color(1, 0.5, 0),
+	"45": Color(1, 0.35, 0),
+	"50": Color(1, 0.2, 0),
+	"55": Color(1, 0.1, 0),
 	"60": Color(1, 0, 0)
 }
 
@@ -110,25 +110,7 @@ func _initData():
 					_data["mathMatrixX"][int(num1) - 11][int(num2) - 11].append(dataList)
 		_data.erase("mathScoreX")
 	if !_data_color_image:
-		_data_color_image = Image.new()
-		_data_color_image.create(COLOR_IMAGE_X, COLOR_IMAGE_Y, false, COLOR_IMAGE_FORMAT)
-		_data_color_image.lock()
-		for i in range(0, COLOR_IMAGE_X):
-			for j in range(0, COLOR_IMAGE_Y):
-				if i % 73 == 0 || j % 73 == 0:
-					_data_color_image.set_pixel(i, j, COLOR_LINE_COLOR)
-				else:
-					_data_color_image.set_pixel(i, j, COLOR_DEFAULT_COLOR)
-		var ii: int = -1
-		var jj: int = -1
-		for i in _data["mathMatrixX"]:
-			ii += 1
-			jj = -1
-			for j in i:
-				jj += 1
-				if !j.empty():
-					_set_map_color(ii, jj, j)
-		_data_color_image.unlock()
+		_init_color_map()
 	_clear_hightlight_color()
 	_save()
 
@@ -184,6 +166,30 @@ func _get_color(sec: float) -> Color:
 	else:
 		logMgr._error("[GData] get color error.")
 		return COLOR_DEFAULT_COLOR
+
+
+func _init_color_map():
+	_data_color_image = null
+	_data_color_image = Image.new()
+	_data_color_image.create(COLOR_IMAGE_X, COLOR_IMAGE_Y, false, COLOR_IMAGE_FORMAT)
+	_data_color_image.lock()
+	for i in range(0, COLOR_IMAGE_X):
+		for j in range(0, COLOR_IMAGE_Y):
+			if i % 73 == 0 || j % 73 == 0:
+				_data_color_image.set_pixel(i, j, COLOR_LINE_COLOR)
+			else:
+				_data_color_image.set_pixel(i, j, COLOR_DEFAULT_COLOR)
+	var ii: int = -1
+	var jj: int = -1
+	for i in _data["mathMatrixX"]:
+		ii += 1
+		jj = -1
+		for j in i:
+			jj += 1
+			if !j.empty():
+				_set_map_color(ii, jj, j)
+	_data_color_image.unlock()
+	logMgr._log("[GData] init math map.")
 
 
 func _printMetaData():

@@ -136,8 +136,13 @@ size_flags_vertical = 3
 
 [node name="MathMulMap" parent="VBoxContainer/MarginContainer/ScrollContainer/VBoxContainer" instance=ExtResource( 7 )]
 
-[node name="RichTextLabel" type="RichTextLabel" parent="VBoxContainer/MarginContainer/ScrollContainer/VBoxContainer"]
+[node name="HSlider" type="HSlider" parent="VBoxContainer/MarginContainer/ScrollContainer/VBoxContainer"]
 margin_top = 703.0
+margin_right = 700.0
+margin_bottom = 719.0
+
+[node name="RichTextLabel" type="RichTextLabel" parent="VBoxContainer/MarginContainer/ScrollContainer/VBoxContainer"]
+margin_top = 723.0
 margin_right = 700.0
 margin_bottom = 1134.0
 size_flags_horizontal = 3
