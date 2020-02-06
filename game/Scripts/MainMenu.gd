@@ -17,27 +17,28 @@ func _setRectSize(ssize: Vector2):
 	$VBoxContainer.rect_min_size = ssize
 
 
+func _on_BtnMath_pressed():
+	panelMgr.openPanel("MathMul")
 
-func _on_BtnSample_button_down():
-	panelMgr.openPanel("SampleList")
 
-
-func _on_BtnStar_button_down():
+func _on_BtnStar_pressed():
 	if !panelMgr.openPanel("SampleParticles", PANEL_PARTICLES_LAYER):
 		panelMgr.closePanel_name("SampleParticles")
 
 
-func _on_BtnMath_button_down():
-	panelMgr.openPanel("MathMul")
+func _on_BtnScore_pressed():
+	panelMgr.openPanel("MathScoreData")
 
 
-func _on_BtnChangeLog_button_down():
-	panelMgr.openPanel("MiscChangeLog")
+func _on_BtnSample_pressed():
+	panelMgr.openPanel("SampleList")
 
 
-func _on_BtnSetting_button_down():
+func _on_BtnSetting_pressed():
 	panelMgr.openPanel("MiscSetting")
 
 
-func _on_BtnScore_button_down():
-	panelMgr.openPanel("MathScoreData")
+func _on_BtnChangeLog_pressed():
+	panelMgr.openPanel("MiscChangeLog")
+
+

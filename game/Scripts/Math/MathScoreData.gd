@@ -34,15 +34,13 @@ func _process(delta):
 	ppRefresh.text = "%.2f" % [local_time]
 
 
-func _on_BtnBack_button_down():
-	panelMgr.closePanel_animation(self)
-
-
 func _set_text():
 	var sum_score: float = 0
 	var sum_count: int = 0
-	var sum_meta: int = 0
-	var sum_repeat: int = 0
+	var sum_1x: int = 0
+	var sum_2x: int = 0
+	var sum_3x: int = 0
+	var sum_4x: int = 0
 	var ii: int = 10
 	var jj: int = 10
 	var str_data = ""
@@ -52,17 +50,23 @@ func _set_text():
 		for j in i:
 			jj += 1
 			if !j.empty():
-				sum_meta += 1
 				str_data += str(ii) + " x " + str(jj) + " : "
 				for data in j:
 					str_data += ("%.2f" % [data[1]]) + "s "
 					sum_score += data[1]
 					sum_count += 1
 				str_data += "\n"
+				sum_1x += 1
 				if j.size() > 1:
-					sum_repeat += 1
-	str_data = "Repeat: " + str(sum_count - sum_meta) + " (" + str(sum_repeat) + "), "+"%.2f" % (float(sum_repeat) / 6561 * 10)+"%\n\n" + str_data
-	str_data = "Sum: " + str(sum_meta) + " / 6561, "+"%.2f" % (float(sum_meta) / 6561 * 10)+"%\n" + str_data
+					sum_2x += 1
+				if j.size() > 2:
+					sum_3x += 1
+				if j.size() > 3:
+					sum_4x += 1
+	str_data = "4x: " + str(sum_4x) + ", "+"%.2f" % (float(sum_4x) / 6561 * 100)+"%\n\n" + str_data
+	str_data = "3x: " + str(sum_3x) + ", "+"%.2f" % (float(sum_3x) / 6561 * 100)+"%\n" + str_data
+	str_data = "2x: " + str(sum_2x) + ", "+"%.2f" % (float(sum_2x) / 6561 * 100)+"%\n" + str_data
+	str_data = "1x: " + str(sum_1x) + ", "+"%.2f" % (float(sum_1x) / 6561 * 100)+"%\n" + str_data
 	ppLabel.bbcode_text = str_data
 
 	if sum_count > 0:
@@ -71,9 +75,12 @@ func _set_text():
 		ppAverage.text = "0.00s"
 
 
-func _on_BtnRefresh_button_down():
-	local_time = 0
+func _on_BtnBack_pressed():
+	panelMgr.closePanel_animation(self)
 
+
+func _on_BtnRefresh_pressed():
+	local_time = 0
 
 
 

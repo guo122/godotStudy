@@ -51,7 +51,9 @@ rect_min_size = Vector2( 10, 0 )
 margin_left = 14.0
 margin_right = 138.0
 margin_bottom = 58.0
+focus_mode = 0
 custom_fonts/font = SubResource( 1 )
+enabled_focus_mode = 0
 text = "Back"
 __meta__ = {
 "_edit_use_anchors_": false
@@ -86,11 +88,13 @@ margin_left = 581.0
 margin_right = 705.0
 margin_bottom = 58.0
 rect_min_size = Vector2( 124, 0 )
+focus_mode = 0
 custom_fonts/font = SubResource( 1 )
 custom_colors/font_color_disabled = Color( 0, 0, 0, 1 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
 custom_colors/font_color_hover = Color( 0, 0, 0, 1 )
 custom_colors/font_color_pressed = Color( 0, 0, 0, 1 )
+enabled_focus_mode = 0
 text = "0.0"
 flat = true
 align = 2
@@ -145,5 +149,5 @@ text = "sss"
 __meta__ = {
 "_edit_use_anchors_": false
 }
-[connection signal="button_down" from="VBoxContainer/Menu0/BtnBack" to="." method="_on_BtnBack_button_down"]
-[connection signal="button_down" from="VBoxContainer/Menu0/BtnRefresh" to="." method="_on_BtnRefresh_button_down"]
+[connection signal="pressed" from="VBoxContainer/Menu0/BtnBack" to="." method="_on_BtnBack_pressed"]
+[connection signal="pressed" from="VBoxContainer/Menu0/BtnRefresh" to="." method="_on_BtnRefresh_pressed"]

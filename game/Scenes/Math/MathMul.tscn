@@ -55,7 +55,9 @@ rect_min_size = Vector2( 10, 0 )
 margin_left = 14.0
 margin_right = 138.0
 margin_bottom = 58.0
+focus_mode = 0
 custom_fonts/font = SubResource( 1 )
+enabled_focus_mode = 0
 text = "Back"
 __meta__ = {
 "_edit_use_anchors_": false
@@ -91,7 +93,9 @@ size_flags_vertical = 3
 margin_left = 560.0
 margin_right = 705.0
 margin_bottom = 58.0
+focus_mode = 0
 custom_fonts/font = SubResource( 1 )
+enabled_focus_mode = 0
 text = "PASS"
 __meta__ = {
 "_edit_use_anchors_": false
@@ -256,5 +260,5 @@ margin_top = 1249.0
 margin_right = 720.0
 margin_bottom = 1279.0
 rect_min_size = Vector2( 0, 30 )
-[connection signal="button_down" from="VBoxContainer/Menu0/BtnBack" to="." method="_on_BtnBack_button_down"]
-[connection signal="button_down" from="VBoxContainer/Menu0/BtnPass" to="." method="_on_BtnPass_button_down"]
+[connection signal="pressed" from="VBoxContainer/Menu0/BtnBack" to="." method="_on_BtnBack_pressed"]
+[connection signal="pressed" from="VBoxContainer/Menu0/BtnPass" to="." method="_on_BtnPass_pressed"]

@@ -1,6 +1,11 @@
 
 # Change log
 
+## 0.04(24)
+
+- [misc] opt button pressed.
+- [score] update info.
+
 ## 0.04(23)
 
 - [score] update info.

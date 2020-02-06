@@ -49,7 +49,9 @@ rect_min_size = Vector2( 10, 0 )
 margin_left = 14.0
 margin_right = 138.0
 margin_bottom = 58.0
+focus_mode = 0
 custom_fonts/font = SubResource( 1 )
+enabled_focus_mode = 0
 text = "Back"
 __meta__ = {
 "_edit_use_anchors_": false
@@ -67,7 +69,9 @@ margin_left = 582.0
 margin_right = 706.0
 margin_bottom = 58.0
 rect_min_size = Vector2( 124, 0 )
+focus_mode = 0
 custom_fonts/font = SubResource( 1 )
+enabled_focus_mode = 0
 text = "Will"
 __meta__ = {
 "_edit_use_anchors_": false
@@ -100,6 +104,11 @@ size_flags_vertical = 3
 custom_fonts/normal_font = ExtResource( 3 )
 custom_colors/default_color = Color( 0, 0, 0, 1 )
 text = "# Change log
+
+## 0.04(24)
+
+- [misc] opt button pressed.
+- [score] update info.
 
 ## 0.04(23)
 
@@ -171,5 +180,5 @@ text = "# Change log
 __meta__ = {
 "_edit_use_anchors_": false
 }
-[connection signal="button_down" from="VBoxContainer/Menu0/BtnBack" to="." method="_on_BtnBack_button_down"]
-[connection signal="button_down" from="VBoxContainer/Menu0/BtnWill" to="." method="_on_BtnWill_button_down"]
+[connection signal="pressed" from="VBoxContainer/Menu0/BtnBack" to="." method="_on_BtnBack_pressed"]
+[connection signal="pressed" from="VBoxContainer/Menu0/BtnWill" to="." method="_on_BtnWill_pressed"]

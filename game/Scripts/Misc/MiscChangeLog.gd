@@ -13,9 +13,9 @@ func _setRectSize(ssize: Vector2):
 	$VBoxContainer.rect_min_size = ssize
 
 
-func _on_BtnBack_button_down():
+func _on_BtnBack_pressed():
 	panelMgr.closePanel_animation(self)
 
 
-func _on_BtnWill_button_down():
+func _on_BtnWill_pressed():
 	panelMgr.openPanel("MiscWillLog")

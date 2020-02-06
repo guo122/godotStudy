@@ -23,14 +23,14 @@ func _setRectSize(ssize: Vector2):
 	ppBtnSwitch.rect_position = Vector2(596, 0)
 
 
-func _on_Button_button_down():
+func _on_log_update(sstr):
+	ppLog.bbcode_text = sstr
+
+
+func _on_BtnSwitch_pressed():
 	if ppLog.visible:
 		ppLog.visible = false
 		$BasicBg.visible = false
 	else:
 		ppLog.visible = true
 		$BasicBg.visible = true
-
-
-func _on_log_update(sstr):
-	ppLog.bbcode_text = sstr

@@ -13,29 +13,29 @@ func _ready():
 	inputStr = "0"
 	inputDot = false
 # warning-ignore:return_value_discarded
-	$HBoxContainer/Btn11.connect("button_down", self, "pad_num_pressed", ["11"])
+	$HBoxContainer/Btn11.connect("pressed", self, "pad_num_pressed", ["11"])
 # warning-ignore:return_value_discarded
-	$HBoxContainer/Btn12.connect("button_down", self, "pad_num_pressed", ["12"])
+	$HBoxContainer/Btn12.connect("pressed", self, "pad_num_pressed", ["12"])
 # warning-ignore:return_value_discarded
-	$HBoxContainer/Btn13.connect("button_down", self, "pad_num_pressed", ["13"])
+	$HBoxContainer/Btn13.connect("pressed", self, "pad_num_pressed", ["13"])
 # warning-ignore:return_value_discarded
-	$HBoxContainer2/Btn21.connect("button_down", self, "pad_num_pressed", ["21"])
+	$HBoxContainer2/Btn21.connect("pressed", self, "pad_num_pressed", ["21"])
 # warning-ignore:return_value_discarded
-	$HBoxContainer2/Btn22.connect("button_down", self, "pad_num_pressed", ["22"])
+	$HBoxContainer2/Btn22.connect("pressed", self, "pad_num_pressed", ["22"])
 # warning-ignore:return_value_discarded
-	$HBoxContainer2/Btn23.connect("button_down", self, "pad_num_pressed", ["23"])
+	$HBoxContainer2/Btn23.connect("pressed", self, "pad_num_pressed", ["23"])
 # warning-ignore:return_value_discarded
-	$HBoxContainer3/Btn31.connect("button_down", self, "pad_num_pressed", ["31"])
+	$HBoxContainer3/Btn31.connect("pressed", self, "pad_num_pressed", ["31"])
 # warning-ignore:return_value_discarded
-	$HBoxContainer3/Btn32.connect("button_down", self, "pad_num_pressed", ["32"])
+	$HBoxContainer3/Btn32.connect("pressed", self, "pad_num_pressed", ["32"])
 # warning-ignore:return_value_discarded
-	$HBoxContainer3/Btn33.connect("button_down", self, "pad_num_pressed", ["33"])
+	$HBoxContainer3/Btn33.connect("pressed", self, "pad_num_pressed", ["33"])
 # warning-ignore:return_value_discarded
-	$HBoxContainer4/Btn41.connect("button_down", self, "pad_num_pressed", ["41"])
+	$HBoxContainer4/Btn41.connect("pressed", self, "pad_num_pressed", ["41"])
 # warning-ignore:return_value_discarded
-	$HBoxContainer4/Btn42.connect("button_down", self, "pad_num_pressed", ["42"])
+	$HBoxContainer4/Btn42.connect("pressed", self, "pad_num_pressed", ["42"])
 # warning-ignore:return_value_discarded
-	$HBoxContainer4/Btn43.connect("button_down", self, "pad_clear_pressed")
+	$HBoxContainer4/Btn43.connect("pressed", self, "pad_clear_pressed")
 	
 	set_style(false)
 

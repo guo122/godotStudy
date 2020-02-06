@@ -72,10 +72,6 @@ func _on_Nine_click(ss:String, num: float):
 		_num_init()
 
 
-func _on_BtnBack_button_down():
-	panelMgr.closePanel_animation(self)
-
-
 func _num_init():
 	if score_count >= score_max:
 		panelMgr.closePanel_animation(self, "close2")
@@ -122,5 +118,9 @@ func _num_setGUI():
 	$VBoxContainer/Menu3/Progress.text = str(score_count) + "/" + str(score_max)
 
 
-func _on_BtnPass_button_down():
+func _on_BtnBack_pressed():
+	panelMgr.closePanel_animation(self)
+
+
+func _on_BtnPass_pressed():
 	_num_init()

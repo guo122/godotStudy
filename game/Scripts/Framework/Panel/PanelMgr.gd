@@ -21,6 +21,7 @@ var mainScene
 var mainNode: CenterContainer
 var topNode: Control
 
+var animationTimeDic: Dictionary
 var animationDic: Dictionary
 
 var mainPanelName: String
@@ -154,7 +155,7 @@ func closePanel(node: Node):
 
 func closePanel_animation(node: Node, anim: String = "close"):
 	node.get_node("AnimationPlayer").play(anim)
-	delayNodeDic[node] = 0.1
+	delayNodeDic[node] = animationTimeDic[anim]
 
 
 func addNode(node: Node, layer: int):
@@ -214,22 +215,26 @@ func _init_animation():
 	var track_index = animation.add_track(Animation.TYPE_VALUE)
 	animation.track_set_path(track_index, ".:rect_position")
 	animation.track_insert_key(track_index, 0, Vector2(720, 0))
-	animation.track_insert_key(track_index, 0.1, Vector2(0, 0))
+	animation.track_insert_key(track_index, 0.2, Vector2(0, 0))
 	animationDic["open"] = animation
+	animationTimeDic["open"] = 0.2
 	
 	animation = Animation.new()
 	track_index = animation.add_track(Animation.TYPE_VALUE)
 	animation.track_set_path(track_index, ".:rect_position")
 	animation.track_insert_key(track_index, 0, Vector2(0, 0))
-	animation.track_insert_key(track_index, 0.1, Vector2(720, 0))
+	
+	animation.track_insert_key(track_index, 0.2, Vector2(720, 0))
 	animationDic["close"] = animation
+	animationTimeDic["close"] = 0.2
 	
 	animation = Animation.new()
 	track_index = animation.add_track(Animation.TYPE_VALUE)
 	animation.track_set_path(track_index, ".:rect_position")
 	animation.track_insert_key(track_index, 0, Vector2(0, 0))
-	animation.track_insert_key(track_index, 0.1, Vector2(-720, 0))
+	animation.track_insert_key(track_index, 0.2, Vector2(-720, 0))
 	animationDic["close2"] = animation
+	animationTimeDic["close2"] = 0.2
 
 
 func _set_animtion(animation_player):

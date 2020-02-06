@@ -25,10 +25,6 @@ func _setRectSize(ssize: Vector2):
 	$VBoxContainer.rect_min_size = ssize
 
 
-func _on_BtnBack_button_down():
-	panelMgr.closePanel_animation(self)
-
-
 func _panel_set_dic(dic: Dictionary):
 	arg_dic = dic
 	dataMgr._clear_hightlight_color()
@@ -50,3 +46,7 @@ func _panel_set_dic(dic: Dictionary):
 	dataMgr._save()
 	
 	ppMap._update_map()
+
+
+func _on_BtnBack_pressed():
+	panelMgr.closePanel_animation(self)

@@ -11,7 +11,7 @@ func _setRectSize(ssize: Vector2):
 	rect_size = ssize
 	$BasicBg.rect_min_size = ssize
 	$VBoxContainer.rect_min_size = ssize
+	
 
-
-func _on_BtnBack_button_down():
+func _on_BtnBack_pressed():
 	panelMgr.closePanel_animation(self)

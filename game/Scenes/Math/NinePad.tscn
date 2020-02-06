@@ -24,27 +24,33 @@ custom_constants/separation = 30
 [node name="Btn11" type="Button" parent="HBoxContainer"]
 margin_right = 186.0
 margin_bottom = 162.0
+focus_mode = 0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 custom_fonts/font = ExtResource( 2 )
+enabled_focus_mode = 0
 text = "1"
 
 [node name="Btn12" type="Button" parent="HBoxContainer"]
 margin_left = 216.0
 margin_right = 402.0
 margin_bottom = 162.0
+focus_mode = 0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 custom_fonts/font = ExtResource( 2 )
+enabled_focus_mode = 0
 text = "2"
 
 [node name="Btn13" type="Button" parent="HBoxContainer"]
 margin_left = 432.0
 margin_right = 618.0
 margin_bottom = 162.0
+focus_mode = 0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 custom_fonts/font = ExtResource( 2 )
+enabled_focus_mode = 0
 text = "3"
 
 [node name="HBoxContainer2" type="HBoxContainer" parent="."]
@@ -58,27 +64,33 @@ custom_constants/separation = 30
 [node name="Btn21" type="Button" parent="HBoxContainer2"]
 margin_right = 186.0
 margin_bottom = 162.0
+focus_mode = 0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 custom_fonts/font = ExtResource( 2 )
+enabled_focus_mode = 0
 text = "4"
 
 [node name="Btn22" type="Button" parent="HBoxContainer2"]
 margin_left = 216.0
 margin_right = 402.0
 margin_bottom = 162.0
+focus_mode = 0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 custom_fonts/font = ExtResource( 2 )
+enabled_focus_mode = 0
 text = "5"
 
 [node name="Btn23" type="Button" parent="HBoxContainer2"]
 margin_left = 432.0
 margin_right = 618.0
 margin_bottom = 162.0
+focus_mode = 0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 custom_fonts/font = ExtResource( 2 )
+enabled_focus_mode = 0
 text = "6"
 
 [node name="HBoxContainer3" type="HBoxContainer" parent="."]
@@ -92,27 +104,33 @@ custom_constants/separation = 30
 [node name="Btn31" type="Button" parent="HBoxContainer3"]
 margin_right = 186.0
 margin_bottom = 162.0
+focus_mode = 0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 custom_fonts/font = ExtResource( 2 )
+enabled_focus_mode = 0
 text = "7"
 
 [node name="Btn32" type="Button" parent="HBoxContainer3"]
 margin_left = 216.0
 margin_right = 402.0
 margin_bottom = 162.0
+focus_mode = 0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 custom_fonts/font = ExtResource( 2 )
+enabled_focus_mode = 0
 text = "8"
 
 [node name="Btn33" type="Button" parent="HBoxContainer3"]
 margin_left = 432.0
 margin_right = 618.0
 margin_bottom = 162.0
+focus_mode = 0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 custom_fonts/font = ExtResource( 2 )
+enabled_focus_mode = 0
 text = "9"
 
 [node name="HBoxContainer4" type="HBoxContainer" parent="."]
@@ -126,25 +144,31 @@ custom_constants/separation = 30
 [node name="Btn41" type="Button" parent="HBoxContainer4"]
 margin_right = 186.0
 margin_bottom = 164.0
+focus_mode = 0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 custom_fonts/font = ExtResource( 2 )
+enabled_focus_mode = 0
 text = "."
 
 [node name="Btn42" type="Button" parent="HBoxContainer4"]
 margin_left = 216.0
 margin_right = 402.0
 margin_bottom = 164.0
+focus_mode = 0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 custom_fonts/font = ExtResource( 2 )
+enabled_focus_mode = 0
 text = "0"
 
 [node name="Btn43" type="Button" parent="HBoxContainer4"]
 margin_left = 432.0
 margin_right = 618.0
 margin_bottom = 164.0
+focus_mode = 0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 custom_fonts/font = ExtResource( 2 )
+enabled_focus_mode = 0
 text = "c"

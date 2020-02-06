@@ -74,7 +74,7 @@ margin_right = 134.0
 margin_bottom = 42.0
 custom_fonts/font = SubResource( 1 )
 custom_colors/font_color = Color( 1, 1, 1, 1 )
-text = "v0.04(23)"
+text = "v0.04(24)"
 
 [node name="Menu0" type="HBoxContainer" parent="VBoxContainer"]
 margin_top = 64.0
@@ -90,7 +90,9 @@ size_flags_horizontal = 3
 margin_left = 525.0
 margin_right = 706.0
 margin_bottom = 58.0
+focus_mode = 0
 custom_fonts/font = SubResource( 2 )
+enabled_focus_mode = 0
 text = "Change"
 flat = true
 __meta__ = {
@@ -129,7 +131,9 @@ rect_min_size = Vector2( 10, 0 )
 margin_left = 14.0
 margin_right = 489.0
 margin_bottom = 211.0
+focus_mode = 0
 custom_fonts/font = SubResource( 3 )
+enabled_focus_mode = 0
 text = "Math"
 flat = true
 __meta__ = {
@@ -151,7 +155,9 @@ size_flags_vertical = 3
 margin_left = 598.0
 margin_right = 706.0
 margin_bottom = 58.0
+focus_mode = 0
 custom_fonts/font = SubResource( 4 )
+enabled_focus_mode = 0
 text = "Star"
 flat = true
 __meta__ = {
@@ -180,7 +186,9 @@ margin_left = 526.0
 margin_right = 706.0
 margin_bottom = 58.0
 rect_min_size = Vector2( 180, 0 )
+focus_mode = 0
 custom_fonts/font = SubResource( 4 )
+enabled_focus_mode = 0
 text = "Score"
 flat = true
 __meta__ = {
@@ -209,7 +217,9 @@ margin_left = 526.0
 margin_right = 706.0
 margin_bottom = 58.0
 rect_min_size = Vector2( 180, 0 )
+focus_mode = 0
 custom_fonts/font = SubResource( 4 )
+enabled_focus_mode = 0
 text = "Sample"
 flat = true
 __meta__ = {
@@ -238,7 +248,9 @@ margin_left = 526.0
 margin_right = 706.0
 margin_bottom = 58.0
 rect_min_size = Vector2( 180, 0 )
+focus_mode = 0
 custom_fonts/font = SubResource( 4 )
+enabled_focus_mode = 0
 text = "Setting"
 flat = true
 __meta__ = {
@@ -256,9 +268,9 @@ margin_top = 1180.0
 margin_right = 720.0
 margin_bottom = 1280.0
 rect_min_size = Vector2( 0, 100 )
-[connection signal="button_down" from="VBoxContainer/Menu0/BtnChangeLog" to="." method="_on_BtnChangeLog_button_down"]
-[connection signal="button_down" from="VBoxContainer/Menu3/HBoxContainer/BtnMath" to="." method="_on_BtnMath_button_down"]
-[connection signal="button_down" from="VBoxContainer/Menu3/HBoxContainer2/BtnStar" to="." method="_on_BtnStar_button_down"]
-[connection signal="button_down" from="VBoxContainer/Menu3/HBoxContainer5/BtnScore" to="." method="_on_BtnScore_button_down"]
-[connection signal="button_down" from="VBoxContainer/Menu3/HBoxContainer3/BtnSample" to="." method="_on_BtnSample_button_down"]
-[connection signal="button_down" from="VBoxContainer/Menu3/HBoxContainer4/BtnSetting" to="." method="_on_BtnSetting_button_down"]
+[connection signal="pressed" from="VBoxContainer/Menu0/BtnChangeLog" to="." method="_on_BtnChangeLog_pressed"]
+[connection signal="pressed" from="VBoxContainer/Menu3/HBoxContainer/BtnMath" to="." method="_on_BtnMath_pressed"]
+[connection signal="pressed" from="VBoxContainer/Menu3/HBoxContainer2/BtnStar" to="." method="_on_BtnStar_pressed"]
+[connection signal="pressed" from="VBoxContainer/Menu3/HBoxContainer5/BtnScore" to="." method="_on_BtnScore_pressed"]
+[connection signal="pressed" from="VBoxContainer/Menu3/HBoxContainer3/BtnSample" to="." method="_on_BtnSample_pressed"]
+[connection signal="pressed" from="VBoxContainer/Menu3/HBoxContainer4/BtnSetting" to="." method="_on_BtnSetting_pressed"]

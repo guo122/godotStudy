@@ -44,6 +44,8 @@ margin_left = 582.0
 margin_right = 706.0
 margin_bottom = 60.0
 rect_min_size = Vector2( 124, 60 )
+focus_mode = 0
+enabled_focus_mode = 0
 text = "............................"
 flat = true
 
@@ -144,4 +146,4 @@ afsdasfasfasfasfasfafsdasfasfasfasfasfafsdasfasfasfasfasfafsdasfasfasfasfasfafsd
 __meta__ = {
 "_edit_use_anchors_": false
 }
-[connection signal="button_down" from="VBoxContainer/TopFixed/BtnSwitch" to="." method="_on_Button_button_down"]
+[connection signal="pressed" from="VBoxContainer/TopFixed/BtnSwitch" to="." method="_on_BtnSwitch_pressed"]

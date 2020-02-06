@@ -35,16 +35,26 @@ func _process(delta):
 			_resetBtnClear()
 
 
-func _on_BtnBack_button_down():
+func _resetBtnClear():
+	local_time = CLEAR_RESET_TIME
+	clearStage = CLEAR_DEFAULT_STATE
+	ppClearData.text = CLEAR_DEFAULT_BTN_NAME
+
+
+func _on_BtnBack_pressed():
 	panelMgr.closePanel_animation(self)
 
 
-func _on_BtnLog_button_down():
+func _on_BtnLog_pressed():
 	if !panelMgr.openPanel("MiscTTLog", PANEL_PARTICLES_LAYER):
 		panelMgr.closePanel_name("MiscTTLog")
 
 
-func _on_BtnClearData_button_down():
+func _on_BtnPrintData_pressed():
+	dataMgr._printMetaData()
+
+
+func _on_BtnClearData_pressed():
 	if clearStage > 0:
 		local_time = CLEAR_RESET_TIME
 		clearStage -= 1
@@ -53,13 +63,3 @@ func _on_BtnClearData_button_down():
 		dataMgr._clearData()
 		yield(get_tree().create_timer(1), "timeout")
 		_resetBtnClear()
-		
-
-func _resetBtnClear():
-	local_time = CLEAR_RESET_TIME
-	clearStage = CLEAR_DEFAULT_STATE
-	ppClearData.text = CLEAR_DEFAULT_BTN_NAME
-
-
-func _on_BtnPrintData_button_down():
-	dataMgr._printMetaData()
