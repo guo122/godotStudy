@@ -1,6 +1,10 @@
 
 # Change log
 
+## 0.04(26)
+
+- [score] update info.
+
 ## 0.04(25)
 
 - [score] update info.

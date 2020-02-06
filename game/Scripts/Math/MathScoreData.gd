@@ -23,7 +23,7 @@ func _setRectSize(ssize: Vector2):
 	rect_size = ssize
 	$BasicBg.rect_min_size = ssize
 	$VBoxContainer.rect_min_size = ssize
-
+	
 	dataMgr._clear_hightlight_color()
 	ppMap._update_map()
 	_set_text()
@@ -63,9 +63,9 @@ func _set_text():
 					sum_3x += 1
 				if j.size() > 3:
 					sum_4x += 1
-	var tmp_hour: int = sum_score / 3600
-	var tmp_minute: int = (sum_score - (tmp_hour * 3600)) / 60
-	var tmp_second: int = sum_score - (tmp_hour * 3600) - (tmp_minute * 60)
+	var tmp_hour: int = int(sum_score) / 3600
+	var tmp_minute: int = (int(sum_score) - (tmp_hour * 3600)) / 60
+	var tmp_second: int = int(sum_score) - (tmp_hour * 3600) - (tmp_minute * 60)
 	var str_h: String = ""
 	var str_m: String = ""
 	var str_s: String = ""
@@ -94,6 +94,16 @@ func _on_BtnBack_pressed():
 
 func _on_BtnRefresh_pressed():
 	local_time = 0
+
+
+func _on_ColorRatioSlider_value_changed(value):
+	ppMap._set_color_ratio(value)
+
+
+
+
+
+
 
 
 

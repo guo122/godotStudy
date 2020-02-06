@@ -20,5 +20,10 @@ func _update_map():
 	ppRect.material.set_shader_param("hightlight_texture", highlight_texture)
 
 
+func _set_color_ratio(rr: float):
+	ppRect.material.set_shader_param("color_ratio", rr / 100)
+
+
+
 
 

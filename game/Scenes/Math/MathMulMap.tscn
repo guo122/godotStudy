@@ -8,6 +8,7 @@ code = "shader_type canvas_item;
 //render_mode blend_disabled;
 //varying vec2 POSITION;
 
+uniform float color_ratio = 1f;
 uniform sampler2D hightlight_texture;
 
 //void vertex(){
@@ -23,11 +24,15 @@ void fragment(){
 	
 	float alpha = base_alpha * ratio;
 	
-	COLOR = color * (1f - alpha) + highlight_color * alpha;
-}"
+	vec4 cc = color * (1f - alpha) + highlight_color * alpha;
+	cc *= color_ratio;
+	COLOR = vec4(cc.x, cc.y, cc.z, 1f);
+}
+"
 
 [sub_resource type="ShaderMaterial" id=2]
 shader = SubResource( 1 )
+shader_param/color_ratio = 1.0
 
 [node name="MathMulMap" type="VBoxContainer"]
 margin_right = 700.0
