@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://Fonts/Resources/Xolonium-Regular.ttf" type="DynamicFontData" id=1]
 [ext_resource path="res://Fonts/Text33.tres" type="DynamicFont" id=2]
@@ -7,6 +7,8 @@
 [ext_resource path="res://Scripts/Math/MathScoreData.gd" type="Script" id=5]
 [ext_resource path="res://Fonts/Text48.tres" type="DynamicFont" id=6]
 [ext_resource path="res://Scenes/Math/MathMulMap.tscn" type="PackedScene" id=7]
+[ext_resource path="res://Scripts/Framework/Panel/PanelSwipe.gd" type="Script" id=8]
+[ext_resource path="res://Theme/EmptyBar.tres" type="Theme" id=9]
 
 [sub_resource type="DynamicFont" id=1]
 size = 43
@@ -25,13 +27,11 @@ __meta__ = {
 anchor_top = 0.0
 anchor_right = 0.0
 anchor_bottom = 0.0
-margin_left = 6.0
-margin_right = 726.0
+margin_right = 720.0
 margin_bottom = 1280.0
 
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
-margin_left = 6.0
-margin_right = 726.0
+margin_right = 720.0
 margin_bottom = 1280.0
 rect_min_size = Vector2( 720, 1280 )
 size_flags_horizontal = 3
@@ -121,26 +121,42 @@ custom_constants/margin_top = 10
 custom_constants/margin_left = 10
 custom_constants/margin_bottom = 10
 
-[node name="ScrollContainer" type="ScrollContainer" parent="VBoxContainer/MarginContainer"]
+[node name="Swipe" type="ScrollContainer" parent="VBoxContainer/MarginContainer"]
 margin_left = 10.0
 margin_top = 10.0
 margin_right = 710.0
 margin_bottom = 1144.0
+theme = ExtResource( 9 )
+follow_focus = true
+script = ExtResource( 8 )
+scroll_list = [ 0, 704, 1408 ]
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/MarginContainer/Swipe"]
+margin_right = 2108.0
+margin_bottom = 1134.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="ScrollContainer" type="ScrollContainer" parent="VBoxContainer/MarginContainer/Swipe/HBoxContainer"]
+margin_right = 700.0
+margin_bottom = 1134.0
+rect_min_size = Vector2( 700, 0 )
 size_flags_horizontal = 3
 size_flags_vertical = 3
 scroll_horizontal_enabled = false
 
-[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/MarginContainer/ScrollContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/MarginContainer/Swipe/HBoxContainer/ScrollContainer"]
 margin_right = 700.0
 margin_bottom = 1134.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
-[node name="MathMulMap" parent="VBoxContainer/MarginContainer/ScrollContainer/VBoxContainer" instance=ExtResource( 7 )]
-margin_bottom = 719.0
+[node name="MathMulMap" parent="VBoxContainer/MarginContainer/Swipe/HBoxContainer/ScrollContainer/VBoxContainer" instance=ExtResource( 7 )]
+margin_right = 700.0
+margin_bottom = 767.0
 
-[node name="RichTextLabel" type="RichTextLabel" parent="VBoxContainer/MarginContainer/ScrollContainer/VBoxContainer"]
-margin_top = 723.0
+[node name="RichTextLabel" type="RichTextLabel" parent="VBoxContainer/MarginContainer/Swipe/HBoxContainer/ScrollContainer/VBoxContainer"]
+margin_top = 771.0
 margin_right = 700.0
 margin_bottom = 1134.0
 size_flags_horizontal = 3
@@ -152,5 +168,22 @@ text = "sss"
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="ColorRect" type="ColorRect" parent="VBoxContainer/MarginContainer/Swipe/HBoxContainer"]
+margin_left = 704.0
+margin_right = 1404.0
+margin_bottom = 1134.0
+rect_min_size = Vector2( 700, 0 )
+color = Color( 1, 0.627451, 0.627451, 1 )
+
+[node name="ColorRect2" type="ColorRect" parent="VBoxContainer/MarginContainer/Swipe/HBoxContainer"]
+margin_left = 1408.0
+margin_right = 2108.0
+margin_bottom = 1134.0
+rect_min_size = Vector2( 700, 0 )
+color = Color( 0, 1, 0.529412, 1 )
 [connection signal="pressed" from="VBoxContainer/Menu0/BtnBack" to="." method="_on_BtnBack_pressed"]
 [connection signal="pressed" from="VBoxContainer/Menu0/BtnRefresh" to="." method="_on_BtnRefresh_pressed"]
+[connection signal="gui_input" from="VBoxContainer/MarginContainer/Swipe" to="VBoxContainer/MarginContainer/Swipe" method="_on_Swipe_gui_input"]
+[connection signal="scroll_ended" from="VBoxContainer/MarginContainer/Swipe" to="VBoxContainer/MarginContainer/Swipe" method="_on_Swipe_scroll_ended"]
+[connection signal="scroll_started" from="VBoxContainer/MarginContainer/Swipe" to="VBoxContainer/MarginContainer/Swipe" method="_on_Swipe_scroll_started"]

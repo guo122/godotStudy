@@ -1,16 +1,30 @@
 extends ScrollContainer
 
+export (Array, int) var scroll_list
 
-# Declare member variables here. Examples:
-# var a = 2
-# var b = "text"
-
+var logMgr
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	pass # Replace with function body.
+	logMgr = get_node("/root/GLog")
+	connect("scroll_started", self, "_on_PanelSwipe_scroll_started")
+	connect("scroll_ended", self, "_on_PanelSwipe_scroll_ended")
+
+func _process(delta):
+	pass
+#	print(get_h_scroll())
 
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-#func _process(delta):
-#	pass
+func _on_Swipe_gui_input(event: InputEvent):
+	if event.is_pressed():
+		logMgr._debug("[Swipe] start")
+	else:
+		logMgr._debug("[Swipe] end")
+
+
+func _on_Swipe_scroll_ended():
+	logMgr._debug("[Swipe] scroll ended")
+
+
+func _on_Swipe_scroll_started():
+	logMgr._debug("[Swipe] scroll started")

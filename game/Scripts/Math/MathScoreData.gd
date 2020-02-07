@@ -4,8 +4,8 @@ var panelMgr
 var logMgr
 var dataMgr
 
-onready var ppLabel: RichTextLabel = $VBoxContainer/MarginContainer/ScrollContainer/VBoxContainer/RichTextLabel
-onready var ppMap: TextureRect = $VBoxContainer/MarginContainer/ScrollContainer/VBoxContainer/MathMulMap
+onready var ppLabel: RichTextLabel = $VBoxContainer/MarginContainer/Swipe/HBoxContainer/ScrollContainer/VBoxContainer/RichTextLabel
+onready var ppMap: TextureRect = $VBoxContainer/MarginContainer/Swipe/HBoxContainer/ScrollContainer/VBoxContainer/MathMulMap
 onready var ppAverage: Label = $VBoxContainer/Menu0/LabelAverage
 onready var ppRefresh: Button = $VBoxContainer/Menu0/BtnRefresh
 
@@ -94,14 +94,6 @@ func _on_BtnBack_pressed():
 
 func _on_BtnRefresh_pressed():
 	local_time = 0
-
-
-
-
-
-
-
-
 
 
 
