@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://Fonts/Resources/Xolonium-Regular.ttf" type="DynamicFontData" id=1]
 [ext_resource path="res://Fonts/Text33.tres" type="DynamicFont" id=2]
@@ -7,7 +7,6 @@
 [ext_resource path="res://Scripts/Math/MathScoreData.gd" type="Script" id=5]
 [ext_resource path="res://Fonts/Text48.tres" type="DynamicFont" id=6]
 [ext_resource path="res://Scenes/Math/MathMulMap.tscn" type="PackedScene" id=7]
-[ext_resource path="res://icon.png" type="Texture" id=8]
 
 [sub_resource type="DynamicFont" id=1]
 size = 43
@@ -26,11 +25,13 @@ __meta__ = {
 anchor_top = 0.0
 anchor_right = 0.0
 anchor_bottom = 0.0
-margin_right = 720.0
+margin_left = 6.0
+margin_right = 726.0
 margin_bottom = 1280.0
 
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
-margin_right = 720.0
+margin_left = 6.0
+margin_right = 726.0
 margin_bottom = 1280.0
 rect_min_size = Vector2( 720, 1280 )
 size_flags_horizontal = 3
@@ -136,19 +137,10 @@ size_flags_horizontal = 3
 size_flags_vertical = 3
 
 [node name="MathMulMap" parent="VBoxContainer/MarginContainer/ScrollContainer/VBoxContainer" instance=ExtResource( 7 )]
-
-[node name="ColorRatioSlider" type="HSlider" parent="VBoxContainer/MarginContainer/ScrollContainer/VBoxContainer"]
-margin_top = 703.0
-margin_right = 700.0
-margin_bottom = 767.0
-custom_icons/grabber_highlight = ExtResource( 8 )
-custom_icons/grabber = ExtResource( 8 )
-max_value = 100.0
-step = 1.0
-value = 100.0
+margin_bottom = 719.0
 
 [node name="RichTextLabel" type="RichTextLabel" parent="VBoxContainer/MarginContainer/ScrollContainer/VBoxContainer"]
-margin_top = 771.0
+margin_top = 723.0
 margin_right = 700.0
 margin_bottom = 1134.0
 size_flags_horizontal = 3
@@ -162,4 +154,3 @@ __meta__ = {
 }
 [connection signal="pressed" from="VBoxContainer/Menu0/BtnBack" to="." method="_on_BtnBack_pressed"]
 [connection signal="pressed" from="VBoxContainer/Menu0/BtnRefresh" to="." method="_on_BtnRefresh_pressed"]
-[connection signal="value_changed" from="VBoxContainer/MarginContainer/ScrollContainer/VBoxContainer/ColorRatioSlider" to="." method="_on_ColorRatioSlider_value_changed"]

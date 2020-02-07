@@ -1,7 +1,9 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://Fonts/TextColor.tres" type="DynamicFont" id=1]
 [ext_resource path="res://Scripts/Math/MathMulMap.gd" type="Script" id=2]
+[ext_resource path="res://Assets/png/math_score_slider_bg2.png" type="Texture" id=3]
+[ext_resource path="res://Assets/png/math_score_slider_grabber.png" type="Texture" id=5]
 
 [sub_resource type="Shader" id=1]
 code = "shader_type canvas_item;
@@ -33,6 +35,14 @@ void fragment(){
 [sub_resource type="ShaderMaterial" id=2]
 shader = SubResource( 1 )
 shader_param/color_ratio = 1.0
+
+[sub_resource type="StyleBoxTexture" id=3]
+texture = ExtResource( 3 )
+region_rect = Rect2( 0, 0, 700, 64 )
+
+[sub_resource type="StyleBoxTexture" id=4]
+texture = ExtResource( 3 )
+region_rect = Rect2( 0, 0, 700, 64 )
 
 [node name="MathMulMap" type="VBoxContainer"]
 margin_right = 700.0
@@ -269,3 +279,14 @@ margin_right = 700.0
 margin_bottom = 658.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
+
+[node name="HSlider" type="HSlider" parent="."]
+margin_top = 703.0
+margin_right = 700.0
+margin_bottom = 767.0
+custom_icons/grabber_highlight = ExtResource( 5 )
+custom_icons/grabber = ExtResource( 5 )
+custom_styles/slider = SubResource( 3 )
+custom_styles/grabber_area = SubResource( 4 )
+value = 100.0
+[connection signal="value_changed" from="HSlider" to="." method="_on_HSlider_value_changed"]

@@ -96,10 +96,6 @@ func _on_BtnRefresh_pressed():
 	local_time = 0
 
 
-func _on_ColorRatioSlider_value_changed(value):
-	ppMap._set_color_ratio(value)
-
-
 
 
 
