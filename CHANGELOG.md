@@ -1,6 +1,10 @@
 
 # Change log
 
+## 0.04(28)
+
+- [score] update info.
+
 ## 0.04(27)
 
 - [score] update math score map slider.

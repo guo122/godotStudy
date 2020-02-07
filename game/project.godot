@@ -13,9 +13,15 @@ _global_script_classes=[ {
 "class": "DoubleDictionary",
 "language": "GDScript",
 "path": "res://Scripts/Framework/Tools/DoubleDictionary.gd"
+}, {
+"base": "ScrollContainer",
+"class": "PanelSwipe",
+"language": "GDScript",
+"path": "res://Scripts/Framework/Panel/PanelSwipe.gd"
 } ]
 _global_script_class_icons={
-"DoubleDictionary": ""
+"DoubleDictionary": "",
+"PanelSwipe": ""
 }
 
 [application]

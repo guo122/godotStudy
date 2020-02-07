@@ -42,17 +42,17 @@ size_flags_vertical = 3
 [node name="Menu0" type="HBoxContainer" parent="VBoxContainer"]
 margin_top = 64.0
 margin_right = 720.0
-margin_bottom = 122.0
+margin_bottom = 128.0
 
 [node name="fixed" type="Control" parent="VBoxContainer/Menu0"]
 margin_right = 10.0
-margin_bottom = 58.0
+margin_bottom = 64.0
 rect_min_size = Vector2( 10, 0 )
 
 [node name="BtnBack" type="Button" parent="VBoxContainer/Menu0"]
 margin_left = 14.0
 margin_right = 138.0
-margin_bottom = 58.0
+margin_bottom = 64.0
 focus_mode = 0
 custom_fonts/font = SubResource( 1 )
 enabled_focus_mode = 0
@@ -63,55 +63,48 @@ __meta__ = {
 
 [node name="space" type="Control" parent="VBoxContainer/Menu0"]
 margin_left = 142.0
-margin_right = 283.0
-margin_bottom = 58.0
+margin_right = 372.0
+margin_bottom = 64.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
-[node name="LabelAverage" type="Label" parent="VBoxContainer/Menu0"]
-margin_left = 287.0
-margin_right = 432.0
-margin_bottom = 58.0
+[node name="BtnLeft" type="Button" parent="VBoxContainer/Menu0"]
+margin_left = 376.0
+margin_right = 422.0
+margin_bottom = 64.0
+focus_mode = 0
 custom_fonts/font = ExtResource( 6 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
-text = "50.0s"
-align = 1
-valign = 1
+enabled_focus_mode = 0
+text = "<"
+flat = true
 
 [node name="space2" type="Control" parent="VBoxContainer/Menu0"]
-margin_left = 436.0
-margin_right = 577.0
-margin_bottom = 58.0
+margin_left = 426.0
+margin_right = 656.0
+margin_bottom = 64.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
-[node name="BtnRefresh" type="Button" parent="VBoxContainer/Menu0"]
-margin_left = 581.0
-margin_right = 705.0
-margin_bottom = 58.0
-rect_min_size = Vector2( 124, 0 )
+[node name="BtnRight" type="Button" parent="VBoxContainer/Menu0"]
+margin_left = 660.0
+margin_right = 706.0
+margin_bottom = 64.0
 focus_mode = 0
-custom_fonts/font = SubResource( 1 )
-custom_colors/font_color_disabled = Color( 0, 0, 0, 1 )
+custom_fonts/font = ExtResource( 6 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
-custom_colors/font_color_hover = Color( 0, 0, 0, 1 )
-custom_colors/font_color_pressed = Color( 0, 0, 0, 1 )
 enabled_focus_mode = 0
-text = "0.0"
+text = ">"
 flat = true
-align = 2
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="fixed2" type="Control" parent="VBoxContainer/Menu0"]
-margin_left = 709.0
-margin_right = 719.0
-margin_bottom = 58.0
+margin_left = 710.0
+margin_right = 720.0
+margin_bottom = 64.0
 rect_min_size = Vector2( 10, 0 )
 
 [node name="MarginContainer" type="MarginContainer" parent="VBoxContainer"]
-margin_top = 126.0
+margin_top = 132.0
 margin_right = 720.0
 margin_bottom = 1280.0
 size_flags_horizontal = 3
@@ -125,21 +118,22 @@ custom_constants/margin_bottom = 10
 margin_left = 10.0
 margin_top = 10.0
 margin_right = 710.0
-margin_bottom = 1144.0
+margin_bottom = 1138.0
 theme = ExtResource( 9 )
 follow_focus = true
+scroll_vertical_enabled = false
 script = ExtResource( 8 )
 scroll_list = [ 0, 704, 1408 ]
 
 [node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/MarginContainer/Swipe"]
 margin_right = 2108.0
-margin_bottom = 1134.0
+margin_bottom = 1128.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
 [node name="ScrollContainer" type="ScrollContainer" parent="VBoxContainer/MarginContainer/Swipe/HBoxContainer"]
 margin_right = 700.0
-margin_bottom = 1134.0
+margin_bottom = 1128.0
 rect_min_size = Vector2( 700, 0 )
 size_flags_horizontal = 3
 size_flags_vertical = 3
@@ -147,7 +141,7 @@ scroll_horizontal_enabled = false
 
 [node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/MarginContainer/Swipe/HBoxContainer/ScrollContainer"]
 margin_right = 700.0
-margin_bottom = 1134.0
+margin_bottom = 2877.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
@@ -158,13 +152,15 @@ margin_bottom = 767.0
 [node name="RichTextLabel" type="RichTextLabel" parent="VBoxContainer/MarginContainer/Swipe/HBoxContainer/ScrollContainer/VBoxContainer"]
 margin_top = 771.0
 margin_right = 700.0
-margin_bottom = 1134.0
+margin_bottom = 2877.0
+rect_min_size = Vector2( 0, 2106 )
 size_flags_horizontal = 3
 size_flags_vertical = 3
 custom_fonts/normal_font = ExtResource( 2 )
 custom_colors/default_color = Color( 0, 0, 0, 1 )
 bbcode_enabled = true
 text = "sss"
+scroll_active = false
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -172,18 +168,19 @@ __meta__ = {
 [node name="ColorRect" type="ColorRect" parent="VBoxContainer/MarginContainer/Swipe/HBoxContainer"]
 margin_left = 704.0
 margin_right = 1404.0
-margin_bottom = 1134.0
+margin_bottom = 1128.0
 rect_min_size = Vector2( 700, 0 )
 color = Color( 1, 0.627451, 0.627451, 1 )
 
 [node name="ColorRect2" type="ColorRect" parent="VBoxContainer/MarginContainer/Swipe/HBoxContainer"]
 margin_left = 1408.0
 margin_right = 2108.0
-margin_bottom = 1134.0
+margin_bottom = 1128.0
 rect_min_size = Vector2( 700, 0 )
 color = Color( 0, 1, 0.529412, 1 )
 [connection signal="pressed" from="VBoxContainer/Menu0/BtnBack" to="." method="_on_BtnBack_pressed"]
-[connection signal="pressed" from="VBoxContainer/Menu0/BtnRefresh" to="." method="_on_BtnRefresh_pressed"]
+[connection signal="pressed" from="VBoxContainer/Menu0/BtnLeft" to="." method="_on_BtnLeft_pressed"]
+[connection signal="pressed" from="VBoxContainer/Menu0/BtnRight" to="." method="_on_BtnRight_pressed"]
 [connection signal="gui_input" from="VBoxContainer/MarginContainer/Swipe" to="VBoxContainer/MarginContainer/Swipe" method="_on_Swipe_gui_input"]
 [connection signal="scroll_ended" from="VBoxContainer/MarginContainer/Swipe" to="VBoxContainer/MarginContainer/Swipe" method="_on_Swipe_scroll_ended"]
 [connection signal="scroll_started" from="VBoxContainer/MarginContainer/Swipe" to="VBoxContainer/MarginContainer/Swipe" method="_on_Swipe_scroll_started"]
