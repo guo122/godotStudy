@@ -2,7 +2,7 @@
 
 [ext_resource path="res://Fonts/TextColor.tres" type="DynamicFont" id=1]
 [ext_resource path="res://Scripts/Math/MathMulMap.gd" type="Script" id=2]
-[ext_resource path="res://Assets/png/math_score_slider_bg2.png" type="Texture" id=3]
+[ext_resource path="res://Assets/png/math_score_slider_bg.png" type="Texture" id=3]
 [ext_resource path="res://Assets/png/math_score_slider_grabber.png" type="Texture" id=5]
 
 [sub_resource type="Shader" id=1]
@@ -38,22 +38,22 @@ shader_param/color_ratio = 1.0
 
 [sub_resource type="StyleBoxTexture" id=3]
 texture = ExtResource( 3 )
-region_rect = Rect2( 0, 0, 700, 64 )
+region_rect = Rect2( 0, 0, 687, 64 )
 
 [sub_resource type="StyleBoxTexture" id=4]
 texture = ExtResource( 3 )
-region_rect = Rect2( 0, 0, 700, 64 )
+region_rect = Rect2( 0, 0, 687, 64 )
 
 [node name="MathMulMap" type="VBoxContainer"]
-margin_right = 700.0
-margin_bottom = 699.0
+margin_right = 687.0
+margin_bottom = 757.0
 script = ExtResource( 2 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="HBoxContainer2" type="HBoxContainer" parent="."]
-margin_right = 700.0
+margin_right = 687.0
 margin_bottom = 37.0
 custom_constants/separation = 55
 
@@ -166,7 +166,7 @@ valign = 1
 
 [node name="HBoxContainer" type="HBoxContainer" parent="."]
 margin_top = 41.0
-margin_right = 700.0
+margin_right = 687.0
 margin_bottom = 699.0
 __meta__ = {
 "_edit_use_anchors_": false
@@ -275,14 +275,14 @@ rect_min_size = Vector2( 658, 658 )
 
 [node name="space2" type="Control" parent="HBoxContainer"]
 margin_left = 687.0
-margin_right = 700.0
+margin_right = 687.0
 margin_bottom = 658.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
 [node name="HSlider" type="HSlider" parent="."]
 margin_top = 703.0
-margin_right = 700.0
+margin_right = 687.0
 margin_bottom = 767.0
 custom_icons/grabber_highlight = ExtResource( 5 )
 custom_icons/grabber = ExtResource( 5 )
