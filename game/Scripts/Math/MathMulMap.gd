@@ -18,6 +18,7 @@ func _update_map():
 	var highlight_texture: ImageTexture = ImageTexture.new()
 	highlight_texture.create_from_image(dataMgr._data_hightlight_map)
 	ppRect.material.set_shader_param("hightlight_texture", highlight_texture)
+	ppRect.material.set_shader_param("color_ratio", 1)
 
 
 func _on_HSlider_value_changed(value):

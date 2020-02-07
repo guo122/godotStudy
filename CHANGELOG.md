@@ -1,6 +1,10 @@
 
 # Change log
 
+## 0.04(29)
+
+- [score] add date time list.
+
 ## 0.04(28)
 
 - [score] update info.

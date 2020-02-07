@@ -74,7 +74,10 @@ margin_right = 422.0
 margin_bottom = 64.0
 focus_mode = 0
 custom_fonts/font = ExtResource( 6 )
+custom_colors/font_color_disabled = Color( 0, 0, 0, 1 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_colors/font_color_hover = Color( 0, 0, 0, 1 )
+custom_colors/font_color_pressed = Color( 0, 0, 0, 1 )
 enabled_focus_mode = 0
 text = "<"
 flat = true
@@ -92,7 +95,10 @@ margin_right = 706.0
 margin_bottom = 64.0
 focus_mode = 0
 custom_fonts/font = ExtResource( 6 )
+custom_colors/font_color_disabled = Color( 0, 0, 0, 1 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_colors/font_color_hover = Color( 0, 0, 0, 1 )
+custom_colors/font_color_pressed = Color( 0, 0, 0, 1 )
 enabled_focus_mode = 0
 text = ">"
 flat = true
@@ -141,7 +147,7 @@ scroll_horizontal_enabled = false
 
 [node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/MarginContainer/Swipe/HBoxContainer/ScrollContainer"]
 margin_right = 700.0
-margin_bottom = 2877.0
+margin_bottom = 1128.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
@@ -149,11 +155,10 @@ size_flags_vertical = 3
 margin_right = 700.0
 margin_bottom = 767.0
 
-[node name="RichTextLabel" type="RichTextLabel" parent="VBoxContainer/MarginContainer/Swipe/HBoxContainer/ScrollContainer/VBoxContainer"]
+[node name="LabelSummary" type="RichTextLabel" parent="VBoxContainer/MarginContainer/Swipe/HBoxContainer/ScrollContainer/VBoxContainer"]
 margin_top = 771.0
 margin_right = 700.0
-margin_bottom = 2877.0
-rect_min_size = Vector2( 0, 2106 )
+margin_bottom = 1128.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 custom_fonts/normal_font = ExtResource( 2 )
@@ -165,19 +170,33 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="ColorRect" type="ColorRect" parent="VBoxContainer/MarginContainer/Swipe/HBoxContainer"]
+[node name="LabelDatetime" type="RichTextLabel" parent="VBoxContainer/MarginContainer/Swipe/HBoxContainer"]
 margin_left = 704.0
 margin_right = 1404.0
 margin_bottom = 1128.0
 rect_min_size = Vector2( 700, 0 )
-color = Color( 1, 0.627451, 0.627451, 1 )
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_fonts/normal_font = ExtResource( 2 )
+custom_colors/default_color = Color( 0, 0, 0, 1 )
+bbcode_enabled = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
-[node name="ColorRect2" type="ColorRect" parent="VBoxContainer/MarginContainer/Swipe/HBoxContainer"]
+[node name="LabelList" type="RichTextLabel" parent="VBoxContainer/MarginContainer/Swipe/HBoxContainer"]
 margin_left = 1408.0
 margin_right = 2108.0
 margin_bottom = 1128.0
 rect_min_size = Vector2( 700, 0 )
-color = Color( 0, 1, 0.529412, 1 )
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_fonts/normal_font = ExtResource( 2 )
+custom_colors/default_color = Color( 0, 0, 0, 1 )
+bbcode_enabled = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
 [connection signal="pressed" from="VBoxContainer/Menu0/BtnBack" to="." method="_on_BtnBack_pressed"]
 [connection signal="pressed" from="VBoxContainer/Menu0/BtnLeft" to="." method="_on_BtnLeft_pressed"]
 [connection signal="pressed" from="VBoxContainer/Menu0/BtnRight" to="." method="_on_BtnRight_pressed"]

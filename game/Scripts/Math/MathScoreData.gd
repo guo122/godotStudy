@@ -4,7 +4,9 @@ var panelMgr
 var logMgr
 var dataMgr
 
-onready var ppLabel: RichTextLabel = $VBoxContainer/MarginContainer/Swipe/HBoxContainer/ScrollContainer/VBoxContainer/RichTextLabel
+onready var ppLabelSummary: RichTextLabel = $VBoxContainer/MarginContainer/Swipe/HBoxContainer/ScrollContainer/VBoxContainer/LabelSummary
+onready var ppLabelDatetime: RichTextLabel = $VBoxContainer/MarginContainer/Swipe/HBoxContainer/LabelDatetime
+onready var ppLabelList: RichTextLabel = $VBoxContainer/MarginContainer/Swipe/HBoxContainer/LabelList
 onready var ppMap: TextureRect = $VBoxContainer/MarginContainer/Swipe/HBoxContainer/ScrollContainer/VBoxContainer/MathMulMap
 onready var ppBtnLeft: Button = $VBoxContainer/Menu0/BtnLeft
 onready var ppBtnRight: Button = $VBoxContainer/Menu0/BtnRight
@@ -35,21 +37,35 @@ func _set_text():
 	var sum_3x: int = 0
 	var sum_4x: int = 0
 	var sum_5x: int = 0
+	var str_data_summary = ""
+	var str_data_datetime = ""
+	var str_data_list = ""
+	var date_array: Array = []
+	var date_dic: Dictionary = {}
+	var str_date = ""
 	var ii: int = 10
 	var jj: int = 10
-	var str_data = ""
 	for i in dataMgr._data["mathMatrixX"]:
 		ii += 1
 		jj = 10
 		for j in i:
 			jj += 1
 			if !j.empty():
-				str_data += str(ii) + " x " + str(jj) + " : "
+				str_data_list += str(ii) + " x " + str(jj) + " : "
 				for data in j:
-					str_data += ("%.2f" % [data[1]]) + "s "
+					str_date = ToolsDatetime._Timestamp2Date(data[0])
+					str_data_list += ("%.2f" % [data[1]]) + "s "
+					if !date_dic.has(str_date):
+						var tmp_array: Array = []
+						tmp_array.append(0)
+						tmp_array.append(0)
+						date_dic[str_date] = tmp_array
+						date_array.append(str_date)
+					date_dic[str_date][0] += data[1]
+					date_dic[str_date][1] += 1
 					sum_score += data[1]
 					sum_count += 1
-				str_data += "\n"
+				str_data_list += "\n"
 				sum_1x += 1
 				if j.size() > 1:
 					sum_2x += 1
@@ -59,36 +75,26 @@ func _set_text():
 					sum_4x += 1
 				if j.size() > 4:
 					sum_5x += 1
-	var tmp_hour: int = int(sum_score) / 3600
-	var tmp_minute: int = (int(sum_score) - (tmp_hour * 3600)) / 60
-	var tmp_second: int = int(sum_score) - (tmp_hour * 3600) - (tmp_minute * 60)
-	var str_h: String = ""
-	var str_m: String = ""
-	var str_s: String = ""
-	if tmp_hour > 0:
-		str_h = str(tmp_hour) + "h "
-	if tmp_hour > 0 || tmp_minute > 0:
-		str_m = str(tmp_minute) + "m "
-	if tmp_hour > 0 || tmp_minute > 0 || tmp_second > 0:
-		str_s = str(tmp_second) + "s "
+	date_array.sort()
 	if sum_count > 0:
-		str_data = "Average: " + "%.2f" % [sum_score / sum_count] + "s\n\n" + str_data
+		str_data_summary = "Average: " + "%.2f" % [sum_score / sum_count] + "s\n"
 	else:
-		str_data = "\n" + str_data
+		str_data_summary = "\n" + str_data_summary
 	
-	str_data = "Total: " + str_h + str_m + str_s +"\n" + str_data
-	str_data = "5x: " + str(sum_5x) + ", "+"%.2f" % (float(sum_5x) / 6561 * 100)+"%\n" + str_data
-	str_data = "4x: " + str(sum_4x) + ", "+"%.2f" % (float(sum_4x) / 6561 * 100)+"%\n" + str_data
-	str_data = "3x: " + str(sum_3x) + ", "+"%.2f" % (float(sum_3x) / 6561 * 100)+"%\n" + str_data
-	str_data = "2x: " + str(sum_2x) + ", "+"%.2f" % (float(sum_2x) / 6561 * 100)+"%\n" + str_data
-	str_data = "1x: " + str(sum_1x) + ", "+"%.2f" % (float(sum_1x) / 6561 * 100)+"%\n" + str_data
-	ppLabel.bbcode_text = str_data
+	str_data_summary = "Total: " + ToolsDatetime._DurationSecond2Datetime(sum_score) +"\n" + str_data_summary
+	str_data_summary = "5x: " + str(sum_5x) + ", "+"%.2f" % (float(sum_5x) / 6561 * 100)+"%\n" + str_data_summary
+	str_data_summary = "4x: " + str(sum_4x) + ", "+"%.2f" % (float(sum_4x) / 6561 * 100)+"%\n" + str_data_summary
+	str_data_summary = "3x: " + str(sum_3x) + ", "+"%.2f" % (float(sum_3x) / 6561 * 100)+"%\n" + str_data_summary
+	str_data_summary = "2x: " + str(sum_2x) + ", "+"%.2f" % (float(sum_2x) / 6561 * 100)+"%\n" + str_data_summary
+	str_data_summary = "1x: " + str(sum_1x) + ", "+"%.2f" % (float(sum_1x) / 6561 * 100)+"%\n" + str_data_summary
+	ppLabelSummary.bbcode_text = str_data_summary
+	ppLabelList.bbcode_text = str_data_list
 	
-	var font_height = ppLabel.get_font("normal_font").get_height()
-	var line_count = ppLabel.get_line_count()
-	var the_rect_size = ppLabel.rect_size
-	the_rect_size.y = font_height * line_count
-	ppLabel.rect_min_size = the_rect_size
+	ToolsMisc._RichLabelAdjustHeight(ppLabelSummary)
+	
+	for ss in date_array:
+		str_data_datetime = ss + ": " + ToolsDatetime._DurationSecond2Datetime(date_dic[ss][0]) + " (" + str(date_dic[ss][1]) + ")\n" + str_data_datetime
+	ppLabelDatetime.bbcode_text = str_data_datetime
 
 
 func _on_BtnBack_pressed():
