@@ -94,7 +94,7 @@ func _set_text():
 	
 	for ss in date_array:
 		str_data_datetime = ss + ": " + ToolsDatetime._DurationSecond2Datetime(date_dic[ss][0]) + " (" + str(date_dic[ss][1]) + ")\n" + str_data_datetime
-	ppLabelDatetime.bbcode_text = str_data_datetime
+	ppLabelDatetime.bbcode_text = str_data_datetimexw
 
 
 func _on_BtnBack_pressed():

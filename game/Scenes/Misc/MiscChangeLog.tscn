@@ -105,6 +105,10 @@ custom_fonts/normal_font = ExtResource( 3 )
 custom_colors/default_color = Color( 0, 0, 0, 1 )
 text = "# Change log
 
+## 0.04(30)
+
+- [input] fix touch bug.
+
 ## 0.04(29)
 
 - [score] add date time list.

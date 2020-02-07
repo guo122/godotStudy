@@ -1,6 +1,10 @@
 
 # Change log
 
+## 0.04(30)
+
+- [input] fix touch bug.
+
 ## 0.04(29)
 
 - [score] add date time list.
