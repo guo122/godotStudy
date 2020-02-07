@@ -1,6 +1,10 @@
 
 # Change log
 
+## 0.04(31)
+
+- fix bug.
+
 ## 0.04(30)
 
 - [input] fix touch bug.
