@@ -8,7 +8,6 @@ export (Array, int) var scroll_list
 
 var logMgr
 
-var locked_pos: float = 0
 var touch_start_pos: float = 0
 var last_swipe_speed = 0
 
@@ -27,8 +26,6 @@ var state = ScrollTouchState.Default
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	logMgr = get_node("/root/GLog")
-	connect("scroll_started", self, "_on_PanelSwipe_scroll_started")
-	connect("scroll_ended", self, "_on_PanelSwipe_scroll_ended")
 
 func _process(delta):
 	if running:
@@ -37,8 +34,6 @@ func _process(delta):
 		if local_time > total_time:
 			running = false
 			set_h_scroll(end_pos)
-	if state == ScrollTouchState.Locked:
-		set_h_scroll(locked_pos)
 
 func _turn_left():
 	_turn_impl(-1)
@@ -64,13 +59,15 @@ func _input(event: InputEvent):
 		if state == ScrollTouchState.Default:
 			if abs(input_event.relative.x) > abs(input_event.relative.y):
 				state = ScrollTouchState.Swipe
+				_set_children_mouse_filter(Control.MOUSE_FILTER_IGNORE)
 			else:
 				state = ScrollTouchState.Locked
-				locked_pos = get_h_scroll()
+				_set_children_mouse_filter(Control.MOUSE_FILTER_STOP)
 		last_swipe_speed = abs(input_event.speed.x)
 	elif event.is_class("InputEventScreenTouch"):
 		var input_event: InputEventScreenTouch = event
 		state = ScrollTouchState.Default
+		_set_children_mouse_filter(Control.MOUSE_FILTER_PASS)
 		if input_event.pressed:
 			touch_start_pos = get_h_scroll()
 		else:
@@ -94,6 +91,11 @@ func _input(event: InputEvent):
 					ii += 1
 				_turn_impl(nearly_page - current_page)
 
+
+func _set_children_mouse_filter(filter):
+	var children = get_node("HBoxContainer").get_children()
+	for child in children:
+		child.mouse_filter = filter
 
 
 
