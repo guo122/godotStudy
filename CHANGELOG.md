@@ -1,6 +1,11 @@
 
 # Change log
 
+## 0.05(36)
+
+- [swipe] opt panel swipe.
+- [log] add debug switch.
+
 ## 0.05(35)
 
 - [swipe] opt panel swipe.

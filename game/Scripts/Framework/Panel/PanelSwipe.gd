@@ -2,6 +2,7 @@ extends ScrollContainer
 
 class_name PanelSwipe
 
+export (int) var scroll_speed = 100
 export (Array, int) var scroll_list
 
 var logMgr
@@ -18,6 +19,9 @@ var total_time: float = 0.2
 var local_time: float = 0
 var current_page: int = 0
 
+const SCROLL_FREEZE_TIME = 0.2
+var scroll_stay_time = SCROLL_FREEZE_TIME
+
 enum ScrollTouchState {Default, Locked, Swipe}
 var state = ScrollTouchState.Default
 
@@ -32,8 +36,13 @@ func _process(delta):
 		if local_time > total_time:
 			running = false
 			set_h_scroll(end_pos)
+			logMgr._debug("[PanelSwipe] ended")
 	if state == ScrollTouchState.Locked:
 		set_h_scroll(scroll_list[current_page])
+	if scroll_stay_time > 0:
+		scroll_stay_time -= delta
+		if scroll_stay_time < 0:
+			last_swipe_speed = 0
 
 func _turn_left():
 	_turn_impl(-1)
@@ -64,6 +73,7 @@ func _input(event: InputEvent):
 				state = ScrollTouchState.Locked
 				_set_children_mouse_filter(Control.MOUSE_FILTER_STOP)
 		last_swipe_speed = abs(input_event.speed.x)
+		scroll_stay_time = SCROLL_FREEZE_TIME
 	elif event.is_class("InputEventScreenTouch"):
 		var input_event: InputEventScreenTouch = event
 		state = ScrollTouchState.Default
@@ -74,9 +84,10 @@ func _input(event: InputEvent):
 			var h_scroll: int = get_h_scroll()
 			var offset = h_scroll - touch_start_pos
 			if abs(h_scroll - touch_start_pos) < scroll_list[1]:
-				if offset > scroll_list[1] / 2 || (offset > 0 &&  last_swipe_speed > 200):
+				logMgr._debug("[PanelSwipe]speed:" + str(last_swipe_speed))
+				if offset > scroll_list[1] / 2 || (offset > 0 &&  last_swipe_speed > scroll_speed):
 					_turn_impl(1)
-				elif offset < -scroll_list[1] / 2 || (offset < 0 &&  last_swipe_speed > 200):
+				elif offset < -scroll_list[1] / 2 || (offset < 0 &&  last_swipe_speed > scroll_speed):
 					_turn_impl(-1)
 				else:
 					_turn_impl(0)

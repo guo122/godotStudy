@@ -2,6 +2,7 @@ extends Node
 
 signal glog_update
 
+var b_debug: bool = false
 var log_data: String
 
 func _ready():
@@ -15,9 +16,10 @@ func _log(content):
 
 
 func _debug(content):
-	print(content)
-	log_data = "[color=#ffc600]|[/color] " + str(content) + "\n" + log_data
-	emit_signal("glog_update", log_data)
+	if b_debug:
+		print(content)
+		log_data = "[color=#ffc600]|[/color] " + str(content) + "\n" + log_data
+		emit_signal("glog_update", log_data)
 
 
 func _warning(content):

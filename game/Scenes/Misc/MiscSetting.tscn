@@ -92,9 +92,9 @@ custom_constants/separation = 50
 alignment = 1
 
 [node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/Menu1"]
-margin_top = 384.0
+margin_top = 330.0
 margin_right = 720.0
-margin_bottom = 442.0
+margin_bottom = 388.0
 
 [node name="fixed2" type="Control" parent="VBoxContainer/Menu1/HBoxContainer"]
 margin_right = 100.0
@@ -121,10 +121,40 @@ margin_right = 720.0
 margin_bottom = 58.0
 rect_min_size = Vector2( 100, 0 )
 
-[node name="HBoxContainer4" type="HBoxContainer" parent="VBoxContainer/Menu1"]
-margin_top = 492.0
+[node name="HBoxContainer5" type="HBoxContainer" parent="VBoxContainer/Menu1"]
+margin_top = 438.0
 margin_right = 720.0
-margin_bottom = 550.0
+margin_bottom = 496.0
+
+[node name="fixed2" type="Control" parent="VBoxContainer/Menu1/HBoxContainer5"]
+margin_right = 100.0
+margin_bottom = 58.0
+rect_min_size = Vector2( 100, 0 )
+
+[node name="BtnDebug" type="Button" parent="VBoxContainer/Menu1/HBoxContainer5"]
+margin_left = 104.0
+margin_right = 616.0
+margin_bottom = 58.0
+focus_mode = 0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_fonts/font = SubResource( 1 )
+enabled_focus_mode = 0
+text = "Debug"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="fixed4" type="Control" parent="VBoxContainer/Menu1/HBoxContainer5"]
+margin_left = 620.0
+margin_right = 720.0
+margin_bottom = 58.0
+rect_min_size = Vector2( 100, 0 )
+
+[node name="HBoxContainer4" type="HBoxContainer" parent="VBoxContainer/Menu1"]
+margin_top = 546.0
+margin_right = 720.0
+margin_bottom = 604.0
 
 [node name="fixed2" type="Control" parent="VBoxContainer/Menu1/HBoxContainer4"]
 margin_right = 100.0
@@ -152,9 +182,9 @@ margin_bottom = 58.0
 rect_min_size = Vector2( 100, 0 )
 
 [node name="HBoxContainer3" type="HBoxContainer" parent="VBoxContainer/Menu1"]
-margin_top = 600.0
+margin_top = 654.0
 margin_right = 720.0
-margin_bottom = 658.0
+margin_bottom = 712.0
 
 [node name="fixed2" type="Control" parent="VBoxContainer/Menu1/HBoxContainer3"]
 margin_right = 100.0
@@ -182,9 +212,9 @@ margin_bottom = 58.0
 rect_min_size = Vector2( 100, 0 )
 
 [node name="HBoxContainer2" type="HBoxContainer" parent="VBoxContainer/Menu1"]
-margin_top = 708.0
+margin_top = 762.0
 margin_right = 720.0
-margin_bottom = 766.0
+margin_bottom = 820.0
 
 [node name="fixed2" type="Control" parent="VBoxContainer/Menu1/HBoxContainer2"]
 margin_right = 100.0
@@ -216,6 +246,7 @@ margin_bottom = 58.0
 rect_min_size = Vector2( 100, 0 )
 [connection signal="pressed" from="VBoxContainer/Menu0/BtnBack" to="." method="_on_BtnBack_pressed"]
 [connection signal="pressed" from="VBoxContainer/Menu1/HBoxContainer/BtnLog" to="." method="_on_BtnLog_pressed"]
+[connection signal="pressed" from="VBoxContainer/Menu1/HBoxContainer5/BtnDebug" to="." method="_on_BtnDebug_pressed"]
 [connection signal="pressed" from="VBoxContainer/Menu1/HBoxContainer4/BtnRefreshMathMap" to="." method="_on_BtnRefreshMathMap_pressed"]
 [connection signal="pressed" from="VBoxContainer/Menu1/HBoxContainer3/BtnPrintData" to="." method="_on_BtnPrintData_pressed"]
 [connection signal="pressed" from="VBoxContainer/Menu1/HBoxContainer2/BtnClearData" to="." method="_on_BtnClearData_pressed"]
