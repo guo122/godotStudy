@@ -48,6 +48,7 @@ GLog="*res://Scripts/System/GLog.gd"
 GData="*res://Scripts/System/GData.gd"
 Globals="*res://Scripts/System/Globals.gd"
 PanelMgr="*res://Scripts/Framework/Panel/PanelMgr.gd"
+GScore="*res://Scripts/System/GScore.gd"
 
 [display]
 

@@ -1,6 +1,10 @@
 
 # Change log
 
+## 0.07(42)
+
+- [score] update info.
+
 ## 0.07(41)
 
 - [panelSwipe] signal.

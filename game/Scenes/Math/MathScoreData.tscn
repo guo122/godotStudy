@@ -86,10 +86,10 @@ margin_bottom = 1144.0
 theme = ExtResource( 9 )
 scroll_vertical_enabled = false
 script = ExtResource( 8 )
-scroll_list = [ 0, 704, 1408, 2112, 2816, 3520 ]
+scroll_list = [ 0, 704, 1408 ]
 
 [node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/MarginContainer/Swipe"]
-margin_right = 4220.0
+margin_right = 2108.0
 margin_bottom = 1134.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
@@ -158,34 +158,4 @@ bbcode_enabled = true
 __meta__ = {
 "_edit_use_anchors_": false
 }
-
-[node name="LabelList2" type="ColorRect" parent="VBoxContainer/MarginContainer/Swipe/HBoxContainer"]
-margin_left = 2112.0
-margin_right = 2812.0
-margin_bottom = 1134.0
-rect_min_size = Vector2( 700, 0 )
-mouse_filter = 1
-size_flags_horizontal = 3
-size_flags_vertical = 3
-color = Color( 0.882353, 0.203922, 0.203922, 1 )
-
-[node name="LabelList3" type="ColorRect" parent="VBoxContainer/MarginContainer/Swipe/HBoxContainer"]
-margin_left = 2816.0
-margin_right = 3516.0
-margin_bottom = 1134.0
-rect_min_size = Vector2( 700, 0 )
-mouse_filter = 1
-size_flags_horizontal = 3
-size_flags_vertical = 3
-color = Color( 0.192157, 0.803922, 0.4, 1 )
-
-[node name="LabelList4" type="ColorRect" parent="VBoxContainer/MarginContainer/Swipe/HBoxContainer"]
-margin_left = 3520.0
-margin_right = 4220.0
-margin_bottom = 1134.0
-rect_min_size = Vector2( 700, 0 )
-mouse_filter = 1
-size_flags_horizontal = 3
-size_flags_vertical = 3
-color = Color( 0.419608, 0.0823529, 0.909804, 1 )
 [connection signal="pressed" from="VBoxContainer/Menu0/BtnBack" to="." method="_on_BtnBack_pressed"]

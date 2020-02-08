@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://Scripts/Math/MathScore.gd" type="Script" id=1]
 [ext_resource path="res://Fonts/Resources/Xolonium-Regular.ttf" type="DynamicFontData" id=2]
@@ -7,6 +7,7 @@
 [ext_resource path="res://Scenes/Prefab/BasicColorBg.tscn" type="PackedScene" id=5]
 [ext_resource path="res://Fonts/Text48.tres" type="DynamicFont" id=6]
 [ext_resource path="res://Scenes/Math/MathMulMap.tscn" type="PackedScene" id=7]
+[ext_resource path="res://Theme/EmptyBar.tres" type="Theme" id=9]
 
 [sub_resource type="DynamicFont" id=1]
 size = 43
@@ -110,6 +111,7 @@ margin_right = 720.0
 margin_bottom = 1280.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
+theme = ExtResource( 9 )
 scroll_horizontal_enabled = false
 
 [node name="ScoreList" type="VBoxContainer" parent="VBoxContainer/ScrollContainer"]

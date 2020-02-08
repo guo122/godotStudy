@@ -3,6 +3,7 @@ extends Control
 var dataMgr
 var logMgr
 var panelMgr
+var scoreMgr
 
 onready var ppList: VBoxContainer = $VBoxContainer/ScrollContainer/ScoreList
 onready var ppAverage: Label = $VBoxContainer/Menu0/LabelAverage
@@ -16,6 +17,7 @@ func _ready():
 	panelMgr = get_node("/root/PanelMgr")
 	logMgr = get_node("/root/GLog")
 	dataMgr = get_node("/root/GData")
+	scoreMgr = get_node("/root/GScore")
 
 
 func _setRectSize(ssize: Vector2):
@@ -46,6 +48,14 @@ func _panel_set_dic(dic: Dictionary):
 	dataMgr._save()
 	
 	ppMap._update_map()
+	
+	var richLabelSummary = RichTextLabel.new()
+	ppList.add_child(richLabelSummary)
+	var score_dic = scoreMgr._get_score_data()
+	richLabelSummary.add_font_override("normal_font", load("res://Fonts/Text33.tres"))
+	richLabelSummary.add_color_override("default_color", Color(0, 0, 0))
+	richLabelSummary.text = "\n" + score_dic["summary"]
+	ToolsMisc._RichLabelAdjustHeight(richLabelSummary, 50)
 
 
 func _on_BtnBack_pressed():
