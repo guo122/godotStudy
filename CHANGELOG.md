@@ -1,6 +1,10 @@
 
 # Change log
 
+## 0.05(37)
+
+- [log] transparent log panel.
+
 ## 0.05(36)
 
 - [swipe] opt panel swipe.

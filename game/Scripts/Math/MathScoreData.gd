@@ -79,7 +79,7 @@ func _set_text():
 							tmp_array.append(0)
 							tmp_array.append(0)
 							time_dic[str(hhour)] = tmp_array
-							time_array.append(str(hhour))
+							time_array.append(hhour)
 						time_dic[str(hhour)][0] += data[1]
 						time_dic[str(hhour)][1] += 1
 				str_data_list += "\n"
@@ -107,8 +107,8 @@ func _set_text():
 	str_data_summary = "1x: " + str(sum_1x) + ", "+"%.2f" % (float(sum_1x) / 6561 * 100)+"%\n" + str_data_summary
 	
 	var str_data_time = ""
-	for ss in time_array:
-		str_data_time = ss + ": " + ToolsDatetime._DurationSecond2Datetime(time_dic[ss][0]) + " (" + str(time_dic[ss][1]) + ")\n" + str_data_time
+	for i in time_array:
+		str_data_time = str(i) + ": " + ToolsDatetime._DurationSecond2Datetime(time_dic[str(i)][0]) + " (" + str(time_dic[str(i)][1]) + ")\n" + str_data_time
 	ppLabelSummary.bbcode_text = str_data_summary + "\n" + str_data_time
 	
 	ToolsMisc._RichLabelAdjustHeight(ppLabelSummary)

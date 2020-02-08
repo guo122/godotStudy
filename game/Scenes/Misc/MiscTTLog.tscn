@@ -1,9 +1,14 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://Scripts/Misc/MiscTTLog.gd" type="Script" id=1]
-[ext_resource path="res://Fonts/Text33.tres" type="DynamicFont" id=3]
+[ext_resource path="res://Fonts/Resources/Xolonium-Regular.ttf" type="DynamicFontData" id=2]
 [ext_resource path="res://Scenes/Prefab/BasicColorBg.tscn" type="PackedScene" id=4]
 [ext_resource path="res://Scenes/Prefab/TopFixed.tscn" type="PackedScene" id=5]
+
+[sub_resource type="DynamicFont" id=1]
+size = 33
+outline_size = 2
+font_data = ExtResource( 2 )
 
 [node name="Panel" type="CenterContainer"]
 margin_right = 720.0
@@ -33,7 +38,23 @@ size_flags_vertical = 3
 [node name="TopFixed" parent="VBoxContainer" instance=ExtResource( 5 )]
 mouse_filter = 2
 
+[node name="fixed" type="Control" parent="VBoxContainer/TopFixed"]
+margin_right = 10.0
+margin_bottom = 60.0
+rect_min_size = Vector2( 10, 0 )
+
+[node name="BtnBg" type="Button" parent="VBoxContainer/TopFixed"]
+margin_left = 14.0
+margin_right = 138.0
+margin_bottom = 60.0
+rect_min_size = Vector2( 124, 60 )
+focus_mode = 0
+enabled_focus_mode = 0
+text = "............................"
+flat = true
+
 [node name="space" type="Control" parent="VBoxContainer/TopFixed"]
+margin_left = 142.0
 margin_right = 578.0
 margin_bottom = 60.0
 size_flags_horizontal = 3
@@ -49,7 +70,7 @@ enabled_focus_mode = 0
 text = "............................"
 flat = true
 
-[node name="fixed" type="Control" parent="VBoxContainer/TopFixed"]
+[node name="fixed2" type="Control" parent="VBoxContainer/TopFixed"]
 margin_left = 710.0
 margin_right = 720.0
 margin_bottom = 60.0
@@ -72,9 +93,10 @@ margin_left = 10.0
 margin_top = 10.0
 margin_right = 710.0
 margin_bottom = 1206.0
+mouse_filter = 1
 size_flags_horizontal = 3
 size_flags_vertical = 3
-custom_fonts/normal_font = ExtResource( 3 )
+custom_fonts/normal_font = SubResource( 1 )
 custom_colors/default_color = Color( 0, 0, 0, 1 )
 bbcode_enabled = true
 bbcode_text = "afsdasfasfasfasfasfafsdasfasfasfasfasfafsdasfasfasfasfasfafsdasfasfasfasfasfafsdasfasfasfasfasfafsdasfasfasfasfasfafsdasfasfasfasfasfafsdasfasfasfasfasfafsdasfasfasfasfasfafsdasfasfasfasfasfafsdasfasfasfasfasfafsdasfasfasfasfasf
@@ -143,7 +165,9 @@ afsdasfasfasfasfasfafsdasfasfasfasfasfafsdasfasfasfasfasfafsdasfasfasfasfasfafsd
 afsdasfasfasfasfasfafsdasfasfasfasfasfafsdasfasfasfasfasfafsdasfasfasfasfasfafsdasfasfasfasfasfafsdasfasfasfasfasf
 afsdasfasfasfasfasfafsdasfasfasfasfasfafsdasfasfasfasfasfafsdasfasfasfasfasfafsdasfasfasfasfasfafsdasfasfasfasfasf
 "
+scroll_following = true
 __meta__ = {
 "_edit_use_anchors_": false
 }
+[connection signal="pressed" from="VBoxContainer/TopFixed/BtnBg" to="." method="_on_BtnBg_pressed"]
 [connection signal="pressed" from="VBoxContainer/TopFixed/BtnSwitch" to="." method="_on_BtnSwitch_pressed"]
