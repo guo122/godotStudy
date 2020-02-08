@@ -1,14 +1,17 @@
 
 # Will
 
+## 0.08
+
+- [score] map color use texture slider.
+- [setting] toggle buttong.
+- [OK][panelSwipe] signal.
+- [log] filter switch.
+- [OK][changeLog] swipe page between change and will.
+
+## to be
+
 - [panel] animation curve.
 - [panel] back swipe gesture.
-- [score] average, score 1-100 ?
-- [score] map color use texture slider.
 - [misc] date manager.
-
-- [panelSwipe] signal.
-
-- [changeLog] swipe page between change and will.
-- [setting] toggle buttong.
-- [log] filter switch.
+- [score] average, score 1-100 ?

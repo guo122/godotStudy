@@ -50,3 +50,11 @@ func _panel_set_dic(dic: Dictionary):
 
 func _on_BtnBack_pressed():
 	panelMgr.closePanel_animation(self)
+
+
+func _on_BtnNext_pressed():
+		panelMgr.closePanel_animation(self, "close2")
+		panelMgr.openPanel("MathMul")
+
+
+

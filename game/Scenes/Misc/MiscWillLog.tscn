@@ -79,17 +79,20 @@ custom_fonts/normal_font = ExtResource( 3 )
 custom_colors/default_color = Color( 0, 0, 0, 1 )
 text = "# Will
 
+## 0.08
+
+- [score] map color use texture slider.
+- [setting] toggle buttong.
+- [panelSwipe] signal.
+- [log] filter switch.
+- [changeLog] swipe page between change and will.
+
+## to be
+
 - [panel] animation curve.
 - [panel] back swipe gesture.
-- [score] average, score 1-100 ?
-- [score] map color use texture slider.
 - [misc] date manager.
-
-- [panelSwipe] signal.
-
-- [changeLog] swipe page between change and will.
-- [setting] toggle buttong.
-- [log] filter switch."
+- [score] average, score 1-100 ?"
 __meta__ = {
 "_edit_use_anchors_": false
 }

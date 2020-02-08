@@ -1,6 +1,12 @@
 
 # Change log
 
+## 0.07(41)
+
+- [panelSwipe] signal.
+- [changeLog] swipe page between change and will.
+- [score] add next button.
+
 ## 0.06(40)
 
 - remove debug log.

@@ -5,6 +5,8 @@ class_name PanelSwipe
 export (int) var scroll_speed = 100
 export (Array, int) var scroll_list
 
+signal page_changed(page)
+
 var logMgr
 
 var touch_start_pos: float = 0
@@ -37,6 +39,7 @@ func _process(delta):
 		if local_time > total_time:
 			running = false
 			set_h_scroll(end_pos)
+			emit_signal("page_changed", current_page)
 	if state == ScrollTouchState.Locked:
 		set_h_scroll(scroll_list[current_page])
 	if scroll_start_enable:

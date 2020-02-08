@@ -1,10 +1,13 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://Scripts/Misc/MiscChangeLog.gd" type="Script" id=1]
 [ext_resource path="res://Fonts/Resources/Xolonium-Regular.ttf" type="DynamicFontData" id=2]
 [ext_resource path="res://Fonts/Text33.tres" type="DynamicFont" id=3]
 [ext_resource path="res://Scenes/Prefab/BasicColorBg.tscn" type="PackedScene" id=4]
 [ext_resource path="res://Scenes/Prefab/TopFixed.tscn" type="PackedScene" id=5]
+[ext_resource path="res://Theme/EmptyBar.tres" type="Theme" id=6]
+[ext_resource path="res://Scripts/Framework/Panel/PanelSwipe.gd" type="Script" id=7]
+[ext_resource path="res://Fonts/Text48.tres" type="DynamicFont" id=8]
 
 [sub_resource type="DynamicFont" id=1]
 size = 43
@@ -59,23 +62,20 @@ __meta__ = {
 
 [node name="space" type="Control" parent="VBoxContainer/Menu0"]
 margin_left = 142.0
-margin_right = 578.0
+margin_right = 418.0
 margin_bottom = 58.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
-[node name="BtnWill" type="Button" parent="VBoxContainer/Menu0"]
-margin_left = 582.0
+[node name="Label" type="Label" parent="VBoxContainer/Menu0"]
+margin_left = 422.0
 margin_right = 706.0
 margin_bottom = 58.0
-rect_min_size = Vector2( 124, 0 )
-focus_mode = 0
-custom_fonts/font = SubResource( 1 )
-enabled_focus_mode = 0
-text = "Will"
-__meta__ = {
-"_edit_use_anchors_": false
-}
+custom_fonts/font = ExtResource( 8 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_colors/font_outline_modulate = Color( 0, 0, 0, 1 )
+custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
+text = "ChangeLog"
 
 [node name="fixed2" type="Control" parent="VBoxContainer/Menu0"]
 margin_left = 710.0
@@ -94,16 +94,40 @@ custom_constants/margin_top = 10
 custom_constants/margin_left = 10
 custom_constants/margin_bottom = 50
 
-[node name="RichTextLabel" type="RichTextLabel" parent="VBoxContainer/MarginContainer"]
+[node name="ScrollContainer" type="ScrollContainer" parent="VBoxContainer/MarginContainer"]
 margin_left = 10.0
 margin_top = 10.0
 margin_right = 710.0
 margin_bottom = 1104.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
+theme = ExtResource( 6 )
+scroll_vertical_enabled = false
+script = ExtResource( 7 )
+scroll_list = [ 0, 704 ]
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/MarginContainer/ScrollContainer"]
+margin_right = 1404.0
+margin_bottom = 1094.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="LabelChange" type="RichTextLabel" parent="VBoxContainer/MarginContainer/ScrollContainer/HBoxContainer"]
+margin_right = 700.0
+margin_bottom = 1094.0
+rect_min_size = Vector2( 700, 0 )
+mouse_filter = 1
+size_flags_horizontal = 3
+size_flags_vertical = 3
 custom_fonts/normal_font = ExtResource( 3 )
 custom_colors/default_color = Color( 0, 0, 0, 1 )
 text = "# Change log
+
+## 0.07(41)
+
+- [panelSwipe] signal.
+- [changeLog] swipe page between change and will.
+- [score] add next button.
 
 ## 0.06(40)
 
@@ -247,5 +271,35 @@ text = "# Change log
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="LabelWill" type="RichTextLabel" parent="VBoxContainer/MarginContainer/ScrollContainer/HBoxContainer"]
+margin_left = 704.0
+margin_right = 1404.0
+margin_bottom = 1094.0
+rect_min_size = Vector2( 700, 0 )
+mouse_filter = 1
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_fonts/normal_font = ExtResource( 3 )
+custom_colors/default_color = Color( 0, 0, 0, 1 )
+text = "# Will
+
+## 0.08
+
+- [score] map color use texture slider.
+- [setting] toggle buttong.
+- [OK][panelSwipe] signal.
+- [log] filter switch.
+- [OK][changeLog] swipe page between change and will.
+
+## to be
+
+- [panel] animation curve.
+- [panel] back swipe gesture.
+- [misc] date manager.
+- [score] average, score 1-100 ?"
+__meta__ = {
+"_edit_use_anchors_": false
+}
 [connection signal="pressed" from="VBoxContainer/Menu0/BtnBack" to="." method="_on_BtnBack_pressed"]
-[connection signal="pressed" from="VBoxContainer/Menu0/BtnWill" to="." method="_on_BtnWill_pressed"]
+[connection signal="page_changed" from="VBoxContainer/MarginContainer/ScrollContainer" to="." method="_on_ScrollContainer_page_changed"]

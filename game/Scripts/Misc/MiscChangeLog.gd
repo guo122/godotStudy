@@ -1,5 +1,7 @@
 extends Control
 
+onready var ppLabel = $VBoxContainer/Menu0/Label
+
 var panelMgr
 
 func _ready():
@@ -17,5 +19,8 @@ func _on_BtnBack_pressed():
 	panelMgr.closePanel_animation(self)
 
 
-func _on_BtnWill_pressed():
-	panelMgr.openPanel("MiscWillLog")
+func _on_ScrollContainer_page_changed(page):
+	if page == 0:
+		ppLabel.text = "ChangeLog"
+	elif page == 1:
+		ppLabel.text = "Will"
