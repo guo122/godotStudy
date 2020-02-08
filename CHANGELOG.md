@@ -1,6 +1,11 @@
 
 # Change log
 
+## 0.05(38)
+
+- [swipe] add log to fix bug.
+- [log] adjust log panel.
+
 ## 0.05(37)
 
 - [log] transparent log panel.

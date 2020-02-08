@@ -38,10 +38,11 @@ func _process(delta):
 			set_h_scroll(end_pos)
 	if state == ScrollTouchState.Locked:
 		set_h_scroll(scroll_list[current_page])
-	if scroll_stay_time > 0:
-		scroll_stay_time -= delta
-		if scroll_stay_time < 0:
-			last_swipe_speed = 0
+#	todo: last
+#	if scroll_stay_time > 0:
+#		scroll_stay_time -= delta
+#		if scroll_stay_time < 0:
+#			last_swipe_speed = 0
 
 func _turn_left():
 	_turn_impl(-1)
@@ -73,7 +74,8 @@ func _input(event: InputEvent):
 				_set_children_mouse_filter(Control.MOUSE_FILTER_STOP)
 		last_swipe_speed = abs(input_event.speed.x) + (abs(input_event.speed.x) * 0.2)
 		scroll_stay_time = SCROLL_FREEZE_TIME
-		logMgr._debug("[PanelSwipe] drag:" + str(last_swipe_speed))
+		logMgr._debug("[PanelSwipe] drag_relative:" + str(input_event.relative))
+		logMgr._debug("[PanelSwipe] drag_speed:" + str(input_event.speed))
 	elif event.is_class("InputEventScreenTouch"):
 		var input_event: InputEventScreenTouch = event
 		state = ScrollTouchState.Default
