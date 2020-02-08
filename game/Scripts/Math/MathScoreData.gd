@@ -87,7 +87,7 @@ func _set_text():
 	str_data_summary = "3x: " + str(sum_3x) + ", "+"%.2f" % (float(sum_3x) / 6561 * 100)+"%\n" + str_data_summary
 	str_data_summary = "2x: " + str(sum_2x) + ", "+"%.2f" % (float(sum_2x) / 6561 * 100)+"%\n" + str_data_summary
 	str_data_summary = "1x: " + str(sum_1x) + ", "+"%.2f" % (float(sum_1x) / 6561 * 100)+"%\n" + str_data_summary
-	ppLabelSummary.bbcode_text = str_data_summary
+	ppLabelSummary.bbcode_text = str_data_summary + str_data_list
 	ppLabelList.bbcode_text = str_data_list
 	
 	ToolsMisc._RichLabelAdjustHeight(ppLabelSummary)

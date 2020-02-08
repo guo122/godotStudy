@@ -2,9 +2,13 @@ extends ScrollContainer
 
 class_name PanelSwipe
 
+export (int) var min_active_pos
+export (int) var max_pos
 export (Array, int) var scroll_list
 
 var logMgr
+
+var touch_start_pos: float = 0
 
 var current_pos: float = 0
 var start_pos: float = 0
@@ -30,33 +34,54 @@ func _process(delta):
 			set_h_scroll(end_pos)
 
 func _turn_left():
-	if current_page > 0 && current_page < scroll_list.size():
-		current_page -= 1
-		start_pos = get_h_scroll()
-		end_pos = scroll_list[current_page]
-		local_time = 0
-		running = true
+	_turn_impl(-1)
 
 
 func _turn_right():
-	if current_page < scroll_list.size() - 1:
-		current_page += 1
+	_turn_impl(1)
+
+
+func _turn_impl(tt: int):
+	var to_page = current_page + tt
+	if to_page >= 0 && to_page < scroll_list.size():
+		current_page = to_page
 		start_pos = get_h_scroll()
 		end_pos = scroll_list[current_page]
 		local_time = 0
 		running = true
 
 
-func _on_Swipe_gui_input(event: InputEvent):
-	if event.is_pressed():
-		logMgr._debug("[Swipe] start")
-	else:
-		logMgr._debug("[Swipe] end")
-
-
 func _on_Swipe_scroll_ended():
-	logMgr._debug("[Swipe] scroll ended")
+	print("_on_Swipe_scroll_ended")
 
 
 func _on_Swipe_scroll_started():
-	logMgr._debug("[Swipe] scroll started")
+	touch_start_pos = get_h_scroll()
+
+
+func _on_Swipe_gui_input(event: InputEvent):
+	if event.is_action_released("mouse_left"):
+		var h_scroll: int = get_h_scroll()
+		if abs(h_scroll - touch_start_pos) < max_pos / 2:
+			if h_scroll - touch_start_pos > min_active_pos:
+				_turn_impl(1)
+			elif touch_start_pos - h_scroll > min_active_pos:
+				_turn_impl(-1)
+			else:
+				_turn_impl(0)
+		else:
+			var nearly_page: int = 0
+			var nearly_pos: int = max_pos
+			var ii: int = 0
+			for i in scroll_list:
+				if abs(h_scroll - i) < nearly_pos:
+					nearly_pos = abs(h_scroll - i)
+					nearly_page = ii
+				ii += 1
+			_turn_impl(nearly_page - current_page)
+
+
+
+
+
+
