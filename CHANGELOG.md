@@ -1,6 +1,10 @@
 
 # Change log
 
+## 0.05(39)
+
+- [swipe] fix bug.
+
 ## 0.05(38)
 
 - [swipe] add log to fix bug.

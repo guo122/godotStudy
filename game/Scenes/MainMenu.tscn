@@ -74,7 +74,7 @@ margin_right = 134.0
 margin_bottom = 42.0
 custom_fonts/font = SubResource( 1 )
 custom_colors/font_color = Color( 1, 1, 1, 1 )
-text = "v0.04(38)"
+text = "v0.04(39)"
 
 [node name="Menu0" type="HBoxContainer" parent="VBoxContainer"]
 margin_top = 64.0
