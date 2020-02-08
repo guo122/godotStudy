@@ -2,8 +2,6 @@ extends ScrollContainer
 
 class_name PanelSwipe
 
-export (int) var min_active_pos
-export (int) var max_pos
 export (Array, int) var scroll_list
 
 var logMgr
@@ -34,6 +32,8 @@ func _process(delta):
 		if local_time > total_time:
 			running = false
 			set_h_scroll(end_pos)
+	if state == ScrollTouchState.Locked:
+		set_h_scroll(scroll_list[current_page])
 
 func _turn_left():
 	_turn_impl(-1)
@@ -72,17 +72,17 @@ func _input(event: InputEvent):
 			touch_start_pos = get_h_scroll()
 		else:
 			var h_scroll: int = get_h_scroll()
-			if abs(h_scroll - touch_start_pos) < max_pos / 2:
-				var offset = h_scroll - touch_start_pos
-				if offset > min_active_pos || (offset > min_active_pos / 4 &&  last_swipe_speed > 200):
+			var offset = h_scroll - touch_start_pos
+			if abs(h_scroll - touch_start_pos) < scroll_list[1]:
+				if offset > scroll_list[1] / 2 || (offset > 0 &&  last_swipe_speed > 200):
 					_turn_impl(1)
-				elif offset < -min_active_pos || (offset < -min_active_pos / 4 &&  last_swipe_speed > 200):
+				elif offset < -scroll_list[1] / 2 || (offset < 0 &&  last_swipe_speed > 200):
 					_turn_impl(-1)
 				else:
 					_turn_impl(0)
 			else:
 				var nearly_page: int = 0
-				var nearly_pos: int = max_pos
+				var nearly_pos: int = scroll_list[1]
 				var ii: int = 0
 				for i in scroll_list:
 					if abs(h_scroll - i) < nearly_pos:

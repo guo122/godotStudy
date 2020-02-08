@@ -1,6 +1,11 @@
 
 # Change log
 
+## 0.05(35)
+
+- [swipe] opt panel swipe.
+- [score] update info.
+
 ## 0.04(34)
 
 - [swipe] opt panel swipe.

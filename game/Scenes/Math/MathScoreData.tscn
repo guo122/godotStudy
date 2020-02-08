@@ -1,11 +1,10 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://Fonts/Resources/Xolonium-Regular.ttf" type="DynamicFontData" id=1]
 [ext_resource path="res://Fonts/Text33.tres" type="DynamicFont" id=2]
 [ext_resource path="res://Scenes/Prefab/BasicColorBg.tscn" type="PackedScene" id=3]
 [ext_resource path="res://Scenes/Prefab/TopFixed.tscn" type="PackedScene" id=4]
 [ext_resource path="res://Scripts/Math/MathScoreData.gd" type="Script" id=5]
-[ext_resource path="res://Fonts/Text48.tres" type="DynamicFont" id=6]
 [ext_resource path="res://Scenes/Math/MathMulMap.tscn" type="PackedScene" id=7]
 [ext_resource path="res://Scripts/Framework/Panel/PanelSwipe.gd" type="Script" id=8]
 [ext_resource path="res://Theme/EmptyBar.tres" type="Theme" id=9]
@@ -42,17 +41,17 @@ size_flags_vertical = 3
 [node name="Menu0" type="HBoxContainer" parent="VBoxContainer"]
 margin_top = 64.0
 margin_right = 720.0
-margin_bottom = 128.0
+margin_bottom = 122.0
 
 [node name="fixed" type="Control" parent="VBoxContainer/Menu0"]
 margin_right = 10.0
-margin_bottom = 64.0
+margin_bottom = 58.0
 rect_min_size = Vector2( 10, 0 )
 
 [node name="BtnBack" type="Button" parent="VBoxContainer/Menu0"]
 margin_left = 14.0
 margin_right = 138.0
-margin_bottom = 64.0
+margin_bottom = 58.0
 focus_mode = 0
 custom_fonts/font = SubResource( 1 )
 enabled_focus_mode = 0
@@ -63,54 +62,13 @@ __meta__ = {
 
 [node name="space" type="Control" parent="VBoxContainer/Menu0"]
 margin_left = 142.0
-margin_right = 372.0
-margin_bottom = 64.0
-size_flags_horizontal = 3
-size_flags_vertical = 3
-
-[node name="BtnLeft" type="Button" parent="VBoxContainer/Menu0"]
-margin_left = 376.0
-margin_right = 422.0
-margin_bottom = 64.0
-focus_mode = 0
-custom_fonts/font = ExtResource( 6 )
-custom_colors/font_color_disabled = Color( 0, 0, 0, 1 )
-custom_colors/font_color = Color( 0, 0, 0, 1 )
-custom_colors/font_color_hover = Color( 0, 0, 0, 1 )
-custom_colors/font_color_pressed = Color( 0, 0, 0, 1 )
-enabled_focus_mode = 0
-text = "<"
-flat = true
-
-[node name="space2" type="Control" parent="VBoxContainer/Menu0"]
-margin_left = 426.0
-margin_right = 656.0
-margin_bottom = 64.0
-size_flags_horizontal = 3
-size_flags_vertical = 3
-
-[node name="BtnRight" type="Button" parent="VBoxContainer/Menu0"]
-margin_left = 660.0
-margin_right = 706.0
-margin_bottom = 64.0
-focus_mode = 0
-custom_fonts/font = ExtResource( 6 )
-custom_colors/font_color_disabled = Color( 0, 0, 0, 1 )
-custom_colors/font_color = Color( 0, 0, 0, 1 )
-custom_colors/font_color_hover = Color( 0, 0, 0, 1 )
-custom_colors/font_color_pressed = Color( 0, 0, 0, 1 )
-enabled_focus_mode = 0
-text = ">"
-flat = true
-
-[node name="fixed2" type="Control" parent="VBoxContainer/Menu0"]
-margin_left = 710.0
 margin_right = 720.0
-margin_bottom = 64.0
-rect_min_size = Vector2( 10, 0 )
+margin_bottom = 58.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
 
 [node name="MarginContainer" type="MarginContainer" parent="VBoxContainer"]
-margin_top = 132.0
+margin_top = 126.0
 margin_right = 720.0
 margin_bottom = 1280.0
 size_flags_horizontal = 3
@@ -124,23 +82,21 @@ custom_constants/margin_bottom = 10
 margin_left = 10.0
 margin_top = 10.0
 margin_right = 710.0
-margin_bottom = 1138.0
+margin_bottom = 1144.0
 theme = ExtResource( 9 )
 scroll_vertical_enabled = false
 script = ExtResource( 8 )
-min_active_pos = 150
-max_pos = 704
 scroll_list = [ 0, 704, 1408, 2112, 2816, 3520 ]
 
 [node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/MarginContainer/Swipe"]
 margin_right = 4220.0
-margin_bottom = 1128.0
+margin_bottom = 1134.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
 [node name="ScrollContainer" type="ScrollContainer" parent="VBoxContainer/MarginContainer/Swipe/HBoxContainer"]
 margin_right = 700.0
-margin_bottom = 1128.0
+margin_bottom = 1134.0
 rect_min_size = Vector2( 700, 0 )
 mouse_filter = 1
 size_flags_horizontal = 3
@@ -149,7 +105,7 @@ scroll_horizontal_enabled = false
 
 [node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/MarginContainer/Swipe/HBoxContainer/ScrollContainer"]
 margin_right = 700.0
-margin_bottom = 1128.0
+margin_bottom = 1134.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
@@ -160,7 +116,7 @@ margin_bottom = 767.0
 [node name="LabelSummary" type="RichTextLabel" parent="VBoxContainer/MarginContainer/Swipe/HBoxContainer/ScrollContainer/VBoxContainer"]
 margin_top = 771.0
 margin_right = 700.0
-margin_bottom = 1128.0
+margin_bottom = 1134.0
 mouse_filter = 1
 size_flags_horizontal = 3
 size_flags_vertical = 3
@@ -176,7 +132,7 @@ __meta__ = {
 [node name="LabelDatetime" type="RichTextLabel" parent="VBoxContainer/MarginContainer/Swipe/HBoxContainer"]
 margin_left = 704.0
 margin_right = 1404.0
-margin_bottom = 1128.0
+margin_bottom = 1134.0
 rect_min_size = Vector2( 700, 0 )
 mouse_filter = 1
 size_flags_horizontal = 3
@@ -191,7 +147,7 @@ __meta__ = {
 [node name="LabelList" type="RichTextLabel" parent="VBoxContainer/MarginContainer/Swipe/HBoxContainer"]
 margin_left = 1408.0
 margin_right = 2108.0
-margin_bottom = 1128.0
+margin_bottom = 1134.0
 rect_min_size = Vector2( 700, 0 )
 mouse_filter = 1
 size_flags_horizontal = 3
@@ -206,7 +162,7 @@ __meta__ = {
 [node name="LabelList2" type="ColorRect" parent="VBoxContainer/MarginContainer/Swipe/HBoxContainer"]
 margin_left = 2112.0
 margin_right = 2812.0
-margin_bottom = 1128.0
+margin_bottom = 1134.0
 rect_min_size = Vector2( 700, 0 )
 mouse_filter = 1
 size_flags_horizontal = 3
@@ -216,7 +172,7 @@ color = Color( 0.882353, 0.203922, 0.203922, 1 )
 [node name="LabelList3" type="ColorRect" parent="VBoxContainer/MarginContainer/Swipe/HBoxContainer"]
 margin_left = 2816.0
 margin_right = 3516.0
-margin_bottom = 1128.0
+margin_bottom = 1134.0
 rect_min_size = Vector2( 700, 0 )
 mouse_filter = 1
 size_flags_horizontal = 3
@@ -226,12 +182,10 @@ color = Color( 0.192157, 0.803922, 0.4, 1 )
 [node name="LabelList4" type="ColorRect" parent="VBoxContainer/MarginContainer/Swipe/HBoxContainer"]
 margin_left = 3520.0
 margin_right = 4220.0
-margin_bottom = 1128.0
+margin_bottom = 1134.0
 rect_min_size = Vector2( 700, 0 )
 mouse_filter = 1
 size_flags_horizontal = 3
 size_flags_vertical = 3
 color = Color( 0.419608, 0.0823529, 0.909804, 1 )
 [connection signal="pressed" from="VBoxContainer/Menu0/BtnBack" to="." method="_on_BtnBack_pressed"]
-[connection signal="pressed" from="VBoxContainer/Menu0/BtnLeft" to="." method="_on_BtnLeft_pressed"]
-[connection signal="pressed" from="VBoxContainer/Menu0/BtnRight" to="." method="_on_BtnRight_pressed"]
