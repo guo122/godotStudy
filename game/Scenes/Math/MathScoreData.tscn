@@ -128,7 +128,7 @@ margin_bottom = 1138.0
 theme = ExtResource( 9 )
 scroll_vertical_enabled = false
 script = ExtResource( 8 )
-min_active_pos = 200
+min_active_pos = 150
 max_pos = 704
 scroll_list = [ 0, 704, 1408, 2112, 2816, 3520 ]
 
@@ -235,6 +235,3 @@ color = Color( 0.419608, 0.0823529, 0.909804, 1 )
 [connection signal="pressed" from="VBoxContainer/Menu0/BtnBack" to="." method="_on_BtnBack_pressed"]
 [connection signal="pressed" from="VBoxContainer/Menu0/BtnLeft" to="." method="_on_BtnLeft_pressed"]
 [connection signal="pressed" from="VBoxContainer/Menu0/BtnRight" to="." method="_on_BtnRight_pressed"]
-[connection signal="gui_input" from="VBoxContainer/MarginContainer/Swipe" to="VBoxContainer/MarginContainer/Swipe" method="_on_Swipe_gui_input"]
-[connection signal="scroll_ended" from="VBoxContainer/MarginContainer/Swipe" to="VBoxContainer/MarginContainer/Swipe" method="_on_Swipe_scroll_ended"]
-[connection signal="scroll_started" from="VBoxContainer/MarginContainer/Swipe" to="VBoxContainer/MarginContainer/Swipe" method="_on_Swipe_scroll_started"]

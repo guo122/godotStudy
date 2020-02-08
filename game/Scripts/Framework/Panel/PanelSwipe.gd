@@ -8,7 +8,9 @@ export (Array, int) var scroll_list
 
 var logMgr
 
+var locked_pos: float = 0
 var touch_start_pos: float = 0
+var last_swipe_speed = 0
 
 var current_pos: float = 0
 var start_pos: float = 0
@@ -18,6 +20,9 @@ var running: bool = false
 var total_time: float = 0.2
 var local_time: float = 0
 var current_page: int = 0
+
+enum ScrollTouchState {Default, Locked, Swipe}
+var state = ScrollTouchState.Default
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -32,6 +37,8 @@ func _process(delta):
 		if local_time > total_time:
 			running = false
 			set_h_scroll(end_pos)
+	if state == ScrollTouchState.Locked:
+		set_h_scroll(locked_pos)
 
 func _turn_left():
 	_turn_impl(-1)
@@ -51,36 +58,41 @@ func _turn_impl(tt: int):
 		running = true
 
 
-func _on_Swipe_scroll_ended():
-	print("_on_Swipe_scroll_ended")
-
-
-func _on_Swipe_scroll_started():
-	touch_start_pos = get_h_scroll()
-
-
-func _on_Swipe_gui_input(event: InputEvent):
-	if event.is_action_released("mouse_left"):
-		var h_scroll: int = get_h_scroll()
-		if abs(h_scroll - touch_start_pos) < max_pos / 2:
-			if h_scroll - touch_start_pos > min_active_pos:
-				_turn_impl(1)
-			elif touch_start_pos - h_scroll > min_active_pos:
-				_turn_impl(-1)
+func _input(event: InputEvent):
+	if event.is_class("InputEventScreenDrag"):
+		var input_event: InputEventScreenDrag = event
+		if state == ScrollTouchState.Default:
+			if abs(input_event.relative.x) > abs(input_event.relative.y):
+				state = ScrollTouchState.Swipe
 			else:
-				_turn_impl(0)
+				state = ScrollTouchState.Locked
+				locked_pos = get_h_scroll()
+		last_swipe_speed = abs(input_event.speed.x)
+	elif event.is_class("InputEventScreenTouch"):
+		var input_event: InputEventScreenTouch = event
+		state = ScrollTouchState.Default
+		if input_event.pressed:
+			touch_start_pos = get_h_scroll()
 		else:
-			var nearly_page: int = 0
-			var nearly_pos: int = max_pos
-			var ii: int = 0
-			for i in scroll_list:
-				if abs(h_scroll - i) < nearly_pos:
-					nearly_pos = abs(h_scroll - i)
-					nearly_page = ii
-				ii += 1
-			_turn_impl(nearly_page - current_page)
-
-
+			var h_scroll: int = get_h_scroll()
+			if abs(h_scroll - touch_start_pos) < max_pos / 2:
+				var offset = h_scroll - touch_start_pos
+				if offset > min_active_pos || (offset > min_active_pos / 4 &&  last_swipe_speed > 200):
+					_turn_impl(1)
+				elif offset < -min_active_pos || (offset < -min_active_pos / 4 &&  last_swipe_speed > 200):
+					_turn_impl(-1)
+				else:
+					_turn_impl(0)
+			else:
+				var nearly_page: int = 0
+				var nearly_pos: int = max_pos
+				var ii: int = 0
+				for i in scroll_list:
+					if abs(h_scroll - i) < nearly_pos:
+						nearly_pos = abs(h_scroll - i)
+						nearly_page = ii
+					ii += 1
+				_turn_impl(nearly_page - current_page)
 
 
 

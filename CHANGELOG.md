@@ -1,6 +1,10 @@
 
 # Change log
 
+## 0.04(33)
+
+- [swipe] opt panel swipe.
+
 ## 0.04(32)
 
 - [swipe] impl panel swipe.
