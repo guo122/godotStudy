@@ -1,6 +1,10 @@
 
 # Change log
 
+## 0.06(40)
+
+- remove debug log.
+
 ## 0.05(39)
 
 - [swipe] fix bug.

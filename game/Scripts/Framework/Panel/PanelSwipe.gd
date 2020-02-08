@@ -19,7 +19,7 @@ var total_time: float = 0.2
 var local_time: float = 0
 var current_page: int = 0
 
-const SCROLL_FREEZE_TIME = 0.2
+const SCROLL_FREEZE_TIME = 0.1
 var scroll_stay_time = SCROLL_FREEZE_TIME
 var scroll_start_time: float = 0
 var scroll_start_enable: bool = false
@@ -27,7 +27,6 @@ var scroll_start_enable: bool = false
 enum ScrollTouchState {Default, Locked, Swipe}
 var state = ScrollTouchState.Default
 
-# Called when the node enters the scene tree for the first time.
 func _ready():
 	logMgr = get_node("/root/GLog")
 
@@ -83,8 +82,6 @@ func _input(event: InputEvent):
 			scroll_start_enable = false
 			last_swipe_speed = abs(input_event.speed.x) + (abs(input_event.speed.x) * 0.2)
 		scroll_stay_time = SCROLL_FREEZE_TIME
-		logMgr._debug("[PanelSwipe] drag_relative:" + str(input_event.relative))
-		logMgr._debug("[PanelSwipe] drag_speed:" + str(input_event.speed))
 	elif event.is_class("InputEventScreenTouch"):
 		var input_event: InputEventScreenTouch = event
 		state = ScrollTouchState.Default
@@ -96,7 +93,6 @@ func _input(event: InputEvent):
 			var h_scroll: int = get_h_scroll()
 			var offset = h_scroll - touch_start_pos
 			if abs(h_scroll - touch_start_pos) < scroll_list[1]:
-				logMgr._debug("[PanelSwipe] end speed:" + str(last_swipe_speed))
 				if offset > scroll_list[1] / 2 || (offset > 0 &&  last_swipe_speed > scroll_speed):
 					_turn_impl(1)
 				elif offset < -scroll_list[1] / 2 || (offset < 0 &&  last_swipe_speed > scroll_speed):
