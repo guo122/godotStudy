@@ -1,6 +1,10 @@
 
 # Change log
 
+## 0.07(44)
+
+- [log] setting toggle button.
+
 ## 0.07(43)
 
 - [log] impl log filter.

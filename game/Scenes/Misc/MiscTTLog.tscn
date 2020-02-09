@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=20 format=2]
 
 [ext_resource path="res://Scripts/Misc/MiscTTLog.gd" type="Script" id=1]
 [ext_resource path="res://Fonts/Resources/Xolonium-Regular.ttf" type="DynamicFontData" id=2]
@@ -6,13 +6,32 @@
 [ext_resource path="res://Scenes/Prefab/BasicColorBg.tscn" type="PackedScene" id=4]
 [ext_resource path="res://Scenes/Prefab/TopFixed.tscn" type="PackedScene" id=5]
 [ext_resource path="res://Theme/EmptyBar.tres" type="Theme" id=6]
-[ext_resource path="res://Fonts/Text33.tres" type="DynamicFont" id=7]
+[ext_resource path="res://Assets/png/log_type_mode_clear_s.png" type="Texture" id=7]
 [ext_resource path="res://Fonts/Text43_outline.tres" type="DynamicFont" id=8]
+[ext_resource path="res://Assets/png/log_type_mode_debug_o.png" type="Texture" id=9]
+[ext_resource path="res://Assets/png/log_type_mode_debug_s.png" type="Texture" id=10]
+[ext_resource path="res://Assets/png/log_type_mode_warning_s.png" type="Texture" id=11]
+[ext_resource path="res://Assets/png/log_type_mode_warning_o.png" type="Texture" id=12]
+[ext_resource path="res://Assets/png/log_type_mode_error_s.png" type="Texture" id=13]
+[ext_resource path="res://Assets/png/log_type_mode_error_o.png" type="Texture" id=14]
+[ext_resource path="res://Assets/png/log_type_mode_clear_o.png" type="Texture" id=15]
 
 [sub_resource type="DynamicFont" id=1]
 size = 24
 outline_size = 2
 font_data = ExtResource( 2 )
+
+[sub_resource type="StyleBoxTexture" id=4]
+texture = ExtResource( 15 )
+region_rect = Rect2( 0, 0, 500, 60 )
+
+[sub_resource type="StyleBoxTexture" id=2]
+texture = ExtResource( 7 )
+region_rect = Rect2( 0, 0, 500, 60 )
+
+[sub_resource type="StyleBoxTexture" id=3]
+texture = ExtResource( 15 )
+region_rect = Rect2( 0, 0, 500, 60 )
 
 [node name="Panel" type="CenterContainer"]
 margin_right = 720.0
@@ -151,9 +170,9 @@ size_flags_vertical = 3
 alignment = 1
 
 [node name="HBoxContainer5" type="HBoxContainer" parent="VBoxContainer/MarginContainer/ScrollContainer/HBoxContainer/LogSetting"]
-margin_top = 464.0
+margin_top = 434.0
 margin_right = 700.0
-margin_bottom = 524.0
+margin_bottom = 494.0
 
 [node name="fixed2" type="Control" parent="VBoxContainer/MarginContainer/ScrollContainer/HBoxContainer/LogSetting/HBoxContainer5"]
 margin_right = 100.0
@@ -166,13 +185,10 @@ margin_right = 604.0
 margin_bottom = 60.0
 rect_min_size = Vector2( 500, 60 )
 focus_mode = 0
-custom_fonts/font = ExtResource( 7 )
-custom_colors/font_color_disabled = Color( 1, 0.290196, 0.290196, 1 )
-custom_colors/font_color = Color( 1, 0.290196, 0.290196, 1 )
-custom_colors/font_color_hover = Color( 1, 0.290196, 0.290196, 1 )
-custom_colors/font_color_pressed = Color( 1, 0.290196, 0.290196, 1 )
+custom_styles/hover = SubResource( 4 )
+custom_styles/pressed = SubResource( 2 )
+custom_styles/normal = SubResource( 3 )
 enabled_focus_mode = 0
-text = "Clear"
 
 [node name="space2" type="Control" parent="VBoxContainer/MarginContainer/ScrollContainer/HBoxContainer/LogSetting/HBoxContainer5"]
 margin_left = 608.0
@@ -182,103 +198,97 @@ size_flags_horizontal = 3
 size_flags_vertical = 3
 
 [node name="fixed" type="HBoxContainer" parent="VBoxContainer/MarginContainer/ScrollContainer/HBoxContainer/LogSetting"]
-margin_top = 528.0
+margin_top = 498.0
 margin_right = 700.0
-margin_bottom = 576.0
+margin_bottom = 546.0
 rect_min_size = Vector2( 0, 48 )
 
 [node name="HBoxContainer4" type="HBoxContainer" parent="VBoxContainer/MarginContainer/ScrollContainer/HBoxContainer/LogSetting"]
-margin_top = 580.0
+margin_top = 550.0
 margin_right = 700.0
-margin_bottom = 628.0
+margin_bottom = 618.0
 
 [node name="fixed2" type="Control" parent="VBoxContainer/MarginContainer/ScrollContainer/HBoxContainer/LogSetting/HBoxContainer4"]
 margin_right = 100.0
-margin_bottom = 48.0
+margin_bottom = 68.0
 rect_min_size = Vector2( 100, 0 )
 
 [node name="CheckDebug" type="CheckBox" parent="VBoxContainer/MarginContainer/ScrollContainer/HBoxContainer/LogSetting/HBoxContainer4"]
 margin_left = 104.0
-margin_right = 242.0
-margin_bottom = 48.0
+margin_right = 612.0
+margin_bottom = 68.0
+rect_min_size = Vector2( 500, 60 )
 focus_mode = 0
-custom_fonts/font = ExtResource( 7 )
-custom_colors/font_color_disabled = Color( 0, 0, 0, 1 )
-custom_colors/font_color_hover_pressed = Color( 0, 0, 0, 1 )
-custom_colors/font_color = Color( 0, 0, 0, 1 )
-custom_colors/font_color_hover = Color( 0, 0, 0, 1 )
-custom_colors/font_color_pressed = Color( 0, 0, 0, 1 )
+custom_icons/radio_checked = ExtResource( 10 )
+custom_icons/checked = ExtResource( 10 )
+custom_icons/radio_unchecked = ExtResource( 9 )
+custom_icons/unchecked = ExtResource( 9 )
 enabled_focus_mode = 0
-text = "Debug"
 
 [node name="space2" type="Control" parent="VBoxContainer/MarginContainer/ScrollContainer/HBoxContainer/LogSetting/HBoxContainer4"]
-margin_left = 246.0
+margin_left = 616.0
 margin_right = 700.0
-margin_bottom = 48.0
+margin_bottom = 68.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
 [node name="HBoxContainer2" type="HBoxContainer" parent="VBoxContainer/MarginContainer/ScrollContainer/HBoxContainer/LogSetting"]
-margin_top = 632.0
+margin_top = 622.0
 margin_right = 700.0
-margin_bottom = 680.0
+margin_bottom = 690.0
 
 [node name="fixed2" type="Control" parent="VBoxContainer/MarginContainer/ScrollContainer/HBoxContainer/LogSetting/HBoxContainer2"]
 margin_right = 100.0
-margin_bottom = 48.0
+margin_bottom = 68.0
 rect_min_size = Vector2( 100, 0 )
 
 [node name="CheckWarning" type="CheckBox" parent="VBoxContainer/MarginContainer/ScrollContainer/HBoxContainer/LogSetting/HBoxContainer2"]
 margin_left = 104.0
-margin_right = 275.0
-margin_bottom = 48.0
+margin_right = 612.0
+margin_bottom = 68.0
+rect_min_size = Vector2( 500, 60 )
 focus_mode = 0
-custom_fonts/font = ExtResource( 7 )
-custom_colors/font_color_disabled = Color( 0, 0, 0, 1 )
-custom_colors/font_color_hover_pressed = Color( 0, 0, 0, 1 )
-custom_colors/font_color = Color( 0, 0, 0, 1 )
-custom_colors/font_color_hover = Color( 0, 0, 0, 1 )
-custom_colors/font_color_pressed = Color( 0, 0, 0, 1 )
+custom_icons/radio_checked = ExtResource( 11 )
+custom_icons/checked = ExtResource( 11 )
+custom_icons/radio_unchecked = ExtResource( 12 )
+custom_icons/unchecked = ExtResource( 12 )
 pressed = true
 enabled_focus_mode = 0
-text = "Warning"
 
 [node name="space2" type="Control" parent="VBoxContainer/MarginContainer/ScrollContainer/HBoxContainer/LogSetting/HBoxContainer2"]
-margin_left = 279.0
+margin_left = 616.0
 margin_right = 700.0
-margin_bottom = 48.0
+margin_bottom = 68.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
 [node name="HBoxContainer3" type="HBoxContainer" parent="VBoxContainer/MarginContainer/ScrollContainer/HBoxContainer/LogSetting"]
-margin_top = 684.0
+margin_top = 694.0
 margin_right = 700.0
-margin_bottom = 732.0
+margin_bottom = 762.0
 
 [node name="fixed" type="Control" parent="VBoxContainer/MarginContainer/ScrollContainer/HBoxContainer/LogSetting/HBoxContainer3"]
 margin_right = 100.0
-margin_bottom = 48.0
+margin_bottom = 68.0
 rect_min_size = Vector2( 100, 0 )
 
 [node name="CheckError" type="CheckBox" parent="VBoxContainer/MarginContainer/ScrollContainer/HBoxContainer/LogSetting/HBoxContainer3"]
 margin_left = 104.0
-margin_right = 216.0
-margin_bottom = 48.0
+margin_right = 612.0
+margin_bottom = 68.0
+rect_min_size = Vector2( 500, 60 )
 focus_mode = 0
-custom_fonts/font = ExtResource( 7 )
-custom_colors/font_color_disabled = Color( 0, 0, 0, 1 )
-custom_colors/font_color_hover_pressed = Color( 0, 0, 0, 1 )
-custom_colors/font_color = Color( 0, 0, 0, 1 )
-custom_colors/font_color_hover = Color( 0, 0, 0, 1 )
-custom_colors/font_color_pressed = Color( 0, 0, 0, 1 )
+custom_icons/radio_checked = ExtResource( 13 )
+custom_icons/checked = ExtResource( 13 )
+custom_icons/radio_unchecked = ExtResource( 14 )
+custom_icons/unchecked = ExtResource( 14 )
 pressed = true
 enabled_focus_mode = 0
-text = "Error"
 
 [node name="space2" type="Control" parent="VBoxContainer/MarginContainer/ScrollContainer/HBoxContainer/LogSetting/HBoxContainer3"]
-margin_left = 220.0
+margin_left = 616.0
 margin_right = 700.0
-margin_bottom = 48.0
+margin_bottom = 68.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 [connection signal="pressed" from="VBoxContainer/TopFixed/BtnBg" to="." method="_on_BtnBg_pressed"]

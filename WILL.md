@@ -4,7 +4,7 @@
 ## 0.08
 
 - [score] map color use texture slider.
-- [setting] toggle button.
+- [OK][setting] toggle button.
 - [OK][panelSwipe] signal.
 - [OK][log] filter switch.
 - [OK][changeLog] swipe page between change and will.

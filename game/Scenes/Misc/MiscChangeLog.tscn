@@ -123,6 +123,10 @@ custom_fonts/normal_font = ExtResource( 3 )
 custom_colors/default_color = Color( 0, 0, 0, 1 )
 text = "# Change log
 
+## 0.07(44)
+
+- [log] setting toggle button.
+
 ## 0.07(43)
 
 - [log] impl log filter.
@@ -295,7 +299,7 @@ text = "# Will
 ## 0.08
 
 - [score] map color use texture slider.
-- [setting] toggle button.
+- [OK][setting] toggle button.
 - [OK][panelSwipe] signal.
 - [OK][log] filter switch.
 - [OK][changeLog] swipe page between change and will.
