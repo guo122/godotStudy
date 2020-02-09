@@ -1,6 +1,10 @@
 
 # Change log
 
+## 0.07(43)
+
+- [log] impl log filter.
+
 ## 0.07(42)
 
 - [score] update info.

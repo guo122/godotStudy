@@ -70,10 +70,6 @@ func _on_BtnRefreshMathMap_pressed():
 	dataMgr._save()
 
 
-func _on_BtnDebug_pressed():
-	logMgr.b_debug = !logMgr.b_debug
-
-
 
 
 

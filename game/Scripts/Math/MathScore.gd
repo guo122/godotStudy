@@ -5,9 +5,9 @@ var logMgr
 var panelMgr
 var scoreMgr
 
-onready var ppList: VBoxContainer = $VBoxContainer/ScrollContainer/ScoreList
+onready var ppList: VBoxContainer = $VBoxContainer/MarginContainer/ScrollContainer/ScoreList
 onready var ppAverage: Label = $VBoxContainer/Menu0/LabelAverage
-onready var ppMap = $VBoxContainer/ScrollContainer/ScoreList/MathMulMap
+onready var ppMap = $VBoxContainer/MarginContainer/ScrollContainer/ScoreList/MathMulMap
 
 var arg_dic: Dictionary
 
@@ -54,6 +54,7 @@ func _panel_set_dic(dic: Dictionary):
 	var score_dic = scoreMgr._get_score_data()
 	richLabelSummary.add_font_override("normal_font", load("res://Fonts/Text33.tres"))
 	richLabelSummary.add_color_override("default_color", Color(0, 0, 0))
+	richLabelSummary.mouse_filter = Control.MOUSE_FILTER_PASS
 	richLabelSummary.text = "\n" + score_dic["summary"]
 	ToolsMisc._RichLabelAdjustHeight(richLabelSummary, 50)
 

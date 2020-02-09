@@ -4,9 +4,9 @@
 ## 0.08
 
 - [score] map color use texture slider.
-- [setting] toggle buttong.
+- [setting] toggle button.
 - [OK][panelSwipe] signal.
-- [log] filter switch.
+- [OK][log] filter switch.
 - [OK][changeLog] swipe page between change and will.
 
 ## to be
@@ -15,3 +15,4 @@
 - [panel] back swipe gesture.
 - [misc] date manager.
 - [score] average, score 1-100 ?
+- [math] blind mode. double score.
