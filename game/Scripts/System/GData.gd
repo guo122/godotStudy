@@ -1,7 +1,7 @@
 extends Node
 
 const FILE_NAME = "user://game-data.json"
-const RGB_IMAGE_NAME = "res://Assets/misc/r1.png"
+const SCORE_MAP_CACHE_IMAGE_NAME = "user://score_map_cache.png"
 
 const SCORE_MAP_IMAGE_X = 658
 const SCORE_MAP_IMAGE_Y = 658
@@ -9,16 +9,17 @@ const SCORE_MAP_IMAGE_FORMAT = Image.FORMAT_RGB8
 const SCORE_MAP_DEFAULT_COLOR = Color(1, 1, 1)
 const SCORE_MAP_LINE_COLOR = Color(0.8, 0.8, 0.8)
 
-var logMgr
+var logMgr: GLog
 
-var _rgb_ratio: float = 1
 var _rgb_img_width
 
 var _data_hightlight_map: Image = null
 var _data_score_map_img: Image = null
-var _rgb_img: Image = null
-onready var _rgb_tex: Texture = load("res://Assets/misc/r1.png")
+var _rgb_tex: ImageTexture = load("res://Assets/misc/r1.png")
+var _rgb_img: Image
 var _data = {}
+
+var _dirty: bool = false
 
 func _ready():
 	logMgr = get_node("/root/GLog")
@@ -27,15 +28,18 @@ func _ready():
 	
 
 func _save():
-	var file = File.new()
-	file.open(FILE_NAME, File.WRITE)
-	file.store_string(to_json(_data))
-	file.close()
-	
-#	file.open(SCORE_MAP_IMAGE_NAME, File.WRITE)
-#	var data = _data_score_map_img.get_data()
-#	file.store_buffer(data)
-#	file.close()
+	if _dirty:
+		var file = File.new()
+		file.open(FILE_NAME, File.WRITE)
+		file.store_string(to_json(_data))
+		file.close()
+		
+	#	file.open(SCORE_MAP_CACHE_IMAGE_NAME, File.WRITE)
+	#	var data = _data_score_map_img.get_data()
+	#	file.store_buffer(data)
+	#	file.close()
+		_data_score_map_img.save_png(SCORE_MAP_CACHE_IMAGE_NAME)
+		_dirty = false
 
 
 func _load():
@@ -48,18 +52,20 @@ func _load():
 			_data = data
 		else:
 			logMgr._error("Corrupted data!")
-	if file.file_exists(RGB_IMAGE_NAME):
-		file.open(RGB_IMAGE_NAME, File.READ)
+	if file.file_exists(SCORE_MAP_CACHE_IMAGE_NAME):
+		file.open(SCORE_MAP_CACHE_IMAGE_NAME, File.READ)
 		var data = file.get_buffer(file.get_len())
 		file.close()
-		_rgb_img = Image.new()
-		_rgb_img.load_png_from_buffer(data)
-		_rgb_img_width = _rgb_img.get_size().x
+		_data_score_map_img = Image.new()
+		_data_score_map_img.load_png_from_buffer(data)
+	_rgb_img_width = _rgb_tex.get_size().x
+	_rgb_img = _rgb_tex.get_data()
 	_initData()
 
 
 func _addScore(data: Array):
 	if data.size() == 4 && data[2] == "x":
+		_dirty = true
 		var idxX: int = data[0] - 11
 		var idxY: int = data[1] - 11
 		var dataList = []
@@ -72,6 +78,7 @@ func _addScore(data: Array):
 
 
 func _clearData():
+	_dirty = true
 	_data = {}
 	_data_score_map_img = null
 	_initData()
@@ -80,6 +87,7 @@ func _clearData():
 
 func _initData():
 	if !_data.has("mathMatrixX"):
+		_dirty = true
 		var mathMatrixX = []
 		_data["mathMatrixX"] = mathMatrixX
 		for i in range(11, 100):
@@ -89,6 +97,7 @@ func _initData():
 				var num2Array = []
 				num1Array.append(num2Array)
 	if _data.has("mathScoreX") && _data["mathScoreX"].size() > 0:
+		_dirty = true
 		var mathScoreX = _data["mathScoreX"]
 		for num1 in mathScoreX:
 			for num2 in mathScoreX[num1]:
@@ -99,6 +108,11 @@ func _initData():
 					dataList.append(i[1])
 					_data["mathMatrixX"][int(num1) - 11][int(num2) - 11].append(dataList)
 		_data.erase("mathScoreX")
+	if !_data.has("setting"):
+		_dirty = true
+		var setting_dic = {}
+		setting_dic["score_map_color_ratio"] = 100
+		_data["setting"] = setting_dic
 	if !_data_score_map_img:
 		_init_color_map()
 	_clear_hightlight_color()
@@ -150,8 +164,8 @@ func _clear_hightlight_color():
 
 
 func _get_color(sec: float) -> Color:
-#	_rgb_tex
-	var val = clamp(sec / 60 * _rgb_img_width * _rgb_ratio, 0, _rgb_img_width - 1)
+	var ratio: float = 6 - float(_data["setting"]["score_map_color_ratio"]) / 20
+	var val = clamp(sec / 60 * _rgb_img_width * ratio, 0, _rgb_img_width - 1)
 	_rgb_img.lock()
 	var ret = _rgb_img.get_pixel(val, 0)
 	_rgb_img.unlock()
@@ -159,6 +173,7 @@ func _get_color(sec: float) -> Color:
 
 
 func _init_color_map():
+	_dirty = true
 	_data_score_map_img = null
 	_data_score_map_img = Image.new()
 	_data_score_map_img.create(SCORE_MAP_IMAGE_X, SCORE_MAP_IMAGE_Y, false, SCORE_MAP_IMAGE_FORMAT)
@@ -191,6 +206,16 @@ func _update_color_map():
 func _printMetaData():
 	logMgr._log(_data)
 
+
+func _get_score_map_color_ratio() -> int:
+	return _data["setting"]["score_map_color_ratio"]
+
+
+func _set_score_map_color_ratio(ratio: int):
+	if ratio != _data["setting"]["score_map_color_ratio"]:
+		_dirty = true
+		_data["setting"]["score_map_color_ratio"] = ratio
+		_update_color_map()
 
 
 

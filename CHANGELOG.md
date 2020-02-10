@@ -1,6 +1,10 @@
 
 # Change log
 
+## 0.08(46)
+
+- [score] fix crash, rgb img load error.
+
 ## 0.08(45)
 
 - [score] impl map color slider.

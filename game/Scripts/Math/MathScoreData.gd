@@ -1,9 +1,9 @@
 extends Control
 
-var panelMgr
-var logMgr
-var dataMgr
-var scoreMgr
+var dataMgr: GData
+var logMgr: GLog
+var panelMgr: PanelMgr
+var scoreMgr: GScore
 
 onready var ppLabelSummary: RichTextLabel = $VBoxContainer/MarginContainer/Swipe/HBoxContainer/ScrollContainer/VBoxContainer/LabelSummary
 onready var ppLabelDatetime: RichTextLabel = $VBoxContainer/MarginContainer/Swipe/HBoxContainer/LabelDatetime
@@ -38,6 +38,7 @@ func _set_text():
 
 
 func _on_BtnBack_pressed():
+	dataMgr._save()
 	panelMgr.closePanel_animation(self)
 
 

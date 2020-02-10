@@ -1,9 +1,9 @@
 extends Control
 
-var dataMgr
-var logMgr
-var panelMgr
-var scoreMgr
+var dataMgr: GData
+var logMgr: GLog
+var panelMgr: PanelMgr
+var scoreMgr: GScore
 
 onready var ppList: VBoxContainer = $VBoxContainer/MarginContainer/ScrollContainer/ScoreList
 onready var ppAverage: Label = $VBoxContainer/Menu0/LabelAverage
@@ -60,12 +60,14 @@ func _panel_set_dic(dic: Dictionary):
 
 
 func _on_BtnBack_pressed():
+	dataMgr._save()
 	panelMgr.closePanel_animation(self)
 
 
 func _on_BtnNext_pressed():
-		panelMgr.closePanel_animation(self, "close2")
-		panelMgr.openPanel("MathMul")
+	dataMgr._save()
+	panelMgr.closePanel_animation(self, "close2")
+	panelMgr.openPanel("MathMul")
 
 
 
