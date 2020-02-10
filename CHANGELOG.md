@@ -1,6 +1,10 @@
 
 # Change log
 
+## 0.08(45)
+
+- [score] impl map color slider.
+
 ## 0.07(44)
 
 - [log] setting toggle button.

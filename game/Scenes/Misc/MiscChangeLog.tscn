@@ -123,6 +123,10 @@ custom_fonts/normal_font = ExtResource( 3 )
 custom_colors/default_color = Color( 0, 0, 0, 1 )
 text = "# Change log
 
+## 0.08(45)
+
+- [score] impl map color slider.
+
 ## 0.07(44)
 
 - [log] setting toggle button.
@@ -298,7 +302,7 @@ text = "# Will
 
 ## 0.08
 
-- [score] map color use texture slider.
+- [OK][score] map color use texture slider.
 - [OK][setting] toggle button.
 - [OK][panelSwipe] signal.
 - [OK][log] filter switch.

@@ -13,6 +13,7 @@ code = "shader_type canvas_item;
 uniform float color_ratio = 1f;
 uniform sampler2D hightlight_texture;
 
+
 //void vertex(){
 //	POSITION = VERTEX;
 //}
@@ -21,11 +22,11 @@ void fragment(){
 	vec4 color = texture(TEXTURE, UV);
 	vec4 highlight_color = vec4(1f, 0f, 1f, 1f);
 	float base_alpha = texture(hightlight_texture, UV).z;
-	
+
 	float ratio = cos(TIME * 10f) / 2f + 0.5f;
-	
+
 	float alpha = base_alpha * ratio;
-	
+
 	vec4 cc = color * (1f - alpha) + highlight_color * alpha;
 	cc *= color_ratio;
 	COLOR = vec4(cc.x, cc.y, cc.z, 1f);

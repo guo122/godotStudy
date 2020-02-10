@@ -1,34 +1,23 @@
 extends Node
 
 const FILE_NAME = "user://game-data.json"
-const COLOR_IMAGE_NAME = "user://color-image.png"
+const RGB_IMAGE_NAME = "res://Assets/misc/r1.png"
 
-const COLOR_IMAGE_X = 658
-const COLOR_IMAGE_Y = 658
-const COLOR_IMAGE_SIZE = 1298892
-const COLOR_IMAGE_FORMAT = Image.FORMAT_RGB8
-const COLOR_DEFAULT_COLOR = Color(1, 1, 1)
-const COLOR_LINE_COLOR = Color(0.8, 0.8, 0.8)
+const SCORE_MAP_IMAGE_X = 658
+const SCORE_MAP_IMAGE_Y = 658
+const SCORE_MAP_IMAGE_FORMAT = Image.FORMAT_RGB8
+const SCORE_MAP_DEFAULT_COLOR = Color(1, 1, 1)
+const SCORE_MAP_LINE_COLOR = Color(0.8, 0.8, 0.8)
 
 var logMgr
 
-var _data_color_map = {
-	"5": Color(0, 1, 1),
-	"10": Color(0, 1, 0.5),
-	"15": Color(0, 1, 0),
-	"20": Color(0.5, 1, 0),
-	"25": Color(0.8, 0.8, 0),
-	"30": Color(1, 0.8, 0),
-	"35": Color(1, 0.65, 0),
-	"40": Color(1, 0.5, 0),
-	"45": Color(1, 0.35, 0),
-	"50": Color(1, 0.2, 0),
-	"55": Color(1, 0.1, 0),
-	"60": Color(1, 0, 0)
-}
+var _rgb_ratio: float = 1
+var _rgb_img_width
 
 var _data_hightlight_map: Image = null
-var _data_color_image: Image = null
+var _data_score_map_img: Image = null
+var _rgb_img: Image = null
+onready var _rgb_tex: Texture = load("res://Assets/misc/r1.png")
 var _data = {}
 
 func _ready():
@@ -43,10 +32,10 @@ func _save():
 	file.store_string(to_json(_data))
 	file.close()
 	
-	file.open(COLOR_IMAGE_NAME, File.WRITE)
-	var data = _data_color_image.get_data()
-	file.store_buffer(data)
-	file.close()
+#	file.open(SCORE_MAP_IMAGE_NAME, File.WRITE)
+#	var data = _data_score_map_img.get_data()
+#	file.store_buffer(data)
+#	file.close()
 
 
 func _load():
@@ -59,12 +48,13 @@ func _load():
 			_data = data
 		else:
 			logMgr._error("Corrupted data!")
-	if file.file_exists(COLOR_IMAGE_NAME):
-		file.open(COLOR_IMAGE_NAME, File.READ)
-		var data = file.get_buffer(COLOR_IMAGE_SIZE)
+	if file.file_exists(RGB_IMAGE_NAME):
+		file.open(RGB_IMAGE_NAME, File.READ)
+		var data = file.get_buffer(file.get_len())
 		file.close()
-		_data_color_image = Image.new()
-		_data_color_image.create_from_data(COLOR_IMAGE_X, COLOR_IMAGE_Y, false, COLOR_IMAGE_FORMAT, data)
+		_rgb_img = Image.new()
+		_rgb_img.load_png_from_buffer(data)
+		_rgb_img_width = _rgb_img.get_size().x
 	_initData()
 
 
@@ -76,14 +66,14 @@ func _addScore(data: Array):
 		dataList.append(OS.get_unix_time())
 		dataList.append(data[3])
 		_data["mathMatrixX"][idxX][idxY].append(dataList)
-		_data_color_image.lock()
+		_data_score_map_img.lock()
 		_set_map_color(idxX, idxY, _data["mathMatrixX"][idxX][idxY])
-		_data_color_image.unlock()
+		_data_score_map_img.unlock()
 
 
 func _clearData():
 	_data = {}
-	_data_color_image = null
+	_data_score_map_img = null
 	_initData()
 	_save()
 
@@ -109,7 +99,7 @@ func _initData():
 					dataList.append(i[1])
 					_data["mathMatrixX"][int(num1) - 11][int(num2) - 11].append(dataList)
 		_data.erase("mathScoreX")
-	if !_data_color_image:
+	if !_data_score_map_img:
 		_init_color_map()
 	_clear_hightlight_color()
 	_save()
@@ -128,7 +118,7 @@ func _set_map_color(idxX, idxY, dataList: Array):
 	var iy = idxY - jj + 1
 	for i in range(ix * 8 + ii, ix * 8 + 8 + ii):
 		for j in range(iy * 8 + jj, iy * 8 + 8 + jj):
-			_data_color_image.set_pixel(i, j, cc)
+			_data_score_map_img.set_pixel(i, j, cc)
 
 
 func _set_highlight_color(idxX, idxY):
@@ -156,29 +146,36 @@ func _set_highlight_color(idxX, idxY):
 func _clear_hightlight_color():
 	_data_hightlight_map = null
 	_data_hightlight_map = Image.new()
-	_data_hightlight_map.create(COLOR_IMAGE_X, COLOR_IMAGE_Y, false, Image.FORMAT_RGBA8)
+	_data_hightlight_map.create(SCORE_MAP_IMAGE_X, SCORE_MAP_IMAGE_Y, false, Image.FORMAT_RGBA8)
 
 
 func _get_color(sec: float) -> Color:
-	var idx = str((int(sec / 5) + 1) * 5)
-	if _data_color_map.has(idx):
-		return _data_color_map[idx]
-	else:
-		logMgr._error("[GData] get color error.")
-		return COLOR_DEFAULT_COLOR
+#	_rgb_tex
+	var val = clamp(sec / 60 * _rgb_img_width * _rgb_ratio, 0, _rgb_img_width - 1)
+	_rgb_img.lock()
+	var ret = _rgb_img.get_pixel(val, 0)
+	_rgb_img.unlock()
+	return ret
 
 
 func _init_color_map():
-	_data_color_image = null
-	_data_color_image = Image.new()
-	_data_color_image.create(COLOR_IMAGE_X, COLOR_IMAGE_Y, false, COLOR_IMAGE_FORMAT)
-	_data_color_image.lock()
-	for i in range(0, COLOR_IMAGE_X):
-		for j in range(0, COLOR_IMAGE_Y):
+	_data_score_map_img = null
+	_data_score_map_img = Image.new()
+	_data_score_map_img.create(SCORE_MAP_IMAGE_X, SCORE_MAP_IMAGE_Y, false, SCORE_MAP_IMAGE_FORMAT)
+	_data_score_map_img.lock()
+	for i in range(0, SCORE_MAP_IMAGE_X):
+		for j in range(0, SCORE_MAP_IMAGE_Y):
 			if i % 73 == 0 || j % 73 == 0:
-				_data_color_image.set_pixel(i, j, COLOR_LINE_COLOR)
+				_data_score_map_img.set_pixel(i, j, SCORE_MAP_LINE_COLOR)
 			else:
-				_data_color_image.set_pixel(i, j, COLOR_DEFAULT_COLOR)
+				_data_score_map_img.set_pixel(i, j, SCORE_MAP_DEFAULT_COLOR)
+	_data_score_map_img.unlock()
+	_update_color_map()
+	logMgr._log("[GData] init math map.")
+
+
+func _update_color_map():
+	_data_score_map_img.lock()
 	var ii: int = -1
 	var jj: int = -1
 	for i in _data["mathMatrixX"]:
@@ -188,8 +185,7 @@ func _init_color_map():
 			jj += 1
 			if !j.empty():
 				_set_map_color(ii, jj, j)
-	_data_color_image.unlock()
-	logMgr._log("[GData] init math map.")
+	_data_score_map_img.unlock()
 
 
 func _printMetaData():

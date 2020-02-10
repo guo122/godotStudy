@@ -8,9 +8,7 @@ var scoreMgr
 onready var ppLabelSummary: RichTextLabel = $VBoxContainer/MarginContainer/Swipe/HBoxContainer/ScrollContainer/VBoxContainer/LabelSummary
 onready var ppLabelDatetime: RichTextLabel = $VBoxContainer/MarginContainer/Swipe/HBoxContainer/LabelDatetime
 onready var ppLabelList: RichTextLabel = $VBoxContainer/MarginContainer/Swipe/HBoxContainer/LabelList
-onready var ppMap: TextureRect = $VBoxContainer/MarginContainer/Swipe/HBoxContainer/ScrollContainer/VBoxContainer/MathMulMap
-onready var ppBtnLeft: Button = $VBoxContainer/Menu0/BtnLeft
-onready var ppBtnRight: Button = $VBoxContainer/Menu0/BtnRight
+onready var ppMap: TextureRect = $VBoxContainer/MarginContainer/Swipe/HBoxContainer/ScrollContainer/VBoxContainer/HBoxContainer/MathMulMap
 onready var ppSwipe: PanelSwipe = $VBoxContainer/MarginContainer/Swipe
 
 func _ready():

@@ -3,7 +3,7 @@
 
 ## 0.08
 
-- [score] map color use texture slider.
+- [OK][score] map color use texture slider.
 - [OK][setting] toggle button.
 - [OK][panelSwipe] signal.
 - [OK][log] filter switch.

@@ -109,9 +109,27 @@ margin_bottom = 1134.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
-[node name="MathMulMap" parent="VBoxContainer/MarginContainer/Swipe/HBoxContainer/ScrollContainer/VBoxContainer" instance=ExtResource( 7 )]
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/MarginContainer/Swipe/HBoxContainer/ScrollContainer/VBoxContainer"]
 margin_right = 700.0
 margin_bottom = 767.0
+
+[node name="space" type="Control" parent="VBoxContainer/MarginContainer/Swipe/HBoxContainer/ScrollContainer/VBoxContainer/HBoxContainer"]
+margin_right = 2.0
+margin_bottom = 767.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="MathMulMap" parent="VBoxContainer/MarginContainer/Swipe/HBoxContainer/ScrollContainer/VBoxContainer/HBoxContainer" instance=ExtResource( 7 )]
+margin_left = 6.0
+margin_right = 693.0
+margin_bottom = 767.0
+
+[node name="space2" type="Control" parent="VBoxContainer/MarginContainer/Swipe/HBoxContainer/ScrollContainer/VBoxContainer/HBoxContainer"]
+margin_left = 697.0
+margin_right = 700.0
+margin_bottom = 767.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
 
 [node name="LabelSummary" type="RichTextLabel" parent="VBoxContainer/MarginContainer/Swipe/HBoxContainer/ScrollContainer/VBoxContainer"]
 margin_top = 771.0
