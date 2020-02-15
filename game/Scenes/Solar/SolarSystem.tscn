@@ -1,0 +1,181 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://Scripts/Solar/SolarSystem.gd" type="Script" id=1]
+[ext_resource path="res://Fonts/Resources/Xolonium-Regular.ttf" type="DynamicFontData" id=2]
+[ext_resource path="res://Fonts/Text48.tres" type="DynamicFont" id=3]
+[ext_resource path="res://Scenes/Prefab/TopFixed.tscn" type="PackedScene" id=4]
+
+[sub_resource type="DynamicFont" id=1]
+size = 43
+font_data = ExtResource( 2 )
+
+[node name="Panel" type="CenterContainer"]
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="BasicBg" type="ColorRect" parent="."]
+margin_right = 720.0
+margin_bottom = 1280.0
+rect_min_size = Vector2( 720, 1280 )
+color = Color( 0, 0, 0, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+margin_right = 720.0
+margin_bottom = 1280.0
+rect_min_size = Vector2( 720, 1280 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TopFixed" parent="VBoxContainer" instance=ExtResource( 4 )]
+
+[node name="Menu0" type="HBoxContainer" parent="VBoxContainer"]
+margin_top = 64.0
+margin_right = 720.0
+margin_bottom = 122.0
+
+[node name="fixed" type="Control" parent="VBoxContainer/Menu0"]
+margin_right = 10.0
+margin_bottom = 58.0
+rect_min_size = Vector2( 10, 0 )
+
+[node name="BtnBack" type="Button" parent="VBoxContainer/Menu0"]
+margin_left = 14.0
+margin_right = 138.0
+margin_bottom = 58.0
+rect_min_size = Vector2( 124, 0 )
+focus_mode = 0
+custom_fonts/font = SubResource( 1 )
+enabled_focus_mode = 0
+text = "Back"
+flat = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="space" type="Control" parent="VBoxContainer/Menu0"]
+margin_left = 142.0
+margin_right = 720.0
+margin_bottom = 58.0
+rect_min_size = Vector2( 10, 0 )
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer"]
+margin_top = 126.0
+margin_right = 720.0
+margin_bottom = 1280.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_constants/margin_right = 10
+custom_constants/margin_top = 10
+custom_constants/margin_left = 10
+custom_constants/margin_bottom = 10
+
+[node name="ScoreList" type="VBoxContainer" parent="VBoxContainer/MarginContainer"]
+margin_left = 10.0
+margin_top = 10.0
+margin_right = 710.0
+margin_bottom = 1144.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="space" type="Control" parent="VBoxContainer/MarginContainer/ScoreList"]
+margin_right = 700.0
+margin_bottom = 130.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="TextureRect" type="TextureRect" parent="VBoxContainer/MarginContainer/ScoreList"]
+margin_top = 134.0
+margin_right = 700.0
+margin_bottom = 834.0
+rect_min_size = Vector2( 700, 700 )
+
+[node name="space2" type="Control" parent="VBoxContainer/MarginContainer/ScoreList"]
+margin_top = 838.0
+margin_right = 700.0
+margin_bottom = 968.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="Menu1" type="HBoxContainer" parent="VBoxContainer/MarginContainer/ScoreList"]
+margin_top = 972.0
+margin_right = 700.0
+margin_bottom = 1030.0
+
+[node name="fixed" type="Control" parent="VBoxContainer/MarginContainer/ScoreList/Menu1"]
+margin_right = 10.0
+margin_bottom = 58.0
+rect_min_size = Vector2( 10, 0 )
+
+[node name="BtnPrevDay" type="Button" parent="VBoxContainer/MarginContainer/ScoreList/Menu1"]
+margin_left = 14.0
+margin_right = 138.0
+margin_bottom = 58.0
+rect_min_size = Vector2( 124, 0 )
+focus_mode = 0
+custom_fonts/font = SubResource( 1 )
+enabled_focus_mode = 0
+text = "<"
+flat = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="space" type="Control" parent="VBoxContainer/MarginContainer/ScoreList/Menu1"]
+margin_left = 142.0
+margin_right = 189.0
+margin_bottom = 58.0
+rect_min_size = Vector2( 10, 0 )
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="LabelDate" type="Label" parent="VBoxContainer/MarginContainer/ScoreList/Menu1"]
+margin_left = 193.0
+margin_right = 507.0
+margin_bottom = 58.0
+custom_fonts/font = ExtResource( 3 )
+text = "2020-12-12"
+
+[node name="space2" type="Control" parent="VBoxContainer/MarginContainer/ScoreList/Menu1"]
+margin_left = 511.0
+margin_right = 558.0
+margin_bottom = 58.0
+rect_min_size = Vector2( 10, 0 )
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="BtnNextDay" type="Button" parent="VBoxContainer/MarginContainer/ScoreList/Menu1"]
+margin_left = 562.0
+margin_right = 686.0
+margin_bottom = 58.0
+rect_min_size = Vector2( 124, 0 )
+focus_mode = 0
+custom_fonts/font = SubResource( 1 )
+enabled_focus_mode = 0
+text = ">"
+flat = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="fixed2" type="Control" parent="VBoxContainer/MarginContainer/ScoreList/Menu1"]
+margin_left = 690.0
+margin_right = 700.0
+margin_bottom = 58.0
+rect_min_size = Vector2( 10, 0 )
+
+[node name="fixed" type="Control" parent="VBoxContainer/MarginContainer/ScoreList"]
+margin_top = 1034.0
+margin_right = 700.0
+margin_bottom = 1134.0
+rect_min_size = Vector2( 0, 100 )
+[connection signal="pressed" from="VBoxContainer/Menu0/BtnBack" to="." method="_on_BtnBack_pressed"]
+[connection signal="pressed" from="VBoxContainer/MarginContainer/ScoreList/Menu1/BtnPrevDay" to="." method="_on_BtnPrevDay_pressed"]
+[connection signal="pressed" from="VBoxContainer/MarginContainer/ScoreList/Menu1/BtnNextDay" to="." method="_on_BtnNextDay_pressed"]

@@ -7,7 +7,7 @@ export (Array, int) var scroll_list
 
 signal page_changed(page)
 
-var logMgr
+var _logMgr: LogMgr
 
 var touch_start_pos: float = 0
 var last_swipe_speed = 0
@@ -32,7 +32,7 @@ var state = ScrollTouchState.Default
 var _ignore: bool = false
 
 func _ready():
-	logMgr = get_node("/root/GLog")
+	_logMgr = get_node("/root/LogMgr")
 
 func _process(delta):
 	if running:

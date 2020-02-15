@@ -1,5 +1,9 @@
 extends Node
 
+enum PANEL_LAYER {HUD_LAYER = -1, PARTICLES_LAYER = 1, NORMAL_LAYER = 3, MAIN_LAYER = 5}
+
+enum OpenType {DEFAULT, ANIMATION }
+
 const PANEL_HUD_LAYER = -1
 const PANEL_PARTICLES_LAYER = 1
 const PANEL_NORMAL_LAYER = 3
@@ -16,7 +20,8 @@ var nodeDic: Dictionary
 var localTime: float
 var delayNodeDic: Dictionary
 
-var logMgr
+var logMgr: LogMgr
+
 var mainScene
 var mainNode: CenterContainer
 var topNode: Control
@@ -26,8 +31,9 @@ var animationDic: Dictionary
 
 var mainPanelName: String
 
+
 func _ready():
-	logMgr = get_node("/root/GLog")
+	logMgr = get_node("/root/LogMgr")
 	logMgr._log("[PanelMgr] ready")
 # warning-ignore:return_value_discarded
 	get_tree().get_root().connect("size_changed", self, "_size_changed")
@@ -104,14 +110,10 @@ func openPanel(name: String, layer:int = PANEL_NORMAL_LAYER, dic: Dictionary = {
 	if ret:
 		if destoryTime > 0:
 			delayNodeDic[ret] = destoryTime
-		
-		if !dic.empty() && ret.has_method("_panel_set_dic"):
-			logMgr._debug("[PanelMgr]open panel set dic:")
-			logMgr._debug(dic)
-			ret._panel_set_dic(dic)
-		
-		if ret.has_method("_setRectSize"):
-			ret._setRectSize(_get_will_size())
+
+		ret._panel_set_dic(dic)
+		ret._panel_set_rect_size(_get_will_size())
+		ret._panel_ready()
 			
 		var animation_player = AnimationPlayer.new()
 		animation_player.name = "AnimationPlayer"

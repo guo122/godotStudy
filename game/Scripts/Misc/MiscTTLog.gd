@@ -1,9 +1,8 @@
-extends Control
+extends PanelBasic
 
-var panelMgr: PanelMgr
-var logMgr: GLog
 
 var bSwitch: bool = true
+
 onready var ppLog: RichTextLabel = $VBoxContainer/MarginContainer/ScrollContainer/HBoxContainer/RichTextLabel
 onready var ppSetting: Control = $VBoxContainer/MarginContainer/ScrollContainer/HBoxContainer/LogSetting
 onready var ppSwipe: PanelSwipe = $VBoxContainer/MarginContainer/ScrollContainer
@@ -14,18 +13,9 @@ enum LogPanel {HIDDEN, ALL, TRANSPARENT}
 var style = LogPanel.HIDDEN
 
 func _ready():
-	panelMgr = get_node("/root/PanelMgr")
-	logMgr = get_node("/root/GLog")
-	logMgr.connect("glog_update", self, "_on_log_update")
-	ppLog.bbcode_text = logMgr.log_data
+	_g.logMgr.connect("glog_update", self, "_on_log_update")
+	ppLog.bbcode_text = _g.logMgr.log_data
 	_set_log_panel()
-
-
-func _setRectSize(ssize: Vector2):
-	rect_position = Vector2(0, 0)
-	rect_size = ssize
-	$BasicBg.rect_min_size = ssize
-	$VBoxContainer.rect_min_size = ssize
 
 
 func _on_log_update(sstr):
@@ -88,16 +78,16 @@ func _on_BtnBg_pressed():
 
 
 func _on_CheckDebug_toggled(button_pressed):
-	logMgr._set_debug(button_pressed)
+	_g.logMgr._set_debug(button_pressed)
 
 
 func _on_CheckWarning_toggled(button_pressed):
-	logMgr._set_warning(button_pressed)
+	_g.logMgr._set_warning(button_pressed)
 
 
 func _on_CheckError_toggled(button_pressed):
-	logMgr._set_error(button_pressed)
+	_g.logMgr._set_error(button_pressed)
 
 
 func _on_BtnClear_pressed():
-	logMgr._clear()
+	_g.logMgr._clear()

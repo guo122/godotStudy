@@ -2,7 +2,7 @@
 
 [ext_resource path="res://Scripts/Math/MathMul.gd" type="Script" id=1]
 [ext_resource path="res://Fonts/Resources/Xolonium-Regular.ttf" type="DynamicFontData" id=2]
-[ext_resource path="res://Scenes/Math/NinePad.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Scenes/Math/MathNinePad.tscn" type="PackedScene" id=3]
 [ext_resource path="res://Fonts/Text100.tres" type="DynamicFont" id=4]
 [ext_resource path="res://Scenes/Prefab/BasicColorBg.tscn" type="PackedScene" id=5]
 [ext_resource path="res://Scenes/Prefab/TopFixed.tscn" type="PackedScene" id=6]

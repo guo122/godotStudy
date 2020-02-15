@@ -1,5 +1,7 @@
 extends Control
 
+class_name MathNinePad
+
 signal pad_pressed
 
 enum LayoutStyle {POSITIVE, NEGATIVE}

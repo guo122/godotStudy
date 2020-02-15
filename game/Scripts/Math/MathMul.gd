@@ -1,125 +1,103 @@
-extends Control
+extends PanelBasic
 
-var dataMgr
-var panelMgr
-var globals
+onready var _ppNumCount: Label = $VBoxContainer/Menu0/NumCount
+onready var _ppNinePad = $VBoxContainer/MenuNinePad/Nine
 
-const PANEL_HUD_LAYER = -1
-const PANEL_PARTICLES_LAYER = 1
-const PANEL_NORMAL_LAYER = 3
+var _num1: int
+var _num2: int
+var _numX: String
+var _inputNum: float
 
-onready var ppNumCount = $VBoxContainer/Menu0/NumCount
+var _running: bool
+var _local_time: float
 
-var num1: int
-var num2: int
-var numX: String
-var inputNum: float
-
-var running: bool
-var local_time: float
-
-var score_max: int
-var score_count: int
-var score_dic: Dictionary
-var lastColor: Color = Color(0, 0, 0)
+var _score_max: int
+var _score_count: int
+var _score_dic: Dictionary
 
 func _ready():
-	panelMgr = get_node("/root/PanelMgr")
-	dataMgr = get_node("/root/GData")
-	globals = get_node("/root/Globals")
-	$VBoxContainer/MenuNinePad/Nine.set_style(globals.NinePadPositiveLayoutStyle)
-	$VBoxContainer/MenuNinePad/Nine.connect("pad_pressed", self, "_on_Nine_click")
+	_ppNinePad.connect("pad_pressed", self, "_on_Nine_click")
 	randomize()
 	
-	score_dic = {}
+	_score_dic = {}
 	
-	score_max = 5
-	score_count = 0
+	_score_max = 5
+	_score_count = 0
 	
-	running = false
-	local_time = 0
+	_running = false
+	_local_time = 0
 	_num_init()
 
 
-func _setRectSize(ssize: Vector2):
-	rect_position = Vector2(0, 0)
-	rect_size = ssize
-	$BasicBg.rect_min_size = ssize
-	$VBoxContainer.rect_min_size = ssize
-
-
 func _process(delta):
-	if running:
-		local_time += delta
-		ppNumCount.text = "%.2f" % [local_time]
-		var cc = dataMgr._get_color(local_time)
-		if cc != lastColor:
-			lastColor = cc
-			ppNumCount.set("custom_colors/font_color", cc)
+	if _running:
+		_local_time += delta
+		_ppNumCount.text = "%.2f" % [_local_time]
+		_ppNumCount.set("custom_colors/font_color", _g.dataMgr._get_color(_local_time))
 	
 
 func _on_Nine_click(ss:String, num: float):
-	inputNum = num
+	_inputNum = num
 	$VBoxContainer/Menu2/SelfNum.text = ss
 	
 	if _num_check():
-		running = false
-		ppNumCount.set("custom_colors/font_color", Color(0,1,0))
+		_running = false
+		_ppNumCount.set("custom_colors/font_color", Color(0,1,0))
 		yield(get_tree().create_timer(1), "timeout")
-		if local_time < 60 && score_dic.has(score_count):
-			var dd_array: Array = score_dic[score_count]
-			dd_array.append(local_time)
+		if _local_time < 60 && _score_dic.has(_score_count):
+			var dd_array: Array = _score_dic[_score_count]
+			dd_array.append(_local_time)
 		_num_init()
 
 
 func _num_init():
-	if score_count >= score_max:
-		panelMgr.closePanel_animation(self, "close2")
-		panelMgr.openPanel("MathScore", PANEL_NORMAL_LAYER, score_dic)
+	if _score_count >= _score_max:
+		_g.panelMgr.closePanel_animation(self, "close2")
+		_g.panelMgr.openPanel("MathScore", PanelMgr.PANEL_LAYER.NORMAL_LAYER, _score_dic)
 	
-	ppNumCount.set("custom_colors/font_color", Color(0,0,0))
-	local_time = 0
-	running = true
-	score_count += 1
+	_ppNumCount.set("custom_colors/font_color", Color(0,0,0))
+	_local_time = 0
+	_running = true
+	_score_count += 1
 	
 	var a = randi() % 9 + 1
 	var b = randi() % 9 + 1
 	var c = randi() % 9 + 1
 	var d = randi() % 9 + 1
-	num1 = a * 10 + b
-	num2 = c * 10 + d
-	numX = "x"
+	_num1 = a * 10 + b
+	_num2 = c * 10 + d
+	_numX = "x"
 	
 	var data_array: Array = []
-	data_array.append(num1)
-	data_array.append(num2)
-	data_array.append(numX)
-	score_dic[score_count] = data_array
+	data_array.append(_num1)
+	data_array.append(_num2)
+	data_array.append(_numX)
+	_score_dic[_score_count] = data_array
 	
-	$VBoxContainer/MenuNinePad/Nine.num_clear()
+	_ppNinePad.num_clear()
 	$VBoxContainer/Menu2/SelfNum.text = "0"
 	_num_setGUI()
 
 
 func _num_check() -> bool:
-	if numX == "x" && (num1 * num2 == int(inputNum)):
+	if _numX == "x" && (_num1 * _num2 == int(_inputNum)):
 		return true
-	elif numX == "+" && (num1 + num2 == int(inputNum)):
+	elif _numX == "+" && (_num1 + _num2 == int(_inputNum)):
 		return true
-	elif numX == "-" && (num1 - num2 == int(inputNum)):
+	elif _numX == "-" && (_num1 - _num2 == int(_inputNum)):
 		return true
 	return false
 
 
 func _num_setGUI():
-	$VBoxContainer/Menu1/Num1.text = str(num1)
-	$VBoxContainer/Menu1/Num2.text = str(num2)
-	$VBoxContainer/Menu1/Numx.text = numX
-	$VBoxContainer/Menu3/Progress.text = str(score_count) + "/" + str(score_max)
+	$VBoxContainer/Menu1/Num1.text = str(_num1)
+	$VBoxContainer/Menu1/Num2.text = str(_num2)
+	$VBoxContainer/Menu1/Numx.text = _numX
+	$VBoxContainer/Menu3/Progress.text = str(_score_count) + "/" + str(_score_max)
 
 
 func _on_BtnBack_pressed():
-	panelMgr.closePanel_animation(self)
+	_g.panelMgr.closePanel_animation(self)
 
 
 func _on_BtnPass_pressed():

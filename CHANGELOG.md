@@ -1,6 +1,12 @@
 
 # Change log
 
+## 0.09(47)
+
+- [panel] opt panel manager, add panel basic.
+- [solar] add solar panel.
+- [misc] add FPS panel.
+
 ## 0.08(46)
 
 - [score] fix crash, rgb img load error.

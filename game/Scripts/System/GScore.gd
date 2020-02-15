@@ -7,7 +7,7 @@ var dataMgr
 
 func _ready():
 	panelMgr = get_node("/root/PanelMgr")
-	logMgr = get_node("/root/GLog")
+	logMgr = get_node("/root/LogMgr")
 	dataMgr = get_node("/root/GData")
 	logMgr._log("[Score] ready")
 

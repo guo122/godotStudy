@@ -9,7 +9,7 @@ const SCORE_MAP_IMAGE_FORMAT = Image.FORMAT_RGB8
 const SCORE_MAP_DEFAULT_COLOR = Color(1, 1, 1)
 const SCORE_MAP_LINE_COLOR = Color(0.8, 0.8, 0.8)
 
-var logMgr: GLog
+var logMgr: LogMgr
 
 var _rgb_img_width
 
@@ -22,7 +22,7 @@ var _data = {}
 var _dirty: bool = false
 
 func _ready():
-	logMgr = get_node("/root/GLog")
+	logMgr = get_node("/root/LogMgr")
 	_load()
 	logMgr._log("[Data] ready")
 	

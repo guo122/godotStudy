@@ -1,6 +1,12 @@
 
 # Will
 
+## 0.10
+
+- [solar] impl solar system.
+- [panel] multi-level main menu.
+- [misc] opt variable names.
+
 ## 0.08
 
 - [OK][score] map color use texture slider.
@@ -16,3 +22,8 @@
 - [misc] date manager.
 - [score] average, score 1-100 ?
 - [math] blind mode. double score.
+- [math] prime mode.
+
+
+
+
