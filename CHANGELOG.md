@@ -1,6 +1,10 @@
 
 # Change log
 
+## 0.09(48)
+
+- [misc] opt variable names.
+
 ## 0.09(47)
 
 - [panel] opt panel manager, add panel basic.

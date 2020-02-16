@@ -1,18 +1,19 @@
 extends Node
 
-var panelMgr
-var logMgr
-var dataMgr
+var _panel_mgr
+var _log_mgr
+var _data_mgr
 
 
 func _ready():
-	panelMgr = get_node("/root/PanelMgr")
-	logMgr = get_node("/root/LogMgr")
-	dataMgr = get_node("/root/GData")
-	logMgr._log("[Score] ready")
-
+	_panel_mgr = get_node("/root/PanelMgr")
+	_log_mgr = get_node("/root/LogMgr")
+	_data_mgr = get_node("/root/GData")
 	
-func _get_score_data() -> Dictionary:
+	_log_mgr.info("[Score] ready")
+
+
+func get_score_data() -> Dictionary:
 	var ret: Dictionary = {}
 	var str_data_summary = ""
 	var str_data_datetime = ""
@@ -34,7 +35,7 @@ func _get_score_data() -> Dictionary:
 	
 	var ii: int = 10
 	var jj: int = 10
-	for i in dataMgr._data["mathMatrixX"]:
+	for i in _data_mgr.dic_game_data["mathMatrixX"]:
 		ii += 1
 		jj = 10
 		for j in i:
@@ -46,7 +47,7 @@ func _get_score_data() -> Dictionary:
 					sum_score += data[1]
 					sum_count += 1
 					
-					str_date = ToolsDatetime._Timestamp2Date(data[0])
+					str_date = ToolsDatetime.timestamp_to_date(data[0])
 					if !date_dic.has(str_date):
 						var tmp_array: Array = []
 						tmp_array.append(0)
@@ -56,8 +57,8 @@ func _get_score_data() -> Dictionary:
 					date_dic[str_date][0] += data[1]
 					date_dic[str_date][1] += 1
 					
-					if ToolsDatetime._is_same_day(data[0]):
-						var hhour = ToolsDatetime._get_hour(data[0])
+					if ToolsDatetime.is_same_day(data[0]):
+						var hhour = ToolsDatetime.get_hour(data[0])
 						if !time_dic.has(str(hhour)):
 							var tmp_array: Array = []
 							tmp_array.append(0)
@@ -83,7 +84,7 @@ func _get_score_data() -> Dictionary:
 	else:
 		str_data_summary = "\n" + str_data_summary
 	
-	str_data_summary = "Total: " + ToolsDatetime._DurationSecond2Datetime(sum_score) +"\n" + str_data_summary
+	str_data_summary = "Total: " + ToolsDatetime.duration_second_to_datetime(sum_score) +"\n" + str_data_summary
 	str_data_summary = "5x: " + str(sum_5x) + ", "+"%.2f" % (float(sum_5x) / 6561 * 100)+"%\n" + str_data_summary
 	str_data_summary = "4x: " + str(sum_4x) + ", "+"%.2f" % (float(sum_4x) / 6561 * 100)+"%\n" + str_data_summary
 	str_data_summary = "3x: " + str(sum_3x) + ", "+"%.2f" % (float(sum_3x) / 6561 * 100)+"%\n" + str_data_summary
@@ -92,10 +93,10 @@ func _get_score_data() -> Dictionary:
 	
 	var str_data_time = ""
 	for i in time_array:
-		str_data_time = str(i) + ": " + ToolsDatetime._DurationSecond2Datetime(time_dic[str(i)][0]) + " (" + str(time_dic[str(i)][1]) + ")\n" + str_data_time
+		str_data_time = str(i) + ": " + ToolsDatetime.duration_second_to_datetime(time_dic[str(i)][0]) + " (" + str(time_dic[str(i)][1]) + ")\n" + str_data_time
 	
 	for ss in date_array:
-		str_data_datetime = ss + ": " + ToolsDatetime._DurationSecond2Datetime(date_dic[ss][0]) + " (" + str(date_dic[ss][1]) + ")\n" + str_data_datetime
+		str_data_datetime = ss + ": " + ToolsDatetime.duration_second_to_datetime(date_dic[ss][0]) + " (" + str(date_dic[ss][1]) + ")\n" + str_data_datetime
 	ret["summary"] = str_data_summary + "\n" + str_data_time
 	ret["datetime"] = str_data_datetime
 	ret["list"] = str_data_list

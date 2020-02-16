@@ -123,6 +123,10 @@ custom_fonts/normal_font = ExtResource( 3 )
 custom_colors/default_color = Color( 0, 0, 0, 1 )
 text = "# Change log
 
+## 0.09(48)
+
+- [misc] opt variable names.
+
 ## 0.09(47)
 
 - [panel] opt panel manager, add panel basic.
@@ -314,7 +318,7 @@ text = "# Will
 
 - [solar] impl solar system.
 - [panel] multi-level main menu.
-- [misc] opt variable names.
+- [OK][misc] opt variable names.
 
 ## 0.08
 
@@ -337,4 +341,4 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 [connection signal="pressed" from="VBoxContainer/Menu0/BtnBack" to="." method="_on_BtnBack_pressed"]
-[connection signal="page_changed" from="VBoxContainer/MarginContainer/ScrollContainer" to="." method="_on_ScrollContainer_page_changed"]
+[connection signal="signal_page_changed" from="VBoxContainer/MarginContainer/ScrollContainer" to="." method="_on_ScrollContainer_page_changed"]

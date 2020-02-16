@@ -2,7 +2,7 @@ extends PanelBasic
 
 
 func _on_BtnBack_pressed():
-	_g.panelMgr.closePanel_animation(self)
+	_g.panel_mgr.closePanel_animation(self)
 
 
 func _on_BtnPrevDay_pressed():

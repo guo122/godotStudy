@@ -1,17 +1,17 @@
 extends Node
 
-var logMgr: LogMgr
-var panelMgr: PanelMgr
-var dataMgr: GData
-var scoreMgr: GScore
+var log_mgr: LogMgr
+var panel_mgr: PanelMgr
+var data_mgr: GData
+var score_mgr: GScore
 
 func _ready():
-	logMgr = get_node("/root/LogMgr")
-	panelMgr = get_node("/root/PanelMgr")
-	dataMgr = get_node("/root/GData")
-	scoreMgr = get_node("/root/GScore")
+	log_mgr = get_node("/root/LogMgr")
+	panel_mgr = get_node("/root/PanelMgr")
+	data_mgr = get_node("/root/GData")
+	score_mgr = get_node("/root/GScore")
 	
-	logMgr._log("[Globals] ready")
+	log_mgr.info("[Globals] ready")
 	
 
 

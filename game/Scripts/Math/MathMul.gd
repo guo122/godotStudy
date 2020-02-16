@@ -1,12 +1,15 @@
 extends PanelBasic
 
-onready var _ppNumCount: Label = $VBoxContainer/Menu0/NumCount
-onready var _ppNinePad = $VBoxContainer/MenuNinePad/Nine
+onready var _p_label_stopwatch: Label = $VBoxContainer/Menu0/LabelStopwatch
+onready var _p_nine_pad = $VBoxContainer/MenuNinePad/Nine
+onready var _p_label_input = $VBoxContainer/Menu2/LabelInput
+onready var _p_label_question = $VBoxContainer/Menu1/LabelQuestion
+onready var _p_label_progress = $VBoxContainer/Menu3/LabelProgress
 
-var _num1: int
-var _num2: int
-var _numX: String
-var _inputNum: float
+var _num_1: int
+var _num_2: int
+var _num_type: String
+var _input_num: float
 
 var _running: bool
 var _local_time: float
@@ -16,7 +19,7 @@ var _score_count: int
 var _score_dic: Dictionary
 
 func _ready():
-	_ppNinePad.connect("pad_pressed", self, "_on_Nine_click")
+	_p_nine_pad.connect("signal_pad_pressed", self, "_on_Nine_click")
 	randomize()
 	
 	_score_dic = {}
@@ -32,17 +35,17 @@ func _ready():
 func _process(delta):
 	if _running:
 		_local_time += delta
-		_ppNumCount.text = "%.2f" % [_local_time]
-		_ppNumCount.set("custom_colors/font_color", _g.dataMgr._get_color(_local_time))
+		_p_label_stopwatch.text = "%.2f" % [_local_time]
+		_p_label_stopwatch.set("custom_colors/font_color", _g.data_mgr.get_color(_local_time))
 	
 
 func _on_Nine_click(ss:String, num: float):
-	_inputNum = num
-	$VBoxContainer/Menu2/SelfNum.text = ss
+	_input_num = num
+	_p_label_input.text = ss
 	
 	if _num_check():
 		_running = false
-		_ppNumCount.set("custom_colors/font_color", Color(0,1,0))
+		_p_label_stopwatch.set("custom_colors/font_color", Color(0,1,0))
 		yield(get_tree().create_timer(1), "timeout")
 		if _local_time < 60 && _score_dic.has(_score_count):
 			var dd_array: Array = _score_dic[_score_count]
@@ -52,10 +55,10 @@ func _on_Nine_click(ss:String, num: float):
 
 func _num_init():
 	if _score_count >= _score_max:
-		_g.panelMgr.closePanel_animation(self, "close2")
-		_g.panelMgr.openPanel("MathScore", PanelMgr.PANEL_LAYER.NORMAL_LAYER, _score_dic)
+		_g.panel_mgr.closePanel_animation(self, "close2")
+		_g.panel_mgr.openPanel("MathScore", PanelMgr.PANEL_LAYER.NORMAL, _score_dic)
 	
-	_ppNumCount.set("custom_colors/font_color", Color(0,0,0))
+	_p_label_stopwatch.set("custom_colors/font_color", Color(0,0,0))
 	_local_time = 0
 	_running = true
 	_score_count += 1
@@ -64,40 +67,38 @@ func _num_init():
 	var b = randi() % 9 + 1
 	var c = randi() % 9 + 1
 	var d = randi() % 9 + 1
-	_num1 = a * 10 + b
-	_num2 = c * 10 + d
-	_numX = "x"
+	_num_1 = a * 10 + b
+	_num_2 = c * 10 + d
+	_num_type = "x"
 	
 	var data_array: Array = []
-	data_array.append(_num1)
-	data_array.append(_num2)
-	data_array.append(_numX)
+	data_array.append(_num_1)
+	data_array.append(_num_2)
+	data_array.append(_num_type)
 	_score_dic[_score_count] = data_array
 	
-	_ppNinePad.num_clear()
-	$VBoxContainer/Menu2/SelfNum.text = "0"
+	_p_nine_pad.num_clear()
+	_p_label_input.text = "0"
 	_num_setGUI()
 
 
 func _num_check() -> bool:
-	if _numX == "x" && (_num1 * _num2 == int(_inputNum)):
+	if _num_type == "x" && (_num_1 * _num_2 == int(_input_num)):
 		return true
-	elif _numX == "+" && (_num1 + _num2 == int(_inputNum)):
+	elif _num_type == "+" && (_num_1 + _num_2 == int(_input_num)):
 		return true
-	elif _numX == "-" && (_num1 - _num2 == int(_inputNum)):
+	elif _num_type == "-" && (_num_1 - _num_2 == int(_input_num)):
 		return true
 	return false
 
 
 func _num_setGUI():
-	$VBoxContainer/Menu1/Num1.text = str(_num1)
-	$VBoxContainer/Menu1/Num2.text = str(_num2)
-	$VBoxContainer/Menu1/Numx.text = _numX
-	$VBoxContainer/Menu3/Progress.text = str(_score_count) + "/" + str(_score_max)
+	_p_label_question.text = str(_num_1) + _num_type + str(_num_2)
+	_p_label_progress.text = str(_score_count) + "/" + str(_score_max)
 
 
 func _on_BtnBack_pressed():
-	_g.panelMgr.closePanel_animation(self)
+	_g.panel_mgr.closePanel_animation(self)
 
 
 func _on_BtnPass_pressed():

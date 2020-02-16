@@ -1,93 +1,92 @@
 extends PanelBasic
 
 
-var bSwitch: bool = true
+onready var _p_basic_bg = $BasicBg
+onready var _p_label_log: RichTextLabel = $VBoxContainer/MarginContainer/ScrollContainer/HBoxContainer/RichTextLabel
+onready var _p_panel_setting: Control = $VBoxContainer/MarginContainer/ScrollContainer/HBoxContainer/LogSetting
+onready var _p_swipe: PanelSwipe = $VBoxContainer/MarginContainer/ScrollContainer
+onready var _p_btn_bg: Button = $VBoxContainer/TopFixed/BtnBg
+onready var _p_btn_switch: Button = $VBoxContainer/TopFixed/BtnSwitch
 
-onready var ppLog: RichTextLabel = $VBoxContainer/MarginContainer/ScrollContainer/HBoxContainer/RichTextLabel
-onready var ppSetting: Control = $VBoxContainer/MarginContainer/ScrollContainer/HBoxContainer/LogSetting
-onready var ppSwipe: PanelSwipe = $VBoxContainer/MarginContainer/ScrollContainer
-onready var ppBtnBg: Button = $VBoxContainer/TopFixed/BtnBg
-onready var ppBtnSwitch: Button = $VBoxContainer/TopFixed/BtnSwitch
-
-enum LogPanel {HIDDEN, ALL, TRANSPARENT}
-var style = LogPanel.HIDDEN
+enum _LogPanel {HIDDEN, ALL, TRANSPARENT}
+var _style = _LogPanel.HIDDEN
 
 func _ready():
-	_g.logMgr.connect("glog_update", self, "_on_log_update")
-	ppLog.bbcode_text = _g.logMgr.log_data
+	_g.log_mgr.connect("signal_log_update", self, "_on_log_update")
+	_p_label_log.bbcode_text = _g.log_mgr.log_data()
 	_set_log_panel()
 
 
 func _on_log_update(sstr):
-	ppLog.bbcode_text = sstr
+	_p_label_log.bbcode_text = sstr
 
 
 func _set_log_panel():
-	if style == LogPanel.HIDDEN:
-		ppSwipe.visible = false
-		ppSwipe._ignore = false
-		ppSwipe._turn_left()
-		ppSwipe.mouse_filter = Control.MOUSE_FILTER_STOP
-		ppLog.mouse_filter = Control.MOUSE_FILTER_STOP
-		ppSetting.mouse_filter = Control.MOUSE_FILTER_STOP
-		$BasicBg.visible = false
-		ppBtnBg.visible = false
-		ppBtnSwitch.visible = true
-		ppBtnBg.flat = true
-		ppBtnSwitch.flat = true
-	elif style == LogPanel.ALL:
-		ppSwipe.visible = true
-		ppSwipe._ignore = false
-		ppSwipe._turn_left()
-		ppSwipe.mouse_filter = Control.MOUSE_FILTER_STOP
-		ppLog.mouse_filter = Control.MOUSE_FILTER_STOP
-		ppSetting.mouse_filter = Control.MOUSE_FILTER_STOP
-		$BasicBg.visible = true
-		ppBtnBg.visible = true
-		ppBtnSwitch.visible = true
-		ppBtnBg.flat = false
-		ppBtnSwitch.flat = false
-	elif style == LogPanel.TRANSPARENT:
-		ppSwipe.visible = true
-		ppSwipe._ignore = true
-		ppSwipe._turn_left()
-		ppSwipe.mouse_filter = Control.MOUSE_FILTER_IGNORE
-		ppLog.mouse_filter = Control.MOUSE_FILTER_IGNORE
-		ppSetting.mouse_filter = Control.MOUSE_FILTER_IGNORE
-		$BasicBg.visible = false
-		ppBtnBg.visible = true
-		ppBtnSwitch.visible = false
-		ppBtnBg.flat = true
-		ppBtnSwitch.flat = true
+	if _style == _LogPanel.HIDDEN:
+		_p_swipe.visible = false
+		_p_swipe.b_ignore_input = false
+		_p_swipe.turn_left()
+		_p_swipe.mouse_filter = Control.MOUSE_FILTER_STOP
+		_p_label_log.mouse_filter = Control.MOUSE_FILTER_STOP
+		_p_panel_setting.mouse_filter = Control.MOUSE_FILTER_STOP
+		_p_basic_bg.visible = false
+		_p_btn_bg.visible = false
+		_p_btn_switch.visible = true
+		_p_btn_bg.flat = true
+		_p_btn_switch.flat = true
+	elif _style == _LogPanel.ALL:
+		_p_swipe.visible = true
+		_p_swipe.b_ignore_input = false
+		_p_swipe.turn_left()
+		_p_swipe.mouse_filter = Control.MOUSE_FILTER_STOP
+		_p_label_log.mouse_filter = Control.MOUSE_FILTER_STOP
+		_p_panel_setting.mouse_filter = Control.MOUSE_FILTER_STOP
+		_p_basic_bg.visible = true
+		_p_btn_bg.visible = true
+		_p_btn_switch.visible = true
+		_p_btn_bg.flat = false
+		_p_btn_switch.flat = false
+	elif _style == _LogPanel.TRANSPARENT:
+		_p_swipe.visible = true
+		_p_swipe.b_ignore_input = true
+		_p_swipe.turn_left()
+		_p_swipe.mouse_filter = Control.MOUSE_FILTER_IGNORE
+		_p_label_log.mouse_filter = Control.MOUSE_FILTER_IGNORE
+		_p_panel_setting.mouse_filter = Control.MOUSE_FILTER_IGNORE
+		_p_basic_bg.visible = false
+		_p_btn_bg.visible = true
+		_p_btn_switch.visible = false
+		_p_btn_bg.flat = true
+		_p_btn_switch.flat = true
 
 
 func _on_BtnSwitch_pressed():
-	if style == LogPanel.ALL:
-		style = LogPanel.HIDDEN
+	if _style == _LogPanel.ALL:
+		_style = _LogPanel.HIDDEN
 	else:
-		style = LogPanel.ALL
+		_style = _LogPanel.ALL
 	_set_log_panel()
 
 
 func _on_BtnBg_pressed():
-	if style == LogPanel.ALL:
-		style = LogPanel.TRANSPARENT
+	if _style == _LogPanel.ALL:
+		_style = _LogPanel.TRANSPARENT
 	else:
-		style = LogPanel.ALL
+		_style = _LogPanel.ALL
 	_set_log_panel()
 
 
 func _on_CheckDebug_toggled(button_pressed):
-	_g.logMgr._set_debug(button_pressed)
+	_g.log_mgr.set_debug(button_pressed)
 
 
 func _on_CheckWarning_toggled(button_pressed):
-	_g.logMgr._set_warning(button_pressed)
+	_g.log_mgr.set_warning(button_pressed)
 
 
 func _on_CheckError_toggled(button_pressed):
-	_g.logMgr._set_error(button_pressed)
+	_g.log_mgr.set_error(button_pressed)
 
 
 func _on_BtnClear_pressed():
-	_g.logMgr._clear()
+	_g.log_mgr.clear()

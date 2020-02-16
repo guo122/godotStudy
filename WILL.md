@@ -5,7 +5,7 @@
 
 - [solar] impl solar system.
 - [panel] multi-level main menu.
-- [misc] opt variable names.
+- [OK][misc] opt variable names.
 
 ## 0.08
 

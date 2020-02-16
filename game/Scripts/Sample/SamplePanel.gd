@@ -1,16 +1,16 @@
 extends Control
 
-var _dataMgr: GData
-var _logMgr: LogMgr
-var _panelMgr: PanelMgr
-var _scoreMgr: GScore
+var _log_mgr: LogMgr
+var _panel_mgr: PanelMgr
+var _data_mgr: GData
+var _score_mgr: GScore
 var _globals: Globals
 
 func _ready():
-	_panelMgr = get_node("/root/PanelMgr")
-	_logMgr = get_node("/root/LogMgr")
-	_dataMgr = get_node("/root/GData")
-	_scoreMgr = get_node("/root/GScore")
+	_panel_mgr = get_node("/root/PanelMgr")
+	_log_mgr = get_node("/root/LogMgr")
+	_data_mgr = get_node("/root/GData")
+	_score_mgr = get_node("/root/GScore")
 	_globals = get_node("/root/Globals")
 
 
