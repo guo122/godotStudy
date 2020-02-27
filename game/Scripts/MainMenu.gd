@@ -21,5 +21,9 @@ func _on_BtnSolar_pressed():
 	_g.panel_mgr.openPanel("SolarSystem")
 
 
+func _on_BtnMaze_pressed():
+	_g.panel_mgr.openPanel("MazeSystem")
+
+
 
 

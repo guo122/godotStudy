@@ -24,6 +24,16 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://Scripts/Math/MathNinePad.gd"
 }, {
+"base": "Node",
+"class": "MazePngGen",
+"language": "GDScript",
+"path": "res://Scripts/Maze/MazePngGen.gd"
+}, {
+"base": "PanelBasic",
+"class": "MazeSystem",
+"language": "GDScript",
+"path": "res://Scripts/Maze/MazeSystem.gd"
+}, {
 "base": "Control",
 "class": "PanelBasic",
 "language": "GDScript",
@@ -48,6 +58,8 @@ _global_script_class_icons={
 "DoubleDictionary": "",
 "MathMulMap": "",
 "MathNinePad": "",
+"MazePngGen": "",
+"MazeSystem": "",
 "PanelBasic": "",
 "PanelSwipe": "",
 "ToolsDatetime": "",

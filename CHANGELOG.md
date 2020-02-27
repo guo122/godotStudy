@@ -1,6 +1,10 @@
 
 # Change log
 
+## 0.09(49)
+
+- [maze] impl maze panel.
+
 ## 0.09(48)
 
 - [misc] opt variable names.
