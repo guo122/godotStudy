@@ -105,23 +105,48 @@ size_flags_vertical = 3
 
 [node name="space" type="Control" parent="VBoxContainer/MarginContainer/ScoreList"]
 margin_right = 700.0
-margin_bottom = 161.0
+margin_bottom = 130.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
 [node name="TextureRect" type="TextureRect" parent="VBoxContainer/MarginContainer/ScoreList"]
 material = SubResource( 3 )
-margin_top = 165.0
+margin_top = 134.0
 margin_right = 700.0
-margin_bottom = 865.0
+margin_bottom = 834.0
 rect_min_size = Vector2( 700, 700 )
 
 [node name="space2" type="Control" parent="VBoxContainer/MarginContainer/ScoreList"]
-margin_top = 869.0
+margin_top = 838.0
 margin_right = 700.0
-margin_bottom = 1030.0
+margin_bottom = 968.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/MarginContainer/ScoreList"]
+margin_top = 972.0
+margin_right = 700.0
+margin_bottom = 1030.0
+
+[node name="space" type="Control" parent="VBoxContainer/MarginContainer/ScoreList/HBoxContainer"]
+margin_right = 507.0
+margin_bottom = 58.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="BtnRefresh" type="Button" parent="VBoxContainer/MarginContainer/ScoreList/HBoxContainer"]
+margin_left = 511.0
+margin_right = 700.0
+margin_bottom = 58.0
+rect_min_size = Vector2( 124, 0 )
+focus_mode = 0
+custom_fonts/font = SubResource( 1 )
+enabled_focus_mode = 0
+text = "Refresh"
+flat = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="fixed" type="Control" parent="VBoxContainer/MarginContainer/ScoreList"]
 margin_top = 1034.0
@@ -129,3 +154,4 @@ margin_right = 700.0
 margin_bottom = 1134.0
 rect_min_size = Vector2( 0, 100 )
 [connection signal="pressed" from="VBoxContainer/Menu0/BtnBack" to="." method="_on_BtnBack_pressed"]
+[connection signal="pressed" from="VBoxContainer/MarginContainer/ScoreList/HBoxContainer/BtnRefresh" to="." method="_on_BtnRefresh_pressed"]

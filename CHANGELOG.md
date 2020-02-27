@@ -1,6 +1,10 @@
 
 # Change log
 
+## 0.09(50)
+
+- [maze] impl totally random maze.
+
 ## 0.09(49)
 
 - [maze] impl maze panel.

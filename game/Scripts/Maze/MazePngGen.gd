@@ -18,6 +18,7 @@ var _maze_tile_1_img: Image
 var _maze_tile_size: float
 
 var maze_img: Image = null
+var _maze_last_list: Array = []
 
 var _max_x: int = 0
 var _max_y: int = 0
@@ -37,7 +38,12 @@ func init_maze(x: int, y: int, list: Array):
 	_one_y = float(_MAZE_IMAGE_Y) / float(_max_y)
 	_tile_ratio = _maze_tile_size / _one_x
 	
+	
 	if !list.empty() && list.size() == _max_x * _max_y:
+		if _maze_last_list.size() != list.size():
+			_maze_last_list.clear()
+			for i in range(0, list.size()):
+				_maze_last_list.append(-1)
 		maze_img.lock()
 		_maze_tile_0_img.lock()
 		_maze_tile_1_img.lock()
@@ -45,7 +51,9 @@ func init_maze(x: int, y: int, list: Array):
 		for i in range(0, _max_x):
 			for j in range(0, _max_y):
 				ii += 1
-				_set_one_maze(i, j, list[ii])
+				if list[ii] != _maze_last_list[ii]:
+					_set_one_maze(i, j, list[ii])
+					_maze_last_list[ii] = list[ii]
 		maze_img.unlock()
 		_maze_tile_0_img.unlock()
 		_maze_tile_1_img.unlock()
