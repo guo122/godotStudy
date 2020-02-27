@@ -123,6 +123,10 @@ custom_fonts/normal_font = ExtResource( 3 )
 custom_colors/default_color = Color( 0, 0, 0, 1 )
 text = "# Change log
 
+## 0.09(50)
+
+- [maze] impl totally random maze.
+
 ## 0.09(49)
 
 - [maze] impl maze panel.
