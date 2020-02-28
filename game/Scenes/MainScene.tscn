@@ -1,10 +1,11 @@
-[gd_scene load_steps=12 format=2]
+[gd_scene load_steps=13 format=2]
 
 [ext_resource path="res://Scripts/Framework/MainScene.gd" type="Script" id=1]
 [ext_resource path="res://Scenes/MainMenu.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Scenes/Solar/SolarSystem.tscn" type="PackedScene" id=3]
 [ext_resource path="res://Scenes/Maze/MazeSystem.tscn" type="PackedScene" id=4]
 [ext_resource path="res://Scenes/Misc/MiscFPS.tscn" type="PackedScene" id=5]
+[ext_resource path="res://Scenes/Maze/MazeTile.tscn" type="PackedScene" id=6]
 [ext_resource path="res://Scenes/Math/MathMul.tscn" type="PackedScene" id=10]
 [ext_resource path="res://Scenes/Math/MathScore.tscn" type="PackedScene" id=11]
 [ext_resource path="res://Scenes/Misc/MiscChangeLog.tscn" type="PackedScene" id=12]
@@ -14,4 +15,4 @@
 
 [node name="Node" type="Node"]
 script = ExtResource( 1 )
-PanelSceneList = [ ExtResource( 2 ), ExtResource( 10 ), ExtResource( 11 ), ExtResource( 12 ), ExtResource( 14 ), ExtResource( 15 ), ExtResource( 16 ), ExtResource( 5 ), ExtResource( 3 ), ExtResource( 4 ) ]
+PanelSceneList = [ ExtResource( 2 ), ExtResource( 10 ), ExtResource( 11 ), ExtResource( 12 ), ExtResource( 14 ), ExtResource( 15 ), ExtResource( 16 ), ExtResource( 5 ), ExtResource( 3 ), ExtResource( 4 ), ExtResource( 6 ) ]

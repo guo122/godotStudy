@@ -51,9 +51,9 @@ func init_maze(x: int, y: int, list: Array):
 		for i in range(0, _max_x):
 			for j in range(0, _max_y):
 				ii += 1
-				if list[ii] != _maze_last_list[ii]:
-					_set_one_maze(i, j, list[ii])
-					_maze_last_list[ii] = list[ii]
+				if list[ii].val != _maze_last_list[ii]:
+					_set_one_maze(i, j, list[ii].val)
+					_maze_last_list[ii] = list[ii].val
 		maze_img.unlock()
 		_maze_tile_0_img.unlock()
 		_maze_tile_1_img.unlock()

@@ -1,7 +1,8 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=9 format=2]
 
-[ext_resource path="res://Scripts/Maze/MazeSystem.gd" type="Script" id=1]
+[ext_resource path="res://Scripts/Maze/MazeTile.gd" type="Script" id=1]
 [ext_resource path="res://Fonts/Resources/Xolonium-Regular.ttf" type="DynamicFontData" id=2]
+[ext_resource path="res://Assets/TileSet/tilesheet_complete.png" type="Texture" id=3]
 [ext_resource path="res://Scenes/Prefab/TopFixed.tscn" type="PackedScene" id=4]
 
 [sub_resource type="DynamicFont" id=1]
@@ -26,6 +27,25 @@ void fragment(){
 
 [sub_resource type="ShaderMaterial" id=3]
 shader = SubResource( 2 )
+
+[sub_resource type="TileSet" id=4]
+0/name = "tilesheet_complete.png 0"
+0/texture = ExtResource( 3 )
+0/tex_offset = Vector2( 0, 0 )
+0/modulate = Color( 1, 1, 1, 1 )
+0/region = Rect2( 0, 0, 992, 320 )
+0/tile_mode = 2
+0/autotile/icon_coordinate = Vector2( 0, 0 )
+0/autotile/tile_size = Vector2( 32, 32 )
+0/autotile/spacing = 0
+0/autotile/occluder_map = [  ]
+0/autotile/navpoly_map = [  ]
+0/autotile/priority_map = [  ]
+0/autotile/z_index_map = [  ]
+0/occluder_offset = Vector2( 0, 0 )
+0/navigation_offset = Vector2( 0, 0 )
+0/shapes = [  ]
+0/z_index = 0
 
 [node name="Panel" type="CenterContainer"]
 script = ExtResource( 1 )
@@ -78,31 +98,11 @@ __meta__ = {
 
 [node name="space" type="Control" parent="VBoxContainer/Menu0"]
 margin_left = 142.0
-margin_right = 578.0
+margin_right = 720.0
 margin_bottom = 58.0
 rect_min_size = Vector2( 10, 0 )
 size_flags_horizontal = 3
 size_flags_vertical = 3
-
-[node name="BtnTile" type="Button" parent="VBoxContainer/Menu0"]
-margin_left = 582.0
-margin_right = 706.0
-margin_bottom = 58.0
-rect_min_size = Vector2( 124, 0 )
-focus_mode = 0
-custom_fonts/font = SubResource( 1 )
-enabled_focus_mode = 0
-text = "Tile"
-flat = true
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="fixed2" type="Control" parent="VBoxContainer/Menu0"]
-margin_left = 710.0
-margin_right = 720.0
-margin_bottom = 58.0
-rect_min_size = Vector2( 10, 0 )
 
 [node name="MarginContainer" type="MarginContainer" parent="VBoxContainer"]
 margin_top = 126.0
@@ -125,48 +125,28 @@ size_flags_vertical = 3
 
 [node name="space" type="Control" parent="VBoxContainer/MarginContainer/ScoreList"]
 margin_right = 700.0
-margin_bottom = 130.0
+margin_bottom = 161.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
-[node name="TextureRect" type="TextureRect" parent="VBoxContainer/MarginContainer/ScoreList"]
+[node name="TextureRect" type="Control" parent="VBoxContainer/MarginContainer/ScoreList"]
 material = SubResource( 3 )
-margin_top = 134.0
+margin_top = 165.0
 margin_right = 700.0
-margin_bottom = 834.0
+margin_bottom = 865.0
 rect_min_size = Vector2( 700, 700 )
 
-[node name="space2" type="Control" parent="VBoxContainer/MarginContainer/ScoreList"]
-margin_top = 838.0
-margin_right = 700.0
-margin_bottom = 968.0
-size_flags_horizontal = 3
-size_flags_vertical = 3
+[node name="TileMap" type="TileMap" parent="VBoxContainer/MarginContainer/ScoreList/TextureRect"]
+tile_set = SubResource( 4 )
+format = 1
+tile_data = PoolIntArray( 131074, 0, 3, 131075, 0, 3, 131076, 0, 3, 131077, 0, 3, 131078, 0, 3, 131079, 0, 3, 131080, 0, 3, 131081, 0, 3, 196611, 0, 2, 327684, 0, 0 )
 
-[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/MarginContainer/ScoreList"]
-margin_top = 972.0
+[node name="space2" type="Control" parent="VBoxContainer/MarginContainer/ScoreList"]
+margin_top = 869.0
 margin_right = 700.0
 margin_bottom = 1030.0
-
-[node name="space" type="Control" parent="VBoxContainer/MarginContainer/ScoreList/HBoxContainer"]
-margin_right = 507.0
-margin_bottom = 58.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
-
-[node name="BtnRefresh" type="Button" parent="VBoxContainer/MarginContainer/ScoreList/HBoxContainer"]
-margin_left = 511.0
-margin_right = 700.0
-margin_bottom = 58.0
-rect_min_size = Vector2( 124, 0 )
-focus_mode = 0
-custom_fonts/font = SubResource( 1 )
-enabled_focus_mode = 0
-text = "Refresh"
-flat = true
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="fixed" type="Control" parent="VBoxContainer/MarginContainer/ScoreList"]
 margin_top = 1034.0
@@ -174,5 +154,3 @@ margin_right = 700.0
 margin_bottom = 1134.0
 rect_min_size = Vector2( 0, 100 )
 [connection signal="pressed" from="VBoxContainer/Menu0/BtnBack" to="." method="_on_BtnBack_pressed"]
-[connection signal="pressed" from="VBoxContainer/Menu0/BtnTile" to="." method="_on_BtnTile_pressed"]
-[connection signal="pressed" from="VBoxContainer/MarginContainer/ScoreList/HBoxContainer/BtnRefresh" to="." method="_on_BtnRefresh_pressed"]
